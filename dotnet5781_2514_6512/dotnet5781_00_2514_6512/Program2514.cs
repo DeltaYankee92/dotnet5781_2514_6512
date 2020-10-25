@@ -10,13 +10,13 @@ namespace dotnet5781_00_2514_6512
     {
         static void Main(string[] args)
         {
-            newproject();
             Wellcome5124();
+            Wellcome6512();
             Console.ReadKey();
         }
 
-        static partial void Wellcome5124();
-        private static void newproject()
+        static partial void Wellcome6512();
+        private static void Wellcome5124()
         {
             Console.WriteLine("Enter your name: ");
             string name = Console.ReadLine();
