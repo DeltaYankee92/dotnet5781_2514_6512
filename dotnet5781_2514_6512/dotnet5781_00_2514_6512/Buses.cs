@@ -12,14 +12,43 @@ namespace dotnet5781_00_2514_6512
         int milage;
         int milage_total; // kilometrag'
 
-        const int max_fuel = 1200;// to use as we go along: maximum fuel
         int current_fuel;
-        DateTime registrationDate, lastMaintenance; // as requested.
+        DateTime registrationDate, MaintenanceDate; // as requested.
 
-        internal Buses()
+
+        public Buses(DateTime date, int[] id, int v1, int v2, int v3) 
         {
 
         }
 
+        internal void print_mileage()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal int[] getplate()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void fuel_up()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void fix()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal bool can_go(int amount_to_drive)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void drive(int amount_to_drive)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
