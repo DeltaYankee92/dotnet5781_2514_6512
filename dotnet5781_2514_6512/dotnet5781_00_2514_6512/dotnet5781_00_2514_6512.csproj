@@ -45,8 +45,6 @@
   <ItemGroup>
     <Compile Include="buses main.cs" />
     <Compile Include="Buses.cs" />
-    <Compile Include="Program2514.cs" />
-    <Compile Include="Program6512.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

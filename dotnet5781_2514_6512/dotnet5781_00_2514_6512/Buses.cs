@@ -11,7 +11,7 @@ namespace dotnet5781_00_2514_6512
         int[] license_plate; //not determining the size here, because there are 2 options. we will add the '-'s to the print function. 
         int milage;
         int milage_total; // kilometrag'
-
+        int LastMaintenance;
         int current_fuel;
         DateTime registrationDate, MaintenanceDate; // as requested.
 
@@ -23,32 +23,44 @@ namespace dotnet5781_00_2514_6512
 
         internal void print_mileage()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The milage of the bus is: {0}", milage_total);
         }
 
         internal int[] getplate()
         {
-            throw new NotImplementedException();
+            return license_plate;
         }
 
         internal void fuel_up()
         {
-            throw new NotImplementedException();
+            current_fuel = 0;
         }
 
         internal void fix()
         {
-            throw new NotImplementedException();
+            MaintenanceDate = DateTime.Now;
+            LastMaintenance = milage_total;
+            milage = 0;
         }
 
         internal bool can_go(int amount_to_drive)
         {
-            throw new NotImplementedException();
+            if ((LastMaintenance+amount_to_drive) >= (LastMaintenance+20000))
+            {
+                return false;
+            }
+            if (current_fuel+amount_to_drive > 1200)
+            {
+                return false;
+            }
+            return true;
         }
 
         internal void drive(int amount_to_drive)
         {
-            throw new NotImplementedException();
+            milage += amount_to_drive;
+            milage_total += amount_to_drive;
+            current_fuel += amount_to_drive;
         }
     }
 }
