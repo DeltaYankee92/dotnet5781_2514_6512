@@ -108,7 +108,7 @@ namespace dotnet5781_00_2514_6512
 
             foreach (Buses var in database)
             {
-               if(var.getplate() == id)
+               if(check_arr(var.getplate(),id)==true)
                 {
                     if(var.can_go(amount_to_drive)== true) //* can the bus drive that amount?
                     {
@@ -235,3 +235,4 @@ namespace dotnet5781_00_2514_6512
         }
     }
 }
+
