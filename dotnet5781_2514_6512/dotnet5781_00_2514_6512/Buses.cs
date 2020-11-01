@@ -9,10 +9,10 @@ namespace dotnet5781_00_2514_6512
     class Buses
     {
         int[] license_plate; //not determining the size here, because there are 2 options. we will add the '-'s to the print function. 
-        int milage;
+        int milage;       //milage since last maintenance
         int milage_total; // kilometrag'
-        int LastMaintenance;
-        int current_fuel;
+        int LastMaintenance;  //km number of last maintenance
+        int current_fuel;     //fuel used by km
         DateTime registrationDate, MaintenanceDate; // as requested.
 
 
