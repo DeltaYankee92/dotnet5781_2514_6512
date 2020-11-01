@@ -38,7 +38,7 @@ namespace dotnet5781_00_2514_6512
 
         internal void fuel_up()
         {
-            current_fuel = 0;
+            current_fuel = 1200;
         }
 
         internal void fix()
@@ -58,7 +58,7 @@ namespace dotnet5781_00_2514_6512
             {
                 return false;
             }
-            if (current_fuel+amount_to_drive > 1200)
+            if (current_fuel-amount_to_drive < 0)
             {
                 return false;
             }
