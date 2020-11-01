@@ -18,7 +18,11 @@ namespace dotnet5781_00_2514_6512
 
         public Buses(DateTime date, int[] id, int v1, int v2, int v3) 
         {
-
+            registrationDate = date;
+            license_plate = id;
+            milage = v1;
+            LastMaintenance = v2;
+            current_fuel = v3;
         }
 
         internal void print_mileage()
