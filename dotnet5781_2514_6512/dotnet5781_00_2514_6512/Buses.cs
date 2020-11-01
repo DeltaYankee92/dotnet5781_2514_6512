@@ -54,6 +54,10 @@ namespace dotnet5781_00_2514_6512
             {
                 return false;
             }
+            if (current_fuel<amount_to_drive)
+            {
+                return false;
+            }
             if (current_fuel+amount_to_drive > 1200)
             {
                 return false;
