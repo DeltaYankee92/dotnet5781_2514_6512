@@ -17,16 +17,16 @@ namespace dotnet5781_00_2514_6512
             CHOICE choice;
             do
             {
-                bool parse_success = true;
-                parse_success = Enum.TryParse(Console.ReadLine(), out choice);
-                if (!parse_success)
-                    continue;
                 Console.WriteLine(@"Enter your choice: 
                    1- add a bus to the database
                    2- choose a bus from the database to drive
                    3- fuel up a bus, or repair the bis
                    4- milage driven since the last repair
                    0-exit.");
+                bool parse_success;
+                parse_success = Enum.TryParse(Console.ReadLine(), out choice);
+                if (!parse_success)
+                    continue;
                 switch (choice)
                 {
                     case CHOICE.ADD:
