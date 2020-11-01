@@ -23,6 +23,7 @@ namespace dotnet5781_00_2514_6512
             milage = v1;
             LastMaintenance = v2;
             current_fuel = v3;
+            MaintenanceDate = date;
         }
 
         internal void print_mileage()
@@ -65,6 +66,44 @@ namespace dotnet5781_00_2514_6512
             milage += amount_to_drive;
             milage_total += amount_to_drive;
             current_fuel += amount_to_drive;
+        }
+
+        internal void print(Buses bus)
+        {
+            if (license_plate.Length == 7)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    Console.WriteLine("{0}", license_plate[i]);
+                }
+                Console.WriteLine("-");
+                for (int i = 0; i < 3; i++)
+                {
+                    Console.WriteLine("{0}", license_plate[i]);
+                }
+                Console.WriteLine("-");
+                for (int i = 0; i < 2; i++)
+                {
+                    Console.WriteLine("{0}", license_plate[i]);
+                }
+            }
+            else if (license_plate.Length == 8)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    Console.WriteLine("{0}", license_plate[i]);
+                }
+                Console.WriteLine("-");
+                for (int i = 0; i < 2; i++)
+                {
+                    Console.WriteLine("{0}", license_plate[i]);
+                }
+                Console.WriteLine("-");
+                for (int i = 0; i < 3; i++)
+                {
+                    Console.WriteLine("{0}", license_plate[i]);
+                }
+            }
         }
     }
 }
