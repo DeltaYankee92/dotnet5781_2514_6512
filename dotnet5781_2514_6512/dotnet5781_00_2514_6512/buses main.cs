@@ -123,7 +123,12 @@ namespace dotnet5781_00_2514_6512
         {
             DateTime date = valid_date();
             int[] id = valid_plate();
-            if(in_system(database,id)== false)
+
+            if (date.Year >= 2018 && id.Length != 8)
+                Console.WriteLine("ERROR: number of digits doesnt correspond to the correct year");
+            else if (date.Year < 2018 && id.Length != 7)
+                Console.WriteLine("ERROR: number of digits doesnt correspond to the correct year");
+            else if (in_system(database,id)== false)
                 database.Add(new Buses(date,id,0,0,0)); //* the bast constructor for a new bus that gets the variables
             else
                 Console.WriteLine("bus already in the system. cannot add. process failed");

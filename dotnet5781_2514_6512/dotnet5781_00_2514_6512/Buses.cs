@@ -24,6 +24,7 @@ namespace dotnet5781_00_2514_6512
             LastMaintenance = v2;
             current_fuel = v3;
             MaintenanceDate = date;
+
         }
 
         internal void print_mileage()
