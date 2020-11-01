@@ -133,10 +133,21 @@ namespace dotnet5781_00_2514_6512
         {
             foreach (Buses bs in database)
             {
-                if (bs.getplate() == id) //* get the license plate
+                if (check_arr(id,bs.getplate())) //* get the license plate
                     return true;
             }
             return false;
+        }
+
+        private static bool check_arr(int[] id, int[] arr)
+        {
+            if (id.Length != arr.Length)
+                return false;
+            for (int i = 0; i < id.Length; i++)
+                if (id[i] != arr[i])
+                    return false;
+
+            return true;
         }
 
         private static int[] valid_plate()
