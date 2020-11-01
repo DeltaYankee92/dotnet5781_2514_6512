@@ -28,7 +28,7 @@ namespace dotnet5781_00_2514_6512
 
         internal int[] getplate()
         {
-            throw new NotImplementedException();
+            return this.license_plate;
         }
 
         internal void fuel_up()
