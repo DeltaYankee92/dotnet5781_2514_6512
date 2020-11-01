@@ -28,7 +28,9 @@ namespace dotnet5781_00_2514_6512
 
         internal void print_mileage()
         {
-            Console.WriteLine("The milage of the bus is: {0}", milage_total);
+            Console.Write("the bus with the ID: ");
+            print(this);
+            Console.WriteLine("Drove: {0} kilometers", milage_total);
         }
 
         internal int[] getplate()
@@ -74,36 +76,37 @@ namespace dotnet5781_00_2514_6512
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    Console.WriteLine("{0}", license_plate[i]);
+                    Console.Write("{0}", license_plate[i]);
                 }
-                Console.WriteLine("-");
+                Console.Write("-");
                 for (int i = 0; i < 3; i++)
                 {
-                    Console.WriteLine("{0}", license_plate[i]);
+                    Console.Write("{0}", license_plate[i]);
                 }
-                Console.WriteLine("-");
+                Console.Write("-");
                 for (int i = 0; i < 2; i++)
                 {
-                    Console.WriteLine("{0}", license_plate[i]);
+                    Console.Write("{0}", license_plate[i]);
                 }
             }
             else if (license_plate.Length == 8)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Console.WriteLine("{0}", license_plate[i]);
+                    Console.Write("{0}", license_plate[i]);
                 }
-                Console.WriteLine("-");
+                Console.Write("-");
                 for (int i = 0; i < 2; i++)
                 {
-                    Console.WriteLine("{0}", license_plate[i]);
+                    Console.Write("{0}", license_plate[i]);
                 }
-                Console.WriteLine("-");
+                Console.Write("-");
                 for (int i = 0; i < 3; i++)
                 {
-                    Console.WriteLine("{0}", license_plate[i]);
+                    Console.Write("{0}", license_plate[i]);
                 }
             }
+            Console.WriteLine();
         }
     }
 }
