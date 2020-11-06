@@ -55,14 +55,17 @@ namespace dotnet5781_00_2514_6512
         {
             if ((LastMaintenance+amount_to_drive) >= (LastMaintenance+20000))
             {
+                Console.WriteLine("Bus needs maintenance!");
                 return false;
             }
             if (current_fuel<amount_to_drive)
             {
+                Console.WriteLine("Not enough fuel!");
                 return false;
             }
             if (current_fuel-amount_to_drive < 0)
             {
+                Console.WriteLine("Not enough fuel!");
                 return false;
             }
             return true;
@@ -72,7 +75,7 @@ namespace dotnet5781_00_2514_6512
         {
             milage += amount_to_drive;
             milage_total += amount_to_drive;
-            current_fuel += amount_to_drive;
+            current_fuel -= amount_to_drive;
         }
 
         internal void print(Buses bus)

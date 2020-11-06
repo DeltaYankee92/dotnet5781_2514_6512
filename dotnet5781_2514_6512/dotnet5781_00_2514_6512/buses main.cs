@@ -73,7 +73,7 @@ namespace dotnet5781_00_2514_6512
             }
             foreach (Buses var in database)
             {
-                if(var.getplate()==id)
+                if(check_arr(var.getplate(),id)==true)
                 {
                     switch (kelet)
                     {
@@ -100,7 +100,7 @@ namespace dotnet5781_00_2514_6512
             int[] id = valid_plate();
             if(in_system(database,id) == false)
             {
-                Console.WriteLine("can't fuel a bus that isn't in the system. process failed");
+                Console.WriteLine("can't drive a bus that isn't in the system. process failed");
                 return;
             }
             Random obj = new Random();
@@ -157,7 +157,7 @@ namespace dotnet5781_00_2514_6512
 
         private static int[] valid_plate()
         {
-            Console.WriteLine("enter a license plate: ");
+            Console.WriteLine("enter a license plate (without dashes): ");
             string temp = Console.ReadLine();
             bool flag = false;
             while(flag==false)
@@ -233,7 +233,7 @@ namespace dotnet5781_00_2514_6512
                 if(flag == false)
                     Console.WriteLine("ERROR: date is not valid. enter again:");
                 else
-                    Console.WriteLine("enter a valid date:");
+                    Console.WriteLine("enter a valid date in the format: DD/MM/YYYY");
                 flag = DateTime.TryParse(Console.ReadLine(), out date);
             } while (flag == false) ;
             return date;
