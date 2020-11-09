@@ -13,6 +13,12 @@ namespace dotnet5781_00_2514_6512
         protected double Longitude;
         string adress;
 
+        internal int getkey()
+        {
+            return this.BusStationKey;
+        }
+
+
         internal BusStop()
         {
             BusStationKey = -1;
