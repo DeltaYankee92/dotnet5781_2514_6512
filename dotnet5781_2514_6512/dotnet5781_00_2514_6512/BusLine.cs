@@ -8,7 +8,13 @@ namespace dotnet5781_00_2514_6512
 {
     class BusLine : BusStop
     {
+        int distance { get; set; }
+        // distance from previous stop
+        // time from previous stop
+        public BusLine()
+        {
 
+        }
 
     }
 }
