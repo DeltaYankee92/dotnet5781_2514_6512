@@ -43,11 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BunchOfLines.cs" />
+    <Compile Include="LineCollecton.cs" />
     <Compile Include="buses main.cs" />
     <Compile Include="Buses.cs" />
     <Compile Include="BusLine.cs" />
     <Compile Include="BusStop.cs" />
+    <Compile Include="LineStation.cs" />
     <Compile Include="Main_new1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
