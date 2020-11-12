@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace dotnet5781_00_2514_6512
 {
-    class TheBus : IComparable
+    class BusLine : IComparable
     {
         List<LineStation> Stations = new List<LineStation>();
         BusStop FirstStation, LastStation;
         int LineStation;
         string Area;
 
-        public TheBus(List<LineStation> stations, BusStop firstStation, BusStop lastStation, int LineStation, string area)
+        public BusLine(List<LineStation> stations, BusStop firstStation, BusStop lastStation, int LineStation, string area)
         {
             Stations = stations;
             FirstStation = firstStation;
@@ -206,6 +206,11 @@ namespace dotnet5781_00_2514_6512
         public int CompareTo(ref List<LineStation> other_route, LineStation a, LineStation b)
         {
 
+        }
+
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }
