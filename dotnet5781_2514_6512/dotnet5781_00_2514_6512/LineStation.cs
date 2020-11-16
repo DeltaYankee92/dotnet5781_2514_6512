@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace dotnet5781_00_2514_6512
@@ -10,22 +11,32 @@ namespace dotnet5781_00_2514_6512
     {
         BusStop Stop;
         //distance from the previous station
-        public double Distance { get; set; }
+        public double distance;
 
         //Travel time from the previous station
-        public TimeSpan TravelTime { get; set; }
+        public TimeSpan time;
+
+        public double getdistance()
+        {
+            return distance;
+        }
+
+        public TimeSpan gettime()
+        {
+            return time;
+        }
 
         internal LineStation()
         {
-            Distance = -1;
-            TravelTime = new TimeSpan(0, 0, 0);
+            distance = -1;
+            time = new TimeSpan(0, 0, 0);
         }
 
         internal LineStation(BusStop s, double d, TimeSpan t )
         {
             Stop = s;
-            Distance = d;
-            TravelTime = t;
+            distance = d;
+            time = t;
         }
 
     }

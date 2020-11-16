@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace dotnet5781_00_2514_6512
 {
-    class LineCollecton : IEnumerable<BusLine>
+    class LineCollecton 
     {
         public readonly List<BusLine> Lines = new List<BusLine>();
+
         void ADD_Line(BusLine l)
         {
             Lines.Add(l);
@@ -18,6 +19,7 @@ namespace dotnet5781_00_2514_6512
         {
             Lines.Remove(l);
         }
+
         void LinesInStop(int idBusStationKey)
         {
             foreach (var BusLine in Lines)
@@ -25,15 +27,11 @@ namespace dotnet5781_00_2514_6512
 
             }
         }
-
-        public IEnumerator<BusLine> GetEnumerator()
+        void SortLineCollection()
         {
-            throw new NotImplementedException();
+            Lines.Sort(new Comparison<BusLine>((x,y)=> ))
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
