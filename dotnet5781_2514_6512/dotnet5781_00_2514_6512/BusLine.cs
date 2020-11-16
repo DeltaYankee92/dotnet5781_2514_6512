@@ -237,7 +237,7 @@ namespace dotnet5781_00_2514_6512
                 sum_distance += this.Stations.ElementAtOrDefault(i).getdistance();
             }
 
-            return new LineStation(sum_time, sum_distance, newnum, f1, f2, adress);
+            return new LineStation(sum_distance, sum_time, newnum, f1, f2, adress);
         }
 
 
