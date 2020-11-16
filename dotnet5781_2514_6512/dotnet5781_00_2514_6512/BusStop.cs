@@ -96,7 +96,18 @@ namespace dotnet5781_00_2514_6512
             else
                 return false;
         }
-
+        public virtual void fillfields()
+        {
+            int x = inputKey();
+            this.BusStationKey = x;
+            double y = inputLatitude();
+            this.Latitude = y;
+            y = inputLongitude();
+            this.Longitude = y;
+            Console.WriteLine("enter the adress");
+            string str = Console.ReadLine();
+            this.adress = str;
+        }
         public override string ToString()
         {
             return $"Bus Station Code: {this.BusStationKey}, {this.Latitude}°N, {this.Longitude}°E";

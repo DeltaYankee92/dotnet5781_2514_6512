@@ -8,9 +8,11 @@ namespace dotnet5781_00_2514_6512
 {
     class Main_new1
     {
-        LineCollecton Lines;
-        static Random rand = new Random();
-        List<LineStation> Stops1 = new List<LineStation>()
+        public static void main(string[] args)
+        {
+            LineCollecton Lines = new LineCollecton();
+             Random rand = new Random();
+             List<LineStation> Stops1 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 945156, Latitude = 33.4563, Longitude = 120.3454, adress = "עוזיאל 131, ירושלים" },
             new LineStation{BusStationKey = 999404, Latitude = 33.3563, Longitude = 121.3344, adress = "עוזיאל 42, ירושלים" },
@@ -19,7 +21,7 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 962403, Latitude = 33.3565, Longitude = 121.3361, adress = "עוזיאל 17, ירושלים" },
             new LineStation{BusStationKey = 999472, Latitude = 33.3515, Longitude = 121.3371, adress = "אינו שאקי 6, ירושלים" },
         };
-        List<LineStation> Stops2 = new List<LineStation>()
+             List<LineStation> Stops2 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 945233, Latitude = 33.3651, Longitude = 121.3367, adress = "בית וגן 13, ירושלים" },
             new LineStation{BusStationKey = 944326, Latitude = 33.1421, Longitude = 121.6421, adress = "בית וגן 14, ירושלים" },
@@ -30,7 +32,7 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 999472, Latitude = 33.3515, Longitude = 121.3371, adress = "אינו שאקי 6, ירושלים" },
             new LineStation{BusStationKey = 962404, Latitude = 33.3512, Longitude = 121.3352, adress = "עוזיאל 31, ירושלים" },
         };
-        List<LineStation> Stops3 = new List<LineStation>()
+             List<LineStation> Stops3 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 949823, Latitude = 33.8342, Longitude = 121.0452, adress = "התירוש 1, אפרת" },
             new LineStation{BusStationKey = 949945, Latitude = 33.0951, Longitude = 121.0361, adress = "התירוש 2, אפרת" },
@@ -41,13 +43,13 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 091235, Latitude = 33.8713, Longitude = 121.8721, adress = "התירוש 7, אפרת" },
             new LineStation{BusStationKey = 976443, Latitude = 33.6121, Longitude = 121.9571, adress = "התירוש 8, אפרת" },
         };
-        List<LineStation> Stops4 = new List<LineStation>()
+             List<LineStation> Stops4 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 948453, Latitude = 33.7364, Longitude = 121.0465, adress = "יצחק מן 23, ירושלים" },
             new LineStation{BusStationKey = 683443, Latitude = 33.8345, Longitude = 121.0465, adress = "יצחק מן 24, ירושלים" },
             new LineStation{BusStationKey = 906743, Latitude = 33.3583, Longitude = 121.0342, adress = "יצחק מן 25, ירושלים" },
         };
-        List<LineStation> Stops5 = new List<LineStation>()
+             List<LineStation> Stops5 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 949653, Latitude = 33.6531, Longitude = 121.6541, adress = "זרובבל 10, אלעזר" },
             new LineStation{BusStationKey = 946521, Latitude = 33.5421, Longitude = 121.7641, adress = "זרובבל 11, אלעזר" },
@@ -55,7 +57,7 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 949651, Latitude = 33.5411, Longitude = 121.6531, adress = "זרובבל 13, אלעזר" },
             new LineStation{BusStationKey = 949823, Latitude = 33.8342, Longitude = 121.0452, adress = "התירוש 1, אפרת" },
         };
-        List<LineStation> Stops6 = new List<LineStation>()
+             List<LineStation> Stops6 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 162542, Latitude = 33.3856, Longitude = 121.7421, adress = "הפסגה 18, ירושלים" },
             new LineStation{BusStationKey = 946351, Latitude = 33.7462, Longitude = 121.7415, adress = "הפסגה 19, ירושלים" },
@@ -65,13 +67,13 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 962404, Latitude = 33.3512, Longitude = 121.3352, adress = "עוזיאל 31, ירושלים" },
             new LineStation{BusStationKey = 999472, Latitude = 33.3515, Longitude = 121.3371, adress = "אינו שאקי 6, ירושלים" },
         };
-        List<LineStation> Stops7 = new List<LineStation>()
+            List<LineStation> Stops7 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 995123, Latitude = 33.3551, Longitude = 121.3374, adress = "רינה ניקובה 11, ירושלים" },
             new LineStation{BusStationKey = 949443, Latitude = 33.3551, Longitude = 121.3361, adress = "רינה ניקובה 12, ירושלים" },
             new LineStation{BusStationKey = 999472, Latitude = 33.3515, Longitude = 121.3371, adress = "אינו שאקי 6, ירושלים" },
         };
-        static List<LineStation> Stops8 = new List<LineStation>()
+             List<LineStation> Stops8 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 949745, Latitude = 33.3651, Longitude = 121.3371, adress = "מעלה משואות יצחק 1, אפרת" },
             new LineStation{BusStationKey = 947613, Latitude = 33.6231, Longitude = 121.8231, adress = "מעלה משואות יצחק 2, אפרת" },
@@ -84,15 +86,86 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 091235, Latitude = 33.8713, Longitude = 121.8721, adress = "התירוש 7, אפרת" },
             new LineStation{BusStationKey = 949823, Latitude = 33.8342, Longitude = 121.0452, adress = "התירוש 1, אפרת" },
         };
-        BusLine b1 = new BusLine(Stops8, Stops8.ElementAt(0),Stops8.ElementAt(Stops8.Count),1,"1");
+            BusLine b1 = new BusLine(Stops1, Stops1.ElementAt(0), Stops1.ElementAt(Stops1.Count), 1, "עוזיאל");
+            BusLine b2 = new BusLine(Stops2, Stops2.ElementAt(0), Stops2.ElementAt(Stops2.Count), 2, "בית וגן");
+            BusLine b3 = new BusLine(Stops3, Stops3.ElementAt(0), Stops3.ElementAt(Stops3.Count), 3, "התירוש");
+            BusLine b4 = new BusLine(Stops4, Stops4.ElementAt(0), Stops4.ElementAt(Stops4.Count), 4, "זרובבל");
+            BusLine b5 = new BusLine(Stops5, Stops5.ElementAt(0), Stops5.ElementAt(Stops5.Count), 5, "הפסגה");
+            BusLine b6 = new BusLine(Stops6, Stops6.ElementAt(0), Stops6.ElementAt(Stops6.Count), 6, "רינה ניקובה");
+            BusLine b7 = new BusLine(Stops7, Stops7.ElementAt(0), Stops7.ElementAt(Stops7.Count), 7, "אפרת-ירושלים");
+            BusLine b8 = new BusLine(Stops8, Stops8.ElementAt(0), Stops8.ElementAt(Stops8.Count), 8, "התירוש2");
+            Lines.ADD_Line(b1);
+
+            Console.WriteLine(@"here are the options: 
+            1. add/remove a bus: more details will come
+            2. search for a bus: more details will come
+            3. print details: more details will come
+            0. exit");
+            int choice;
+            bool success;
+            success = int.TryParse(Console.ReadLine(),out choice);
+            if(success)
+            switch (choice)
+            {
+                case 1:
+                        Console.WriteLine(@"you can either create a new line with its requirements or add a station
+                        choose 1 to add a new line
+                        choose 2 to add a new station
+");
+                        success = int.TryParse(Console.ReadLine(), out choice);
+                        if(!success)
+                            Console.WriteLine("invalid input. try again next time");
+                        else
+                        {
+                            switch(choice)
+                            {
+                                case 1:
+                                    Console.WriteLine(@"we are entering the new line section
+                                    a new line needs the following requirements:
+                                    1. the station ID can't belong to another station
+                                    2. line must have two stops
+                                lets start by entering one bus at a time. for the bus ID type 0 if you are done
+");
+                                    List<LineStation> Stops_temp = new List<LineStation>();
+                                    Console.WriteLine("for the first station, the time from previous and distance is 0");
+                                    LineStation X = new LineStation();
+                                    X.fillfields();                
+                                    while(X.getkey()!=0)
+                                    {
+                                        X.fillfields();
+                                    }
+                                        break;
+                                case 2:
+                                    break;
+                                default:
+                                    Console.WriteLine("invalid input. try again next time");
+                                    break;
+                            }
+                        }
+                        break;
+                case 2:
+                        
+                    break;
+                case 3:
+                        
+                    break;
+                case 0:
+                    Console.WriteLine("thanks for choosing eggedish");
+                    break;
+                default:
+                   Console.WriteLine("invalid input. try again next time");
+                    break;
+            
+            }
+            else
+                Console.WriteLine("invalid input. try again next time");
 
 
 
 
 
-      
 
-        
+        }
+
     }
-
 }

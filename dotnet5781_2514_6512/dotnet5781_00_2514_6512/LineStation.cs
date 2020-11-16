@@ -20,6 +20,26 @@ namespace dotnet5781_00_2514_6512
             return distance;
         }
 
+        public override void fillfields()
+        {
+            int x = inputKey();
+            this.BusStationKey = x;
+            double y = inputLatitude();
+            this.Latitude = y;
+            y = inputLongitude();
+            this.Longitude = y;
+            Console.WriteLine("enter the adress");
+            string str = Console.ReadLine();
+            this.adress = str;
+            Console.WriteLine("enter distance from previous station");
+            double temp;
+            bool parse_success;
+            parse_success = double.TryParse(Console.ReadLine(), out temp);
+            this.distance = temp;
+            Console.WriteLine("enter a number of seconds from previous station");
+            parse_success = int.TryParse(Console.ReadLine(), out x);
+           this.time = this.Convert_to_time((double)x);
+        }
         public double gettime()
         {
             return time.TotalSeconds;
@@ -31,7 +51,7 @@ namespace dotnet5781_00_2514_6512
             time = new TimeSpan(0, 0, 0);
         }
 
-        internal LineStation(int i1, float f1, float f2, string str)
+        internal LineStation(int i1, double f1, double f2, string str)
         {
             BusStationKey = i1;
             Latitude = f1;

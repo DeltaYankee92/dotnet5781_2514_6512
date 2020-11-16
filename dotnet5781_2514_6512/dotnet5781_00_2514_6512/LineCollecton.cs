@@ -9,9 +9,12 @@ namespace dotnet5781_00_2514_6512
 {
     class LineCollecton 
     {
-        public readonly List<BusLine> Lines = new List<BusLine>();
-
-        void ADD_Line(BusLine l)
+        public List<BusLine> Lines;
+        internal LineCollecton()
+        {
+            Lines = new List<BusLine>();
+        }
+        public void ADD_Line(BusLine l)
         {
             Lines.Add(l);
         }
