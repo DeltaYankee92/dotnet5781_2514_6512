@@ -9,7 +9,6 @@ namespace dotnet5781_00_2514_6512
 {
     class LineStation : BusStop
     {
-        BusStop Stop;
         //distance from the previous station
         public double distance;
 
@@ -32,11 +31,12 @@ namespace dotnet5781_00_2514_6512
             time = new TimeSpan(0, 0, 0);
         }
 
-        internal LineStation(BusStop s, double d, TimeSpan t )
+        internal LineStation(int i1, float f1, float f2, string str)
         {
-            Stop = s;
-            distance = d;
-            time = t;
+            BusStationKey = i1;
+            Latitude = f1;
+            Longitude = f2;
+            adress = str;
         }
 
     }

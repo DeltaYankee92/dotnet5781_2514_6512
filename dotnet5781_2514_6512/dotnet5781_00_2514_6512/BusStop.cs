@@ -8,10 +8,10 @@ namespace dotnet5781_00_2514_6512
 {
     class BusStop
     {
-        int BusStationKey;
-        protected double Latitude;
-        protected double Longitude;
-        string adress;
+        public int BusStationKey;
+        public double Latitude;
+        public double Longitude;
+        public string adress;
 
         internal int getkey()
         {
