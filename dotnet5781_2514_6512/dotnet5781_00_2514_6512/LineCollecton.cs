@@ -41,7 +41,15 @@ namespace dotnet5781_00_2514_6512
         }
         void SortLineCollection()
         {
+            Lines.Sort();
+        }
 
+        public BusLine this[int index]
+        {
+            get
+            {
+                return Lines[index];
+            }
         }
 
 
