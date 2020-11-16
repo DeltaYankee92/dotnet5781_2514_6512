@@ -95,6 +95,13 @@ namespace dotnet5781_00_2514_6512
             BusLine b7 = new BusLine(Stops7, Stops7.ElementAt(0), Stops7.ElementAt(Stops7.Count), 7, "אפרת-ירושלים");
             BusLine b8 = new BusLine(Stops8, Stops8.ElementAt(0), Stops8.ElementAt(Stops8.Count), 8, "התירוש2");
             Lines.ADD_Line(b1);
+            Lines.ADD_Line(b2);
+            Lines.ADD_Line(b3);
+            Lines.ADD_Line(b4);
+            Lines.ADD_Line(b5);
+            Lines.ADD_Line(b6);
+            Lines.ADD_Line(b7);
+            Lines.ADD_Line(b8);
 
             Console.WriteLine(@"here are the options: 
             1. add/remove a bus: more details will come
@@ -179,7 +186,34 @@ namespace dotnet5781_00_2514_6512
                         }
                         break;
                 case 2:
-                        
+                        Console.WriteLine("Press 1 to search station and see the bus list, or press 2 to find route between two stations");
+                        switch(choice)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter Station key");
+                                int key = Convert.ToInt32(Console.ReadLine());
+                                bool flag = false;
+                                foreach (BusLine l1 in Lines)
+                                {
+                                    if (l1.exists(key))
+                                    {
+                                        Console.WriteLine("Bus Number {0} passes in this station", l1.LineStation);
+                                        flag = true;
+                                    }
+                                }
+                                if (flag == false)
+                                {
+                                    Console.WriteLine("No buses passing through this station");
+                                }
+                                break;
+                            case 2:
+
+                                break;
+                            default:
+                                Console.WriteLine("invalid input. try again next time");
+                                break;
+                        }
+         
                     break;
                 case 3:
                         

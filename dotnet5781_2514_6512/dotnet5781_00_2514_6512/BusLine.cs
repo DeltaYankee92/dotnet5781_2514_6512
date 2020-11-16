@@ -11,7 +11,7 @@ namespace dotnet5781_00_2514_6512
     {
         List<LineStation> Stations = new List<LineStation>();
         BusStop FirstStation, LastStation;
-        int LineStation;
+        public int LineStation;
         string Area;
         public int get_line_num()
         {
@@ -288,6 +288,6 @@ namespace dotnet5781_00_2514_6512
             if (this.Stations.Count <= 1)
                 return false;
             return true;
-        }
+        }   
     }
 }
