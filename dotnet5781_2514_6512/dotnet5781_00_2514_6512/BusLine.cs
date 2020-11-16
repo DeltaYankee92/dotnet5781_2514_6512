@@ -267,5 +267,21 @@ namespace dotnet5781_00_2514_6512
 
             return this.time(id,id1).CompareTo(t.time(id,id1));
         }
+        public bool check_location(LineStation a)
+        {
+            foreach (LineStation item in Stations)
+            {
+                if(item.getkey()==a.getkey())// could be an and. thats longer though
+                    if(item.getadress()!=a.getadress()||(item.getlatitute()!=a.getlatitute())||(item.getlongitude()!=a.getlongitude()))
+                return false;
+            }
+            return true;
+        }
+        public bool checknum()
+        {
+            if (this.Stations.Count <= 1)
+                return false;
+            return true;
+        }
     }
 }

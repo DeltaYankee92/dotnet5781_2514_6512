@@ -71,7 +71,7 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 949443, Latitude = 33.3551, Longitude = 121.3361, adress = "רינה ניקובה 12, ירושלים" },
             new LineStation{BusStationKey = 999472, Latitude = 33.3515, Longitude = 121.3371, adress = "אינו שאקי 6, ירושלים" },
         };
-        List<LineStation> Stops8 = new List<LineStation>()
+        static List<LineStation> Stops8 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 949745, Latitude = 33.3651, Longitude = 121.3371, adress = "מעלה משואות יצחק 1, אפרת" },
             new LineStation{BusStationKey = 947613, Latitude = 33.6231, Longitude = 121.8231, adress = "מעלה משואות יצחק 2, אפרת" },
@@ -84,15 +84,15 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 091235, Latitude = 33.8713, Longitude = 121.8721, adress = "התירוש 7, אפרת" },
             new LineStation{BusStationKey = 949823, Latitude = 33.8342, Longitude = 121.0452, adress = "התירוש 1, אפרת" },
         };
-        BusLine b1 = new BusLine(Stops1, Stops1.ElementAt(0),Stops1.ElementAt(Stops1.Count),1,"1");
+        BusLine b1 = new BusLine(Stops8, Stops8.ElementAt(0),Stops8.ElementAt(Stops8.Count),1,"1");
 
 
 
+
+
+      
 
         
     }
-
-
-
 
 }

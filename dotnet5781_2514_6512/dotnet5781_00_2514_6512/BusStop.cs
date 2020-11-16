@@ -102,6 +102,6 @@ namespace dotnet5781_00_2514_6512
             return $"Bus Station Code: {this.BusStationKey}, {this.Latitude}°N, {this.Longitude}°E";
         }
 
-
+   
     }
 }
