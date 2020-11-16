@@ -99,6 +99,15 @@ namespace dotnet5781_00_2514_6512
             }
             return false;
         }
+        public bool exists(int action)
+        {
+            foreach (LineStation b1 in Stations)
+            {
+                if (b1.getkey() == action)
+                    return true;
+            }
+            return false;
+        }
         internal int TimeOrDistance(LineStation a, LineStation b, int action)
         {
             bool flag = true; // a before b on the list
