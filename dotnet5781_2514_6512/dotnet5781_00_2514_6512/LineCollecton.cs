@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace dotnet5781_00_2514_6512
 {
-    class LineCollecton 
+    class LineCollecton
     {
-        public readonly List<BusLine> Lines = new List<BusLine>();
+        public List<BusLine> Lines { get; }
 
         void ADD_Line(BusLine l)
         {
@@ -38,8 +38,13 @@ namespace dotnet5781_00_2514_6512
         }
         void SortLineCollection()
         {
+            Lines.Sort();
+        }
+        public int this[int index]
+        {
 
         }
+
 
 
 
