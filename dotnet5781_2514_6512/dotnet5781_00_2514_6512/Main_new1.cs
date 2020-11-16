@@ -84,7 +84,7 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 091235, Latitude = 33.8713, Longitude = 121.8721, adress = "התירוש 7, אפרת" },
             new LineStation{BusStationKey = 949823, Latitude = 33.8342, Longitude = 121.0452, adress = "התירוש 1, אפרת" },
         };
-        BusLine b1 = new BusLine(Stops1, );
+        BusLine b1 = new BusLine(Stops1, Stops1.FindIndex(0), );
 
 
 

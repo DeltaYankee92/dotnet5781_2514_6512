@@ -14,14 +14,15 @@ namespace dotnet5781_00_2514_6512
         int LineStation;
         string Area;
 
-        public BusLine(List<LineStation> stations, BusStop firstStation, BusStop lastStation, int LineStation, string area)
+        public BusLine(List<LineStation> stations, BusStop firstStation, BusStop lastStation, int lineStation, string area)
         {
             Stations = stations;
             FirstStation = firstStation;
             LastStation = lastStation;
-            LineStation = LineStation;
+            LineStation = lineStation;
             Area = area;
         }
+        
 
         public override string ToString()
         {
