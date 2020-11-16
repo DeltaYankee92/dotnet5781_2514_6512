@@ -46,7 +46,17 @@ namespace dotnet5781_00_2514_6512
         }
 
 
-
+        public bool check_location(LineStation a)
+        {
+            bool flag;
+            foreach (BusLine it in Lines)
+            {
+                flag = it.check_location(a);
+                if (!flag)
+                    return false;
+            }
+            return true;
+        }
 
 
     }
