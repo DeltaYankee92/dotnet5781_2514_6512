@@ -9,7 +9,7 @@ namespace dotnet5781_00_2514_6512
 {
     class LineCollecton
     {
-        public List<BusLine> Lines { get; }
+        public readonly List<BusLine> Lines = new List<BusLine>();
 
         void ADD_Line(BusLine l)
         {
@@ -40,11 +40,11 @@ namespace dotnet5781_00_2514_6512
         {
             Lines.Sort();
         }
-        public int this[int index]
+        
+        public BusLine this[int i]
         {
-
+            get { return Lines[i]; }
         }
-
 
         public bool check_location(LineStation a)
         {

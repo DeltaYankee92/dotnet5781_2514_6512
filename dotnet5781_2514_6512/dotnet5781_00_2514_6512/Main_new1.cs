@@ -9,7 +9,6 @@ namespace dotnet5781_00_2514_6512
     class Main_new1
     {
         LineCollecton Lines;
-        static Random rand = new Random();
         List<LineStation> Stops1 = new List<LineStation>()
         {
             new LineStation{BusStationKey = 945156, Latitude = 33.4563, Longitude = 120.3454, adress = "עוזיאל 131, ירושלים" },
@@ -85,8 +84,8 @@ namespace dotnet5781_00_2514_6512
             new LineStation{BusStationKey = 949823, Latitude = 33.8342, Longitude = 121.0452, adress = "התירוש 1, אפרת" },
         };
         BusLine b1 = new BusLine(Stops8, Stops8.ElementAt(0),Stops8.ElementAt(Stops8.Count),1,"1");
-
-
+        
+        
 
 
 
