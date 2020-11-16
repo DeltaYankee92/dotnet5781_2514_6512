@@ -20,9 +20,9 @@ namespace dotnet5781_00_2514_6512
             return distance;
         }
 
-        public TimeSpan gettime()
+        public double gettime()
         {
-            return time;
+            return time.TotalSeconds;
         }
 
         internal LineStation()
@@ -38,6 +38,27 @@ namespace dotnet5781_00_2514_6512
             Longitude = f2;
             adress = str;
         }
+        internal LineStation(double d, double x, int i1, double f1, double f2, string str)
+        {
+            distance = d;
+            time = Convert_to_time(x);
+            this.BusStationKey = i1;
+            this.adress = str;
+            this.Latitude = f1;
+            this.Longitude = f2;
+        }
 
+        private TimeSpan Convert_to_time(double x)
+        {
+            int y = (int)x;
+            int Hour, Minute, Second;
+            Second = y % 60;
+            y = y - Second;
+            Minute = y % 60;
+            y = y - Minute*60;
+            Hour = y % 24;
+
+            return new TimeSpan(Second,Minute,Hour);
+        }
     }
 }

@@ -108,7 +108,7 @@ namespace dotnet5781_00_2514_6512
             }
             return false;
         }
-        internal int TimeOrDistance(LineStation a, LineStation b, int action)
+        internal double TimeOrDistance(LineStation a, LineStation b, int action)
         {
             bool flag = true; // a before b on the list
             int place1 = this.Stations.IndexOf(a);
@@ -126,7 +126,7 @@ namespace dotnet5781_00_2514_6512
                 throw new ArgumentException("not valid");
 
             bool usage = false;
-            int count = 0;
+            double count = 0;
             foreach (LineStation it in Stations)
             {
                 if (flag)
@@ -161,24 +161,52 @@ namespace dotnet5781_00_2514_6512
             }
             return -1; // should never happen
         }
-        public int distance(LineStation a, LineStation b)
+        public double distance(LineStation a, LineStation b)
         {
             return TimeOrDistance(a, b, 1);
         }
-        public int time(LineStation a, LineStation b)
+        public double time(LineStation a, LineStation b)
         {
             return TimeOrDistance(a, b, 0);
         }
 
+        public double distance(int a, int b)
+        {
+            if (!this.exists(a) || !this.exists(b))
+                throw new ArgumentException("doesnt exist");
+            LineStation temp1 = null, temp2 =null;
+            foreach (LineStation it in Stations)
+            {
+                if (it.getkey() == a)
+                    temp1 = it;
+                if (it.getkey() == b)
+                    temp2 = it;
+            }
+            return distance(temp1, temp2);
+        }
+        public double time(int a, int b)
+        {
+            if (!this.exists(a) || !this.exists(b))
+                throw new ArgumentException("doesnt exist");
+            LineStation temp1 = null, temp2 = null;
+            foreach (LineStation it in Stations)
+            {
+                if (it.getkey() == a)
+                    temp1 = it;
+                if (it.getkey() == b)
+                    temp2 = it;
+            }
+            return time(temp1, temp2);
+        }
         public LineStation subRoute(LineStation a, LineStation b)
         {
             if (!this.exists(a) || !this.exists(b))
                 throw new ArgumentException("one or more of the stations do not exist.");
 
-            int sum_time = 0;
-            int sum_distance = 0;
-            float f1;
-            float f2;
+            double sum_time = 0;
+            double sum_distance = 0;
+            double f1;
+            double f2;
             string adress;
             int newnum;
             int indexa = this.Stations.IndexOf(a);
@@ -186,7 +214,7 @@ namespace dotnet5781_00_2514_6512
 
             if (indexa < indexb)
             {
-                f1 = a.getlongtitude();
+                f1 = a.getlongitude();
                 f2 = a.getlatitute();
                 adress = a.getadress();
                 newnum = a.getkey();
@@ -197,7 +225,7 @@ namespace dotnet5781_00_2514_6512
             }
             else
             {
-                f1 = b.getlongtitude();
+                f1 = b.getlongitude();
                 f2 = b.getlatitute();
                 adress = b.getadress();
                 newnum = b.getkey();
@@ -209,17 +237,34 @@ namespace dotnet5781_00_2514_6512
                 sum_distance += this.Stations.ElementAtOrDefault(i).getdistance();
             }
 
-            return new LineStation(sum_time, sum_distance, newnum, f1, f2, adress);
+            return new LineStation(sum_distance, sum_time, newnum, f1, f2, adress);
         }
 
-        public int CompareTo(ref List<LineStation> other_route, LineStation a, LineStation b)
-        {
-
-        }
 
         public int CompareTo(object obj)
         {
-            throw new NotImplementedException();
+            if (obj == null)
+                return 1;
+            BusLine t= obj as BusLine;
+            if (t == null)
+                return 1;
+            int id;
+            Console.WriteLine("the id with which station to compare it to?");
+            bool success;
+            success = int.TryParse(Console.ReadLine(),out id);
+            if (!success)
+                return 1;
+            if (!(t.exists(id) || this.exists(id)))
+                return 1;
+            int id1;
+            Console.WriteLine("which station are you leaving from?");
+            success = int.TryParse(Console.ReadLine(), out id1);
+            if (!success)
+                return 1;
+            if (!(t.exists(id1) || this.exists(id1)))
+                return 1;
+
+            return this.time(id,id1).CompareTo(t.time(id,id1));
         }
     }
 }
