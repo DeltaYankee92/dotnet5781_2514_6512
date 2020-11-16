@@ -24,13 +24,15 @@ namespace dotnet5781_00_2514_6512
         {
             foreach (var BusLine in Lines)
             {
-
+                
             }
         }
         void SortLineCollection()
         {
-            Lines.Sort(new Comparison<BusLine>((x,y)=> ))
+
         }
+
+
 
 
     }
