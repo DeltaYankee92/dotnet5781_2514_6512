@@ -13,7 +13,10 @@ namespace dotnet5781_00_2514_6512
         BusStop FirstStation, LastStation;
         public int LineStation;
         string Area;
-
+        public int get_line_num()
+        {
+            return this.LineStation;
+        }
         public BusLine(List<LineStation> stations, BusStop firstStation, BusStop lastStation, int lineStation, string area)
         {
             Stations = stations;

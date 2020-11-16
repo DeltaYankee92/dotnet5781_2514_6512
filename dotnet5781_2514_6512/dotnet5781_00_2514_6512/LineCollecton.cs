@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dotnet5781_00_2514_6512
 {
-    class LineCollecton 
+    class LineCollecton :IEnumerable
     {
         public List<BusLine> Lines;
         internal LineCollecton()
@@ -46,8 +46,10 @@ namespace dotnet5781_00_2514_6512
 
         public BusLine this[int index]
         {
-            get
+        get
             {
+                if (index <= 0 || index > this.Lines.Count)
+                    throw new ArgumentOutOfRangeException("no index exists");
                 return Lines[index];
             }
         }
@@ -63,6 +65,11 @@ namespace dotnet5781_00_2514_6512
                     return false;
             }
             return true;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return ((IEnumerable)Lines).GetEnumerator();
         }
 
     }

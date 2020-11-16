@@ -116,8 +116,8 @@ namespace dotnet5781_00_2514_6512
             {
                 case 1:
                         Console.WriteLine(@"you can either create a new line with its requirements or add a station
-                        choose 1 to add a new line
-                        choose 2 to add a new station
+                        choose 1 to add/remove a new line
+                        choose 2 to add/remove a new station
 ");
                         success = int.TryParse(Console.ReadLine(), out choice);
                         if(!success)
@@ -127,7 +127,10 @@ namespace dotnet5781_00_2514_6512
                             switch(choice)
                             {
                                 case 1:
-                                    Console.WriteLine(@"we are entering the new line section
+                                    Console.WriteLine(@"you have chosen to add or remove.
+                                    an option will come for you to enter details of a bus station in preperations to adding it. enter '0' for printing.
+");
+                                    Console.WriteLine(@"we are entering the new line section for adding
                                     a new line needs the following requirements:
                                     1. the station ID can't belong to another station
                                     2. line must have two stops
@@ -136,18 +139,34 @@ namespace dotnet5781_00_2514_6512
                                     List<LineStation> Stops_temp = new List<LineStation>();
                                     Console.WriteLine("for the first station, the time from previous and distance is 0");
                                     LineStation X = new LineStation();
-                                    X.fillfields();                
-                                    while(X.getkey()!=0)
+                                    X.fillfields();
+                                    while (X.getkey() != 0)
                                     {
                                         X.fillfields();
                                     }
+                                    Console.WriteLine("input gotten. now you are moving to the add or remove section");
+                                    Console.WriteLine("enter the number of the line you wish to work on");
+                                    success = int.TryParse(Console.ReadLine(), out choice);
+                                    if (!success)
+                                        Console.WriteLine("invalid input. try again next time");
+                                    else
+                                    {
+                                        foreach (BusLine it in Lines)
+                                        {
+                                            if (it.get_line_num() == X.getkey())
+                                                it.AddOrRemove(X);
+                                        }
+                                    }
                                         break;
                                 case 2:
+
+
                                     break;
                                 default:
                                     Console.WriteLine("invalid input. try again next time");
                                     break;
                             }
+
                         }
                         break;
                 case 2:
