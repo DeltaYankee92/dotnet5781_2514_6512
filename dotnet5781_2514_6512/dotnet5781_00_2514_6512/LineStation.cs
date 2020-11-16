@@ -21,9 +21,9 @@ namespace dotnet5781_00_2514_6512
             return distance;
         }
 
-        public TimeSpan gettime()
+        public double gettime()
         {
-            return time;
+            return time.TotalSeconds;
         }
 
         internal LineStation()
@@ -38,6 +38,15 @@ namespace dotnet5781_00_2514_6512
             distance = d;
             time = t;
         }
-
+        internal LineStation(BusStop s, double d, TimeSpan t, int i1, float f1, float f2, string str)
+        {
+            Stop = s;
+            distance = d;
+            time = t;
+            this.BusStationKey = i1;
+            this.adress = str;
+            this.Latitude = f1;
+            this.Longitude = f2;
+        }
     }
 }

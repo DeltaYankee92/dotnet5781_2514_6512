@@ -18,7 +18,18 @@ namespace dotnet5781_00_2514_6512
             return this.BusStationKey;
         }
 
-
+        public double getlatitute()
+        {
+            return this.Latitude;
+        }
+        public double getlongitude()
+        {
+            return this.Latitude;
+        }
+        public string getadress()
+        {
+            return this.adress;
+        }
         internal BusStop()
         {
             BusStationKey = -1;
