@@ -20,17 +20,28 @@ namespace dotnet5781_00_2514_6512
             Lines.Remove(l);
         }
 
-        void LinesInStop(int idBusStationKey)
+        List<BusLine> LinesInStop(int idBusStationKey)
         {
-            foreach (var BusLine in Lines)
+            List<BusLine> lines = new List<BusLine>();
+            foreach (BusLine b1 in Lines)
             {
-
+                if (b1.exists(idBusStationKey))
+                {
+                    lines.Add(b1);
+                }
             }
+            if (lines.Count == 0)
+            {
+                throw new ArgumentException("Error! no id found");
+            }
+            return lines;
         }
         void SortLineCollection()
         {
-            Lines.Sort(new Comparison<BusLine>((x,y)=> ))
+
         }
+
+
 
 
     }
