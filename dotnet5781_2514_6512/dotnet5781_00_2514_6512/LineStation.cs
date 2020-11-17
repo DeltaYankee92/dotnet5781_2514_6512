@@ -22,7 +22,12 @@ namespace dotnet5781_00_2514_6512
 
         public override void fillfields()
         {
+            Console.WriteLine(@"we are now filling fields.
+            for entering a key, please enter a number. note, that the key '0' leads to a function of the print function.
+");
             int x = inputKey();
+            if (x == 0)
+                return;
             this.BusStationKey = x;
             double y = inputLatitude();
             this.Latitude = y;
@@ -40,6 +45,8 @@ namespace dotnet5781_00_2514_6512
             parse_success = int.TryParse(Console.ReadLine(), out x);
            this.time = this.Convert_to_time((double)x);
         }
+
+
         public double gettime()
         {
             return time.TotalSeconds;
