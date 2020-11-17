@@ -91,14 +91,14 @@ using System.Threading.Tasks;
             new LineStation{BusStationKey = 091235, Latitude = 33.8713, Longitude = 121.8721, adress = "התירוש 7, אפרת" },
             new LineStation{BusStationKey = 949823, Latitude = 33.8342, Longitude = 121.0452, adress = "התירוש 1, אפרת" },
         };
-            BusLine b1 = new BusLine(Stops1, Stops1.ElementAt(0), Stops1.ElementAt(Stops1.Count), 1, "עוזיאל");
-            BusLine b2 = new BusLine(Stops2, Stops2.ElementAt(0), Stops2.ElementAt(Stops2.Count), 2, "בית וגן");
-            BusLine b3 = new BusLine(Stops3, Stops3.ElementAt(0), Stops3.ElementAt(Stops3.Count), 3, "התירוש");
-            BusLine b4 = new BusLine(Stops4, Stops4.ElementAt(0), Stops4.ElementAt(Stops4.Count), 4, "זרובבל");
-            BusLine b5 = new BusLine(Stops5, Stops5.ElementAt(0), Stops5.ElementAt(Stops5.Count), 5, "הפסגה");
-            BusLine b6 = new BusLine(Stops6, Stops6.ElementAt(0), Stops6.ElementAt(Stops6.Count), 6, "רינה ניקובה");
-            BusLine b7 = new BusLine(Stops7, Stops7.ElementAt(0), Stops7.ElementAt(Stops7.Count), 7, "אפרת-ירושלים");
-            BusLine b8 = new BusLine(Stops8, Stops8.ElementAt(0), Stops8.ElementAt(Stops8.Count), 8, "התירוש2");
+            BusLine b1 = new BusLine(Stops1, Stops1.ElementAt(0), Stops1.ElementAt(Stops1.Count-1), 1, "עוזיאל");
+            BusLine b2 = new BusLine(Stops2, Stops2.ElementAt(0), Stops2.ElementAt(Stops2.Count-1), 2, "בית וגן");
+            BusLine b3 = new BusLine(Stops3, Stops3.ElementAt(0), Stops3.ElementAt(Stops3.Count-1), 3, "התירוש");
+            BusLine b4 = new BusLine(Stops4, Stops4.ElementAt(0), Stops4.ElementAt(Stops4.Count-1), 4, "זרובבל");
+            BusLine b5 = new BusLine(Stops5, Stops5.ElementAt(0), Stops5.ElementAt(Stops5.Count-1), 5, "הפסגה");
+            BusLine b6 = new BusLine(Stops6, Stops6.ElementAt(0), Stops6.ElementAt(Stops6.Count-1), 6, "רינה ניקובה");
+            BusLine b7 = new BusLine(Stops7, Stops7.ElementAt(0), Stops7.ElementAt(Stops7.Count-1), 7, "אפרת-ירושלים");
+            BusLine b8 = new BusLine(Stops8, Stops8.ElementAt(0), Stops8.ElementAt(Stops8.Count-1), 8, "התירוש2");
             Lines.ADD_Line(b1);
             Lines.ADD_Line(b2);
             Lines.ADD_Line(b3);
@@ -108,149 +108,157 @@ using System.Threading.Tasks;
             Lines.ADD_Line(b7);
             Lines.ADD_Line(b8);
 
-            Console.WriteLine(@"here are the options: 
+
+            int choice = 3;
+
+            while (choice != 0)
+            {
+                Console.WriteLine(@"here are the options: 
             1. add/remove a bus: more details will come
             2. search for a bus: more details will come
             3. print details: more details will come
             0. exit");
-            int choice;
-            bool success;
-            success = int.TryParse(Console.ReadLine(),out choice);
-            if(success)
-            switch (choice)
-            {
-                case 1:
-                        Console.WriteLine(@"you can either create a new line with its requirements or add a station
+                bool success;
+                success = int.TryParse(Console.ReadLine(), out choice);
+                if (success)
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine(@"you can either create a new line with its requirements or add a station
                         choose 1 to add/remove a new line
                         choose 2 to add/remove a new station
 ");
-                        success = int.TryParse(Console.ReadLine(), out choice);
-                        if(!success)
-                            Console.WriteLine("invalid input. try again next time");
-                        else
-                        {
-                            LineStation X = new LineStation();
-                            switch (choice)
+                            success = int.TryParse(Console.ReadLine(), out choice);
+                            if (!success)
+                                Console.WriteLine("invalid input. try again next time");
+                            else
                             {
+                                LineStation X = new LineStation();
+                                switch (choice)
+                                {
 
-                                case 1: // the setting for a line. we need to build a line of we are adding to the system
-                                    Console.WriteLine(@"you have chosen to add or remove a line. enter '1' to add, '2' to remove a line
+                                    case 1: // the setting for a line. we need to build a line of we are adding to the system
+                                        Console.WriteLine(@"you have chosen to add or remove a line. enter '1' to add, '2' to remove a line
 ");
-                                    success = int.TryParse(Console.ReadLine(), out choice);
-                                    if (!success)
-                                        Console.WriteLine("invalid input. try again next time");
-                                    switch(choice)
-                                    {
-                                        case 1:
-                                            Console.WriteLine(@"we are entering the new line section for adding
+                                        success = int.TryParse(Console.ReadLine(), out choice);
+                                        if (!success)
+                                            Console.WriteLine("invalid input. try again next time");
+                                        switch (choice)
+                                        {
+                                            case 1:
+                                                Console.WriteLine(@"we are entering the new line section for adding
                                     a new line needs the following requirements:
                                     1. the station ID can't belong to another station
                                     2. line must have two stops
                                 lets start by entering one bus at a time. for the bus ID type 0 if you are done
-");                                                                 
-                                            List<LineStation> stations = new List<LineStation>();
-                                            Console.WriteLine("for the first station, the time from previous and distance is 0");
-
-                                            X.fillfields();
-                                            while (X.getkey() != 0)
-                                            {
-                                                X.fillfields();
-                                                stations.Add(X);
-                                            }
-                                            Console.WriteLine("enter the number of the line");
-                                            success = int.TryParse(Console.ReadLine(), out choice);
-                                            if (!success)
-                                                Console.WriteLine("invalid input. try again next time");
-                                            string str;
-                                            Console.WriteLine("enter the adresses the busline stops at/name of the line");
-                                            str = Console.ReadLine();
-                                            BusLine bn = new BusLine(stations, stations.ElementAt(0), stations.ElementAt(stations.Count), choice, str);
-                                            Lines.ADD_Line(bn);
-                                            break;
-                                        case 2:
-                                            Console.WriteLine("enter the id of the line to remove");
-                                            success = int.TryParse(Console.ReadLine(), out choice);
-                                            if (!success)
-                                                Console.WriteLine("invalid input. try again next time");
-                                            Lines.Delete_Line(choice);
-                                            break;
-                                        default:
-                                            throw new ArgumentException("you did not enter 1 or 2");
-                                    }
-                                        break;
-                                case 2:
-                                    Console.WriteLine(@"you have chosen to add or remove.
-                                    an option will come for you to enter details of a bus station in preperations to adding it. enter '0' for printing.
 ");
-                                    X.fillfields(); // will add the fields as the override
-                                    Console.WriteLine("enter the id of the list we will remove from / add to");
+                                                List<LineStation> stations = new List<LineStation>();
+                                                Console.WriteLine("for the first station, the time from previous and distance is 0");
 
-                                    success = int.TryParse(Console.ReadLine(), out choice);
-                                    if (!success)
+                                                X.fillfields();
+                                                while (X.getkey() != 0)
+                                                {
+                                                    X.fillfields();
+                                                    stations.Add(X);
+                                                }
+                                                Console.WriteLine("enter the number of the line");
+                                                success = int.TryParse(Console.ReadLine(), out choice);
+                                                if (!success)
+                                                    Console.WriteLine("invalid input. try again next time");
+                                                string str;
+                                                Console.WriteLine("enter the adresses the busline stops at/name of the line");
+                                                str = Console.ReadLine();
+                                                BusLine bn = new BusLine(stations, stations.ElementAt(0), stations.ElementAt(stations.Count - 1), choice, str);
+                                                Lines.ADD_Line(bn);
+                                                break;
+                                            case 2:
+                                                Console.WriteLine("enter the id of the line to remove");
+                                                success = int.TryParse(Console.ReadLine(), out choice);
+                                                if (!success)
+                                                    Console.WriteLine("invalid input. try again next time");
+                                                Lines.Delete_Line(choice);
+                                                break;
+                                            default:
+                                                throw new ArgumentException("you did not enter 1 or 2");
+                                        }
+                                        break;
+                                    case 2:
+                                        Console.WriteLine(@"you have chosen to add or remove.
+                                    an option will come for you to enter details of a bus station in preperations to adding it.
+");
+                                        X.fillfields(); // will add the fields as the override
+                                        Console.WriteLine("enter the id of the list we will remove from / add to");
+
+                                        success = int.TryParse(Console.ReadLine(), out choice);
+                                        if (!success)
+                                            Console.WriteLine("invalid input. try again next time");
+
+                                        foreach (BusLine item in Lines)
+                                        {
+                                            if (item.get_line_num() == choice)
+                                                item.AddOrRemove(X);
+                                            Console.WriteLine("enter 0 to stop, any other number we will get a new enter");
+                                            success = int.TryParse(Console.ReadLine(), out choice);
+                                            if (!success)
+                                                Console.WriteLine("invalid input. try again next time");
+                                            else
+                                            {
+                                                if (choice == 0)
+                                                    break;
+                                            }
+                                        }
+                                        break;
+                                    default:
                                         Console.WriteLine("invalid input. try again next time");
+                                        break;
+                                }
 
-                                    foreach (BusLine item in Lines)
+                            }
+                            break;
+                        case 2:
+                            Console.WriteLine("Press 1 to search station and see the bus list, or press 2 to find route between two stations");
+                            switch (choice)
+                            {
+                                case 1:
+                                    Console.WriteLine("Enter Station key");
+                                    int key = Convert.ToInt32(Console.ReadLine());
+                                    bool flag = false;
+                                    foreach (BusLine l1 in Lines)
                                     {
-                                        if (item.get_line_num() == choice)
-                                            item.AddOrRemove(X);
+                                        if (l1.exists(key))
+                                        {
+                                            Console.WriteLine("Bus Number {0} passes in this station", l1.LineStation);
+                                            flag = true;
+                                        }
                                     }
+                                    if (flag == false)
+                                    {
+                                        Console.WriteLine("No buses passing through this station");
+                                    }
+                                    break;
+                                case 2:
+
                                     break;
                                 default:
                                     Console.WriteLine("invalid input. try again next time");
                                     break;
                             }
 
-                        }
-                        break;
-                case 2:
-                        Console.WriteLine("Press 1 to search station and see the bus list, or press 2 to find route between two stations");
-                        switch(choice)
-                        {
-                            case 1:
-                                Console.WriteLine("Enter Station key");
-                                int key = Convert.ToInt32(Console.ReadLine());
-                                bool flag = false;
-                                foreach (BusLine l1 in Lines)
-                                {
-                                    if (l1.exists(key))
-                                    {
-                                        Console.WriteLine("Bus Number {0} passes in this station", l1.LineStation);
-                                        flag = true;
-                                    }
-                                }
-                                if (flag == false)
-                                {
-                                    Console.WriteLine("No buses passing through this station");
-                                }
-                                break;
-                            case 2:
+                            break;
+                        case 3:
 
-                                break;
-                            default:
-                                Console.WriteLine("invalid input. try again next time");
-                                break;
-                        }
-         
-                    break;
-                case 3:
-                        
-                    break;
-                case 0:
-                    Console.WriteLine("thanks for choosing eggedish");
-                    break;
-                default:
-                   Console.WriteLine("invalid input. try again next time");
-                    break;
-            
+                            break;
+                        case 0:
+                            Console.WriteLine("thanks for choosing eggedish");
+                            break;
+                        default:
+                            Console.WriteLine("invalid input. try again next time");
+                            break;
+
+                    }
+                else
+                    Console.WriteLine("invalid input. try again next time");
             }
-            else
-                Console.WriteLine("invalid input. try again next time");
-
-
-
-
-
-
         }
 
     }
