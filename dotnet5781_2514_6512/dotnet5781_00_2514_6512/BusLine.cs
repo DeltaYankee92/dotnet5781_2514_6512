@@ -194,7 +194,7 @@ namespace dotnet5781_00_2514_6512
         public double time(int a, int b)
         {
             if (!this.exists(a) || !this.exists(b))
-                throw new ArgumentException("doesnt exist");
+                throw new ArgumentException("one or more of the stations don't exist");
             LineStation temp1 = null, temp2 = null;
             foreach (LineStation it in Stations)
             {
