@@ -217,6 +217,9 @@ using System.Threading.Tasks;
                             break;
                         case 2:
                             Console.WriteLine("Press 1 to search station and see the bus list, or press 2 to find route between two stations");
+                            success = int.TryParse(Console.ReadLine(), out choice);
+                            if (!success)
+                                Console.WriteLine("invalid input. try again next time");
                             switch (choice)
                             {
                                 case 1:
