@@ -23,6 +23,18 @@ namespace dotnet5781_00_2514_6512
             Lines.Remove(l);
         }
 
+        public void Delete_Line(int id)
+        {
+            foreach (BusLine b1 in Lines)
+            {
+                if(id == b1.get_line_num())
+                {
+                    Lines.Remove(b1);
+                    return;
+                }
+            }
+            throw new ArgumentException("no line found");
+        }
         List<BusLine> LinesInStop(int idBusStationKey)
         {
             List<BusLine> lines = new List<BusLine>();

@@ -128,45 +128,57 @@ namespace dotnet5781_00_2514_6512
                             switch (choice)
                             {
 
-                                case 1:
-                                    Console.WriteLine(@"you have chosen to add or remove.
-                                    an option will come for you to enter details of a bus station in preperations to adding it. enter '0' for printing.
+                                case 1: // the setting for a line. we need to build a line of we are adding to the system
+                                    Console.WriteLine(@"you have chosen to add or remove a line. enter '1' to add, '2' to remove a line
 ");
-                                    Console.WriteLine(@"we are entering the new line section for adding
+                                    success = int.TryParse(Console.ReadLine(), out choice);
+                                    if (!success)
+                                        Console.WriteLine("invalid input. try again next time");
+                                    switch(choice)
+                                    {
+                                        case 1:
+                                            Console.WriteLine(@"we are entering the new line section for adding
                                     a new line needs the following requirements:
                                     1. the station ID can't belong to another station
                                     2. line must have two stops
                                 lets start by entering one bus at a time. for the bus ID type 0 if you are done
-");
-                                    List<LineStation> stations = new List<LineStation>();
-                                    Console.WriteLine("for the first station, the time from previous and distance is 0");
+");                                                                 
+                                            List<LineStation> stations = new List<LineStation>();
+                                            Console.WriteLine("for the first station, the time from previous and distance is 0");
 
-                                    X.fillfields();
-                                    while (X.getkey() != 0)
-                                    {
-                                        X.fillfields();
-                                        stations.Add(X);
-                                    }
-                                    Console.WriteLine("input gotten. now you are moving to the add or remove section");
-                                    Console.WriteLine("enter the number of the line you wish to work on");
-                                    success = int.TryParse(Console.ReadLine(), out choice);
-                                    if (!success)
-                                        Console.WriteLine("invalid input. try again next time");
-                                    else
-                                    {
-                                        foreach (BusLine it in Lines)
-                                        {
-                                            if (it.get_line_num() == X.getkey())
-                                                it.AddOrRemove(X);
-                                        }
+                                            X.fillfields();
+                                            while (X.getkey() != 0)
+                                            {
+                                                X.fillfields();
+                                                stations.Add(X);
+                                            }
+                                            Console.WriteLine("enter the number of the line");
+                                            success = int.TryParse(Console.ReadLine(), out choice);
+                                            if (!success)
+                                                Console.WriteLine("invalid input. try again next time");
+                                            string str;
+                                            Console.WriteLine("enter the adresses the busline stops at/name of the line");
+                                            str = Console.ReadLine();
+                                            BusLine bn = new BusLine(stations, stations.ElementAt(0), stations.ElementAt(stations.Count), choice, str);
+                                            Lines.ADD_Line(bn);
+                                            break;
+                                        case 2:
+                                            Console.WriteLine("enter the id of the line to remove");
+                                            success = int.TryParse(Console.ReadLine(), out choice);
+                                            if (!success)
+                                                Console.WriteLine("invalid input. try again next time");
+                                            Lines.Delete_Line(choice);
+                                            break;
+                                        default:
+                                            throw new ArgumentException("you did not enter 1 or 2");
                                     }
                                         break;
                                 case 2:
                                     Console.WriteLine(@"you have chosen to add or remove.
                                     an option will come for you to enter details of a bus station in preperations to adding it. enter '0' for printing.
 ");
-                                    X.fillfields();
-                                    Console.WriteLine("enter the id of the list we will remove from");
+                                    X.fillfields(); // will add the fields as the override
+                                    Console.WriteLine("enter the id of the list we will remove from / add to");
 
                                     success = int.TryParse(Console.ReadLine(), out choice);
                                     if (!success)
