@@ -25,7 +25,10 @@ namespace dotnet5781_00_2514_6512
             LineStation = lineStation;
             Area = area;
         }
-        
+
+        public BusLine()
+        {
+        }
 
         public override string ToString()
         {
