@@ -27,8 +27,10 @@ namespace dotnet5781_00_2514_6512
 ");
             int x = inputKey();
             if (x == 0)
+            {
+                this.BusStationKey = x;
                 return;
-            this.BusStationKey = x;
+            }
             double y = inputLatitude();
             this.Latitude = y;
             y = inputLongitude();
