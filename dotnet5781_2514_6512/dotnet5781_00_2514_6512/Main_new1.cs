@@ -249,7 +249,33 @@ namespace dotnet5781_00_2514_6512
          
                     break;
                 case 3:
-                        
+                        Console.WriteLine("press 1 to print all lines, or 2 to print all stations");
+                        switch(choice)
+                        {
+                            case 1:
+                                Console.WriteLine("Buses in system:");
+                                foreach (BusLine l1 in Lines)
+                                {
+                                    Console.WriteLine(l1.LineStation);
+                                }
+                                break;
+                            case 2:
+                                Console.WriteLine("Stations in system:");
+                                for (int i = 0; i < 999999; i++)
+                                {
+                                    foreach (BusLine l1 in Lines)
+                                    {
+                                        if (l1.exists(i))
+                                        {
+                                            Console.WriteLine("station number: {0}", i);
+                                            Console.WriteLine("Bus Number {0} passes in this station", l1.LineStation);
+                                        }
+                                    }
+                                }
+                                break;
+                            default:
+                                break;
+                        }
                     break;
                 case 0:
                     Console.WriteLine("thanks for choosing eggedish");
