@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dotnet5781_00_2514_6512
+
+
+
+ 
+ 
+ namespace dotnet5781_00_2514_6512
 {
-    class Main_new1
+    class main_targ2
     {
-        public static void main(string[] args)
+                static void Main(string[] args)
         {
             LineCollecton Lines = new LineCollecton();
              Random rand = new Random();
