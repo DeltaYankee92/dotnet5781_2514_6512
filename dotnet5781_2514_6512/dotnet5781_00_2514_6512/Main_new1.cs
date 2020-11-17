@@ -191,7 +191,28 @@ namespace dotnet5781_00_2514_6512
                                 }
                                 break;
                             case 2:
-
+                                Console.WriteLine("enter id of the first station:");
+                                int first = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("enter id of the second station:");
+                                int second = Convert.ToInt32(Console.ReadLine());
+                                List<BusLine> FirstList = Lines.LinesInStop(first);
+                                List<BusLine> SecondList = Lines.LinesInStop(second);
+                                List<BusLine> SortedResult = new List<BusLine>();
+                                foreach (BusLine l1 in FirstList)
+                                {
+                                    foreach (BusLine l2 in SecondList)
+                                    {
+                                        if (l1.LineStation == l2.LineStation)
+                                        {
+                                            SortedResult.Add(l1);
+                                        }
+                                    }
+                                    SortedResult.Sort();
+                                    foreach (BusLine l3 in SortedResult)
+                                    {
+                                        Console.WriteLine("Bus Line Number: {0} is good for you.", l3.LineStation);
+                                    }
+                                }
                                 break;
                             default:
                                 Console.WriteLine("invalid input. try again next time");

@@ -23,7 +23,7 @@ namespace dotnet5781_00_2514_6512
             Lines.Remove(l);
         }
 
-        List<BusLine> LinesInStop(int idBusStationKey)
+        public List<BusLine> LinesInStop(int idBusStationKey)
         {
             List<BusLine> lines = new List<BusLine>();
             foreach (BusLine b1 in Lines)
