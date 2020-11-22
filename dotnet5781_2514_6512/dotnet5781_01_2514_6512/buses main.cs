@@ -1,4 +1,4 @@
-﻿/*
+﻿
 
 using System;
 using System.Collections.Generic;
@@ -243,4 +243,3 @@ namespace dotnet5781_00_2514_6512
     }
 }
 
-*/

@@ -277,8 +277,10 @@ using System.Threading.Tasks;
                                         Console.WriteLine("Line Number {0} is good for you.", l1.LineStation);
                                     }
                                     break;
-
-                                case 3:
+                                   
+                            }
+                            break;
+                                 case 3: 
                                     Console.WriteLine("welocome to the print menu. there are two options");
                                     Console.WriteLine("press 1 to print all lines. 2 to print all stations");
                                     success = int.TryParse(Console.ReadLine(), out choice);
@@ -325,7 +327,8 @@ using System.Threading.Tasks;
                             }
                             throw new ArgumentException("invalid input. try again next time");
                     }
-                }
+
+                
             }
             catch (Exception e)
             {
