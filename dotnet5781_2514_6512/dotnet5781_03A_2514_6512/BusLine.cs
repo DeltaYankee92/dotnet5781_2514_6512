@@ -17,7 +17,7 @@ namespace dotnet5781_03A_2514_6512
         BusStop FirstStation, LastStation;
         public int BusNumber;
         string Area;
-
+        Random rand = new Random();
 
         public int get_line_num()
         {
@@ -27,9 +27,11 @@ namespace dotnet5781_03A_2514_6512
         //---------------------------Cunstructors-----------------------------------------
         public BusLine()
         {
-            Random r = new Random();
-            this.BusNumber = r.Next(1, 1000);
-            
+            this.BusNumber = -1;
+        }
+        public BusLine(int number)
+        {
+            this.BusNumber = number;
         }
         public BusLine(List<LineStation> stations, BusStop firstStation, BusStop lastStation, int lineStation, string area)
         {
@@ -309,12 +311,13 @@ namespace dotnet5781_03A_2514_6512
                 ls.distance = 0;
                 ls.time = new TimeSpan(0, 0, 0);
                 Stations.Add(ls);
+                this.FirstStation = ls;
             }
             else
             {
-                Random r = new Random();
-                ls.distance = r.Next(100, 300);
-                ls.time = new TimeSpan(0, r.Next(0, 60), r.Next(0, 60));
+                ls.distance = rand.Next(100, 300);
+                ls.time = new TimeSpan(0, rand.Next(0, 60), rand.Next(0, 60));
+                this.LastStation = ls;
             }
         }
 

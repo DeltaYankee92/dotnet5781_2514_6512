@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace dotnet5781_03A_2514_6512
 {
+
     class BusStop
     {
+        Random rand = new Random();
         public int BusStationKey;
         public double Latitude;
         public double Longitude;
@@ -31,14 +34,10 @@ namespace dotnet5781_03A_2514_6512
             return this.adress;
         }
         public BusStop()
-        {   
-            Random r = new Random();
-            int lat_base = r.Next(31, 34);
-            int lon_base = r.Next(34, 36);
-            this.BusStationKey = r.Next(100000, 1000000);
+        {
+            this.BusStationKey = -1;
             this.adress = "";
-            this.Latitude = lat_base + r.NextDouble();
-            this.Longitude = lon_base + r.NextDouble();
+            this.Latitude = -1;
         }
 
         internal BusStop(int i1, float f1, float f2, string str)

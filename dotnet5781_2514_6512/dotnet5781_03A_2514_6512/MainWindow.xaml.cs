@@ -22,24 +22,24 @@ namespace dotnet5781_03A_2514_6512
     {
         public MainWindow()
         {
+            //-----------------Random variable to be used for random number generators------------------------------------
+            Random rand = new Random();
 
-            //***********Functions to generate Random numbers for the constructors***************
-
-            LineCollecton Lines = new LineCollecton();
+            //-----------------creation of 10 buses with 20 LineStations devided unequally between them-------------------
+            LineCollecton busLines = new LineCollecton();
             LineStation[] ls = new LineStation[20];
             for (int i = 0; i < ls.Length; i++)
             {
-                ls[i] = new LineStation();
+                ls[i] = new LineStation((Double)rand.Next(100,300), (double)rand.Next(0,2)+rand.NextDouble(), (int)rand.Next(100000,1000000), rand.Next(31,34)+rand.NextDouble(), rand.Next(33, 36) + rand.NextDouble(), "");
             }
             BusLine[] bs = new BusLine[10];
             for (int i = 0; i < bs.Length; i++)
             {
-                bs[i] = new BusLine();
+                bs[i] = new BusLine((int)rand.Next(1,1000));
             }
 
             for (int i = 0; i < 10; i++)
             {
-                Random rand = new Random();
                 for (int j = 0; j < rand.Next(1, 10); j++)
                 {
                     bs[i].add_station(ls[j]);
@@ -47,15 +47,25 @@ namespace dotnet5781_03A_2514_6512
             }
             for (int i = 0; i < 10; i++)
             {
-                Lines.ADD_Line(bs[i]);
+                busLines.ADD_Line(bs[i]);
             }
             InitializeComponent();
-            cbBusLines.ItemsSource = Lines;
+
+            
+            cbBusLines.ItemsSource = busLines;
             cbBusLines.DisplayMemberPath = " BusLineNum ";
             cbBusLines.SelectedIndex = 0;
             Console.WriteLine("Hellp");
-            //ShowBusLine(……….)
+            //ShowBusLine(.............);
+
+
+
 
         }
+
+
+
+
+
     }
 }
