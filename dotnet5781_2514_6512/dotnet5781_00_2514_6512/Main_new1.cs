@@ -97,6 +97,17 @@ using System.Threading.Tasks;
             new LineStation{BusStationKey = 091235, Latitude = 33.8713, Longitude = 121.8721, adress = "התירוש 7, אפרת" },
             new LineStation{BusStationKey = 949823, Latitude = 33.8342, Longitude = 121.0452, adress = "התירוש 1, אפרת" },
         };
+                List<LineStation> Stops9 = new List<LineStation>()
+        {
+            new LineStation{BusStationKey = 949745, Latitude = 33.3651, Longitude = 121.3371, adress = "מעלה משואות יצחק 1, אפרת" },
+            new LineStation{BusStationKey = 949653, Latitude = 33.6531, Longitude = 121.7651, adress = "מעלה משואות יצחק 7, אפרת" },
+        };
+                List<LineStation> Stops10 = new List<LineStation>()
+        {
+            new LineStation{BusStationKey = 835125, Latitude = 33.0912, Longitude = 121.8761, adress = "התירוש 6, אפרת" },
+            new LineStation{BusStationKey = 091235, Latitude = 33.8713, Longitude = 121.8721, adress = "התירוש 7, אפרת" },
+            new LineStation{BusStationKey = 949823, Latitude = 33.8342, Longitude = 121.0452, adress = "התירוש 1, אפרת" },
+        };
                 BusLine b1 = new BusLine(Stops1, Stops1.ElementAt(0), Stops1.ElementAt(Stops1.Count - 1), 1, "עוזיאל");
                 BusLine b2 = new BusLine(Stops2, Stops2.ElementAt(0), Stops2.ElementAt(Stops2.Count - 1), 2, "בית וגן");
                 BusLine b3 = new BusLine(Stops3, Stops3.ElementAt(0), Stops3.ElementAt(Stops3.Count - 1), 3, "התירוש");
@@ -104,7 +115,9 @@ using System.Threading.Tasks;
                 BusLine b5 = new BusLine(Stops5, Stops5.ElementAt(0), Stops5.ElementAt(Stops5.Count - 1), 5, "הפסגה");
                 BusLine b6 = new BusLine(Stops6, Stops6.ElementAt(0), Stops6.ElementAt(Stops6.Count - 1), 6, "רינה ניקובה");
                 BusLine b7 = new BusLine(Stops7, Stops7.ElementAt(0), Stops7.ElementAt(Stops7.Count - 1), 7, "אפרת-ירושלים");
-                BusLine b8 = new BusLine(Stops8, Stops8.ElementAt(0), Stops8.ElementAt(Stops8.Count - 1), 8, "התירוש2");
+                BusLine b8 = new BusLine(Stops8, Stops8.ElementAt(0), Stops8.ElementAt(Stops8.Count - 1), 8, "התירוש-משואות");
+                BusLine b9 = new BusLine(Stops9, Stops9.ElementAt(0), Stops9.ElementAt(Stops9.Count - 1), 9, "מעלה משואות קצר");
+                BusLine b10 = new BusLine(Stops10, Stops10.ElementAt(0), Stops10.ElementAt(Stops10.Count - 1), 10, "התירוש קצר");
                 Lines.ADD_Line(b1);
                 Lines.ADD_Line(b2);
                 Lines.ADD_Line(b3);
@@ -113,6 +126,8 @@ using System.Threading.Tasks;
                 Lines.ADD_Line(b6);
                 Lines.ADD_Line(b7);
                 Lines.ADD_Line(b8);
+                Lines.ADD_Line(b9);
+                Lines.ADD_Line(b10);
 
 
                 int choice = 3;
