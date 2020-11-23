@@ -123,9 +123,10 @@ using System.Threading.Tasks;
                     switch (choice)
                     {
                         case 1:
-                            Console.WriteLine(@"you can either create a new line with its requirements or add a station
-                        choose 1 to add/remove a new line
-                        choose 2 to add/remove a new station
+                            Console.WriteLine(@"
+you can either create a new line with its requirements or add a station
+choose 1 to add/remove a new line
+choose 2 to add/remove a new station
 ");
                             success = int.TryParse(Console.ReadLine(), out choice);
                             if (!success)
@@ -145,11 +146,12 @@ using System.Threading.Tasks;
                                         switch (choice)
                                         {
                                             case 1:
-                                                Console.WriteLine(@"we are entering the new line section for adding
-                                    a new line needs the following requirements:
-                                    1. the station ID can't belong to another station
-                                    2. line must have two stops
-                                lets start by entering one bus at a time. for the bus ID type 0 if you are done
+                                                Console.WriteLine(@"
+we are entering the new line section for adding
+ a new line needs the following requirements:
+    1. the station ID can't belong to another station
+    2. line must have two stops
+    lets start by entering one bus at a time. for the bus ID type 0 if you are done
 ");
                                                 List<LineStation> stations = new List<LineStation>();
                                                 Console.WriteLine("for the first station, the time from previous and distance is 0");
@@ -197,8 +199,9 @@ using System.Threading.Tasks;
                                         }
                                         break;
                                     case 2:
-                                        Console.WriteLine(@"you have chosen to add or remove.
-                                    an option will come for you to enter details of a bus station in preperations to adding it.
+                                        Console.WriteLine(@"
+you have chosen to add or remove.
+an option will come for you to enter details of a bus station in preperations to adding it.
 ");
                                         X.fillfields(); // will add the fields as the override
                                         Console.WriteLine("enter the id of the list we will remove from / add to");
@@ -316,7 +319,8 @@ using System.Threading.Tasks;
                                             }
                                             break;
                                         default:
-                                            break;
+                                    throw new ArgumentException("invalid input. try again next time");
+                                    
                                     }
                                     break;
                                 case 0:
@@ -325,7 +329,7 @@ using System.Threading.Tasks;
                                 default:
                                     throw new ArgumentException("invalid input. try again next time");
                             }
-                            throw new ArgumentException("invalid input. try again next time");
+
                     }
 
                 
