@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace dotnet5781_00_2514_6512
 {
+
+
+    /*
+     a class that acts as a single bus stop, regardless of its' lines.
+     */
     class BusStop
     {
         public int BusStationKey;
@@ -13,24 +18,24 @@ namespace dotnet5781_00_2514_6512
         public double Longitude;
         public string adress;
 
-        internal int getkey()
+        internal int getkey() // return the key value.
         {
             return this.BusStationKey;
         }
 
-        public double getlatitute()
+        public double getlatitute()// return the Latitude value.
         {
             return this.Latitude;
         }
-        public double getlongitude()
+        public double getlongitude()// return the Longitude value.
         {
             return this.Latitude;
         }
-        public string getadress()
+        public string getadress()// return the adress value.
         {
             return this.adress;
         }
-        internal BusStop()
+        internal BusStop() // ctor
         {
             BusStationKey = -1;
             adress = "";
@@ -38,14 +43,14 @@ namespace dotnet5781_00_2514_6512
             Longitude = -1;
         }
 
-        internal BusStop(int i1, float f1, float f2, string str)
+        internal BusStop(int i1, float f1, float f2, string str) //ctor
         {
             this.BusStationKey = i1;
             this.adress = str;
             this.Latitude = f1;
             this.Longitude = f2;
         }
-        internal static int inputKey()
+        internal static int inputKey() // adding a key in a nice way
         {
             Console.WriteLine("enter the key of a bus stop: ");
             int temp;
@@ -57,7 +62,7 @@ namespace dotnet5781_00_2514_6512
                 throw new ArgumentException("key not valid. a key must be 6 digits");
         }
 
-        internal static double inputLatitude()
+        internal static double inputLatitude()// adding coordinates in a nice way
         {
             Console.WriteLine("enter the Latitude of a bus stop: ");
             double temp;
@@ -71,7 +76,7 @@ namespace dotnet5781_00_2514_6512
             return -1;
         }
 
-        internal static double inputLongitude()
+        internal static double inputLongitude()// adding coordinates in a nice way
         {
             Console.WriteLine("enter the Longitude of a bus stop: ");
             double temp;
@@ -85,7 +90,7 @@ namespace dotnet5781_00_2514_6512
 
             return -1;
         }
-        private static bool check_range(int v , double d)
+        private static bool check_range(int v , double d) // temporary function for input checking.
         {
             if (d == 0)
                 return true;
@@ -96,7 +101,7 @@ namespace dotnet5781_00_2514_6512
             else
                 return false;
         }
-        public virtual void fillfields()
+        public virtual void fillfields() // filling the fields in a convenient way
         {
             int x = inputKey();
             this.BusStationKey = x;
@@ -108,7 +113,7 @@ namespace dotnet5781_00_2514_6512
             string str = Console.ReadLine();
             this.adress = str;
         }
-        public override string ToString()
+        public override string ToString() // derisa of tostring.
         {
             return $"Bus Station Code: {this.BusStationKey}, {this.Latitude}°N, {this.Longitude}°E";
         }
