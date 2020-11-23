@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="BusLine.cs" />
     <Compile Include="BusStop.cs" />
+    <Compile Include="LineCollecton.cs" />
     <Compile Include="LineStation.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

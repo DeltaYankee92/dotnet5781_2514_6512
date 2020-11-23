@@ -5,28 +5,42 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dotnet5781_00_2514_6512
+
+
+namespace dotnet5781_03A_2514_6512
 {
     class BusLine : IComparable<BusLine>
     {
 
-
+        //----------------------------DATA---------------------------------------------
         List<LineStation> Stations = new List<LineStation>();
         BusStop FirstStation, LastStation;
-        public int LineStation;
+        public int BusNumber;
         string Area;
+
+
         public int get_line_num()
         {
-            return this.LineStation;
+            return this.BusNumber;
+        }
+
+        //---------------------------Cunstructors-----------------------------------------
+        public BusLine()
+        {
+            Random r = new Random();
+            this.BusNumber = r.Next(1, 1000);
+            
         }
         public BusLine(List<LineStation> stations, BusStop firstStation, BusStop lastStation, int lineStation, string area)
         {
             Stations = stations;
             FirstStation = firstStation;
             LastStation = lastStation;
-            LineStation = lineStation;
+            BusNumber = lineStation;
             Area = area;
         }
+
+        //----------------------------overloads----------------------------------
         public int CompareTo(BusLine other)
         {
             TimeSpan ThisTotalTime = new TimeSpan(0, 0, 0);
@@ -52,13 +66,10 @@ namespace dotnet5781_00_2514_6512
                 return 0;
             }
         }
-        public BusLine()
-        {
-        }
 
         public override string ToString()
         {
-            string str = $"LineStation:{this.LineStation},Area:{this.Area},All_stations:";
+            string str = $"LineStation:{this.BusNumber},Area:{this.Area},All_stations:";
             foreach (LineStation bs in Stations)
             {
                 str += bs.ToString();
@@ -67,6 +78,7 @@ namespace dotnet5781_00_2514_6512
             return str;
         }
 
+        //--------------------------------action functions----------------------------------
         public void AddOrRemove(LineStation action)
         {
             Console.WriteLine("would you like to add or remove?");// see here i'm not looking if its in the list, because its theoritaclly possible for a bus to stop at the same stop twice in one line.
@@ -288,6 +300,25 @@ namespace dotnet5781_00_2514_6512
             if (this.Stations.Count <= 1)
                 return false;
             return true;
-        }   
+        }
+
+        public void add_station(LineStation ls)
+        {
+            if (Stations.Count == 0)
+            {
+                ls.distance = 0;
+                ls.time = new TimeSpan(0, 0, 0);
+                Stations.Add(ls);
+            }
+            else
+            {
+                Random r = new Random();
+                ls.distance = r.Next(100, 300);
+                ls.time = new TimeSpan(0, r.Next(0, 60), r.Next(0, 60));
+            }
+        }
+
     }
+
+
 }

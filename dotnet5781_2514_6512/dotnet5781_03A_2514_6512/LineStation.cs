@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace dotnet5781_00_2514_6512
+namespace dotnet5781_03A_2514_6512
 {
     class LineStation : BusStop
     {
@@ -54,10 +54,10 @@ namespace dotnet5781_00_2514_6512
             return time.TotalSeconds;
         }
 
-        internal LineStation()
+        public LineStation()
         {
-            distance = -1;
-            time = new TimeSpan(0, 0, 0);
+            this.distance = -1;
+            this.time = new TimeSpan(0, 0, 0);
         }
 
         internal LineStation(int i1, double f1, double f2, string str)
