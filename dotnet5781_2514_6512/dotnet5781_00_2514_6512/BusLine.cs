@@ -10,16 +10,18 @@ namespace dotnet5781_00_2514_6512
     class BusLine : IComparable<BusLine>
     {
 
-
+        /*
+         * the busline program is designed to simulate a bus line. including the list of the stations, the end and begginning, id of that, and the area of activity
+         */
         List<LineStation> Stations = new List<LineStation>();
         BusStop FirstStation, LastStation;
         public int LineStation;
         string Area;
-        public int get_line_num()
+        public int get_line_num() // returning the line station number
         {
             return this.LineStation;
         }
-        public BusLine(List<LineStation> stations, BusStop firstStation, BusStop lastStation, int lineStation, string area)
+        public BusLine(List<LineStation> stations, BusStop firstStation, BusStop lastStation, int lineStation, string area)//ctor
         {
             Stations = stations;
             FirstStation = firstStation;
@@ -27,7 +29,7 @@ namespace dotnet5781_00_2514_6512
             LineStation = lineStation;
             Area = area;
         }
-        public int CompareTo(BusLine other)
+        public int CompareTo(BusLine other) // using compareto. to compare to the another object. for Icompareable.
         {
             TimeSpan ThisTotalTime = new TimeSpan(0, 0, 0);
             TimeSpan OtherTotalTime = new TimeSpan(0, 0, 0);
@@ -52,11 +54,11 @@ namespace dotnet5781_00_2514_6512
                 return 0;
             }
         }
-        public BusLine()
+        public BusLine() // default ctor
         {
         }
 
-        public override string ToString()
+        public override string ToString() // derisa of tostring.
         {
             string str = $"LineStation:{this.LineStation},Area:{this.Area},All_stations:";
             foreach (LineStation bs in Stations)
@@ -67,7 +69,7 @@ namespace dotnet5781_00_2514_6512
             return str;
         }
 
-        public void AddOrRemove(LineStation action)
+        public void AddOrRemove(LineStation action) // a function to add or remove a station. again, as requested. sadly it was requested together. :/
         {
             Console.WriteLine("would you like to add or remove?");// see here i'm not looking if its in the list, because its theoritaclly possible for a bus to stop at the same stop twice in one line.
             string str;
@@ -123,7 +125,7 @@ namespace dotnet5781_00_2514_6512
                 throw new ArgumentException("invalid input. try again next time");
         }
 
-        public bool exists(LineStation action)
+        public bool exists(LineStation action) // does the station which we do actions to exist in the line?
         {
             foreach (LineStation b1 in Stations)
             {
@@ -132,7 +134,7 @@ namespace dotnet5781_00_2514_6512
             }
             return false;
         }
-        public bool exists(int action)
+        public bool exists(int action)// does the number which we do actions to exist in the line?
         {
             foreach (LineStation b1 in Stations)
             {
@@ -141,7 +143,7 @@ namespace dotnet5781_00_2514_6512
             }
             return false;
         }
-        internal double TimeOrDistance(LineStation a, LineStation b, int action)
+        internal double TimeOrDistance(LineStation a, LineStation b, int action) // a function for time and distance in one, to write less code. isnt called by anything external.
         {
             bool flag = true; // a before b on the list
             int place1 = this.Stations.IndexOf(a);
@@ -194,16 +196,16 @@ namespace dotnet5781_00_2514_6512
             }
             return -1; // should never happen
         }
-        public double distance(LineStation a, LineStation b)
+        public double distance(LineStation a, LineStation b) // calculate the distance between two stations
         {
             return TimeOrDistance(a, b, 1);
         }
-        public double time(LineStation a, LineStation b)
+        public double time(LineStation a, LineStation b) // calculate the time between two stations
         {
             return TimeOrDistance(a, b, 0);
         }
 
-        public double distance(int a, int b)
+        public double distance(int a, int b) // calculate the distance between two ids: ida,idb.
         {
             if (!this.exists(a) || !this.exists(b))
                 throw new ArgumentException("doesnt exist");
@@ -217,7 +219,7 @@ namespace dotnet5781_00_2514_6512
             }
             return distance(temp1, temp2);
         }
-        public double time(int a, int b)
+        public double time(int a, int b) // calculate the time between two ids: ida,idb.
         {
             if (!this.exists(a) || !this.exists(b))
                 throw new ArgumentException("one or more of the stations don't exist");
@@ -231,7 +233,7 @@ namespace dotnet5781_00_2514_6512
             }
             return time(temp1, temp2);
         }
-        public LineStation subRoute(LineStation a, LineStation b)
+        public LineStation subRoute(LineStation a, LineStation b) // returns the route from a to b, if any.
         {
             if (!this.exists(a) || !this.exists(b))
                 throw new ArgumentException("one or more of the stations do not exist.");
@@ -273,7 +275,7 @@ namespace dotnet5781_00_2514_6512
             return new LineStation(sum_distance, sum_time, newnum, f1, f2, adress);
         }
 
-        public bool check_location(LineStation a)
+        public bool check_location(LineStation a) // is a in the list?
         {
             foreach (LineStation item in Stations)
             {
@@ -283,7 +285,7 @@ namespace dotnet5781_00_2514_6512
             }
             return true;
         }
-        public bool checknum()
+        public bool checknum() // checking if the number of stations is valid.
         {
             if (this.Stations.Count <= 1)
                 return false;

@@ -9,21 +9,25 @@ namespace dotnet5781_00_2514_6512
 {
     class LineCollecton :IEnumerable
     {
+        /*
+         a collection of buslines, and a few actions that stem from that
+         */
+
         public List<BusLine> Lines;
-        internal LineCollecton()
+        internal LineCollecton() // ctor
         {
             Lines = new List<BusLine>();
         }
-        public void ADD_Line(BusLine l)
+        public void ADD_Line(BusLine l) // add l to the line
         {
             Lines.Add(l);
         }
-        void Delete_Line(BusLine l)
+        void Delete_Line(BusLine l) // remove l to the line
         {
             Lines.Remove(l);
         }
 
-        public void Delete_Line(int id)
+        public void Delete_Line(int id) // delete the id from the line.
         {
             foreach (BusLine b1 in Lines)
             {
@@ -35,7 +39,7 @@ namespace dotnet5781_00_2514_6512
             }
             throw new ArgumentException("no line found");
         }
-        public List<BusLine> LinesInStop(int idBusStationKey)
+        public List<BusLine> LinesInStop(int idBusStationKey) // returns a list with all of the lines including this stop.
         {
             List<BusLine> lines = new List<BusLine>();
             foreach (BusLine b1 in Lines)
@@ -51,12 +55,12 @@ namespace dotnet5781_00_2514_6512
             }
             return lines;
         }
-        void SortLineCollection()
+        void SortLineCollection() // using the sort function. but in a convenient way.
         {
             Lines.Sort();
         }
 
-        public BusLine this[int index]
+        public BusLine this[int index] // indexer.
         {
         get
             {
@@ -67,7 +71,7 @@ namespace dotnet5781_00_2514_6512
         }
 
 
-        public bool check_location(LineStation a)
+        public bool check_location(LineStation a) // checking if a is in the list.
         {
             bool flag;
             foreach (BusLine it in Lines)
@@ -79,7 +83,7 @@ namespace dotnet5781_00_2514_6512
             return true;
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator GetEnumerator() // using ienumerable.
         {
             return ((IEnumerable)Lines).GetEnumerator();
         }
