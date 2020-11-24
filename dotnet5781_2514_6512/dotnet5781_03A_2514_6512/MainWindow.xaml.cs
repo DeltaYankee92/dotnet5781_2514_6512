@@ -43,7 +43,7 @@ namespace dotnet5781_03A_2514_6512
 
             for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < rand.Next(2, 10); j++)
+                for (int j = 0; j < rand.Next(2, 11); j++)
                 {
                     bs[i].add_station(ls[j]);
                 }
@@ -56,19 +56,16 @@ namespace dotnet5781_03A_2514_6512
 
             
             cbBusLines.ItemsSource = busLines;
-            cbBusLines.DisplayMemberPath = "aaa"; // check this out. im thinking of a way to make this work.
+            cbBusLines.DisplayMemberPath = "busNumber"; 
             cbBusLines.SelectedIndex = 0;
 
             ShowBusLine(busLines.Lines[0].get_line_num());
-
-
-
 
         }
         public void ShowBusLine(int index)
         {
             currentDisplayLine = busLines[busLines.index_find(index)];
-            UpGrid.DataContext = currentDisplayLine;
+             UpGrid.DataContext = currentDisplayLine; 
             lbBusLineStations.DataContext = currentDisplayLine.Stations;
 
         }

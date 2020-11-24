@@ -18,7 +18,10 @@ namespace dotnet5781_03A_2514_6512
         public int BusNumber;
         string Area;
 
-        public int aaa = 1;
+        public int busNumber
+        {
+            get => BusNumber;
+        }
 
         Random rand = new Random();
 

@@ -10,6 +10,9 @@ namespace dotnet5781_03A_2514_6512
 
     class BusStop
     {
+
+       
+
         Random rand = new Random();
         public int BusStationKey;
         public double Latitude;

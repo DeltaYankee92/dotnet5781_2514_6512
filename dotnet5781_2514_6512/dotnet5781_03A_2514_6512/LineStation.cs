@@ -9,6 +9,7 @@ namespace dotnet5781_03A_2514_6512
 {
     class LineStation : BusStop
     {
+
         //distance from the previous station
         public double distance;
 
