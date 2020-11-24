@@ -17,6 +17,9 @@ namespace dotnet5781_03A_2514_6512
         BusStop FirstStation, LastStation;
         public int BusNumber;
         string Area;
+
+        public int aaa = 1;
+
         Random rand = new Random();
 
         public int get_line_num()

@@ -10,6 +10,7 @@ namespace dotnet5781_03A_2514_6512
     class LineCollecton :IEnumerable
     {
         public List<BusLine> Lines;
+        public int aaa = 1;
         public LineCollecton()
         {
             this.Lines = new List<BusLine>();
