@@ -20,13 +20,15 @@ namespace dotnet5781_03A_2514_6512
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BusLine currentDisplayLine;
+        static LineCollecton busLines = new LineCollecton();
         public MainWindow()
         {
             //-----------------Random variable to be used for random number generators------------------------------------
             Random rand = new Random();
 
             //-----------------creation of 10 buses with 20 LineStations devided unequally between them-------------------
-            LineCollecton busLines = new LineCollecton();
+
             LineStation[] ls = new LineStation[20];
             for (int i = 0; i < ls.Length; i++)
             {
@@ -40,7 +42,7 @@ namespace dotnet5781_03A_2514_6512
 
             for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < rand.Next(1, 10); j++)
+                for (int j = 0; j < rand.Next(2, 10); j++)
                 {
                     bs[i].add_station(ls[j]);
                 }
@@ -53,19 +55,25 @@ namespace dotnet5781_03A_2514_6512
 
             
             cbBusLines.ItemsSource = busLines;
-            cbBusLines.DisplayMemberPath = " BusLineNum ";
+            cbBusLines.DisplayMemberPath = "BusNumber";
             cbBusLines.SelectedIndex = 0;
-            Console.WriteLine("Hellp");
-            //ShowBusLine(.............);
+
+            ShowBusLine(busLines.Lines[0].get_line_num());
 
 
 
 
         }
+        public void ShowBusLine(int index)
+        {
+            currentDisplayLine = busLines[busLines.index_find(index)];
+            UpGrid.DataContext = currentDisplayLine;
+            lbBusLineStations.DataContext = currentDisplayLine.Stations;
 
-
-
-
-
+        }
+        private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ShowBusLine((cbBusLines.SelectedValue as BusLine).BusNumber);
+        }
     }
 }

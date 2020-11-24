@@ -13,7 +13,7 @@ namespace dotnet5781_03A_2514_6512
     {
 
         //----------------------------DATA---------------------------------------------
-        List<LineStation> Stations = new List<LineStation>();
+        public List<LineStation> Stations = new List<LineStation>();
         BusStop FirstStation, LastStation;
         public int BusNumber;
         string Area;
@@ -24,7 +24,7 @@ namespace dotnet5781_03A_2514_6512
             return this.BusNumber;
         }
 
-        //---------------------------Cunstructors-----------------------------------------
+        //---------------------------Constructors-----------------------------------------
         public BusLine()
         {
             this.BusNumber = -1;
@@ -317,6 +317,7 @@ namespace dotnet5781_03A_2514_6512
             {
                 ls.distance = rand.Next(100, 300);
                 ls.time = new TimeSpan(0, rand.Next(0, 60), rand.Next(0, 60));
+                Stations.Add(ls);
                 this.LastStation = ls;
             }
         }

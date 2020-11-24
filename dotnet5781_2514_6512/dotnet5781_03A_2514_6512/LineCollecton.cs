@@ -60,7 +60,7 @@ namespace dotnet5781_03A_2514_6512
         {
         get
             {
-                if (index <= 0 || index > this.Lines.Count)
+                if (index < 0 || index > this.Lines.Count)
                     throw new ArgumentOutOfRangeException("no index exists");
                 return Lines[index];
             }
@@ -84,7 +84,16 @@ namespace dotnet5781_03A_2514_6512
             return ((IEnumerable)Lines).GetEnumerator();
         }
 
-        
-
+        internal int index_find(int id)
+        {
+            int i = 0;
+            foreach (BusLine it in Lines)
+            {
+                if (it.get_line_num() == id)
+                    return i;
+                i++;
+            }
+            return -1;
+        }
     }
 }
