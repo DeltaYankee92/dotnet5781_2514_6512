@@ -73,5 +73,15 @@ namespace dotnet5781_03A_2514_6512
         {
             ShowBusLine((cbBusLines.SelectedValue as BusLine).BusNumber);
         }
+
+        private void tbArea_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            tbArea.Clear();
+        }
     }
 }
