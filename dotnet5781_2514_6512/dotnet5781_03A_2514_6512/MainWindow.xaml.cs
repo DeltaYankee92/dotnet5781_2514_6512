@@ -80,7 +80,7 @@ namespace dotnet5781_03A_2514_6512
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             tbArea.Clear();
         }
     }
