@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace dotnet5781_00_2514_6512
+namespace dotnet5781_03B_2514_6512
 {
     class Driver
     {

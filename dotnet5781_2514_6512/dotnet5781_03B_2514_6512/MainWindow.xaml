@@ -1,0 +1,24 @@
+﻿<Window x:Class="dotnet5781_03B_2514_6512.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotnet5781_03B_2514_6512"
+        mc:Ignorable="d"
+        Title="Bus Contol App" Height="400" Width="500">
+    <StackPanel>
+        <TextBlock Text="Busses List" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+        <ListBox x:Name="Busses_List" Height="256" Margin="0,0,-0.4,0" ItemsSource="{Binding BusDatabase}"/>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="InsertNewBus" Margin="0 0 10 0" Grid.Column="0" Content="Insert New Bus" Click="Insert_Click"/>
+            <Button Margin="0 0 10 0" Grid.Column="1" Content="Send Bus To Drive" Click="SendBus_Click"/>
+            <Button Margin="0 0 10 0" Grid.Column="2" Content="Delete Bus" Click="DeleteBus_Click"/>
+        </Grid>
+    </StackPanel>
+
+</Window>
