@@ -32,5 +32,71 @@ namespace dotnet5781_03B_2514_6512
             }
             InitializeComponent();
         }
+
+        private void ID_Text_Box_TextChanged(object sender, TextChangedEventArgs e) //"ID_Text_Box"
+        {
+
+        }
+        private void Milage_Text_Box_TextChanged(object sender, TextChangedEventArgs e) //"Milage_Text_Box"
+        {
+
+        }
+
+        private void Fuel_Text_Box_TextChanged(object sender, TextChangedEventArgs e) // Name="Fuel_Text_Box"
+        {
+
+        }
+        private void Date_Text_Box_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void Enter_Button_Click(object sender, RoutedEventArgs e)
+        {
+            int[] x;
+            x = atoi(ID_Text_Box.Text);
+        }
+
+        public static int[] atoi(string temp)
+        {
+            int[] generated = new int[temp.Length];
+            for (int i = 0; i < temp.Length; i++)
+            {
+                char x = temp[i];
+                switch (x)
+                {
+                    case '1':
+                        generated[i] = 1;
+                        break;
+                    case '2':
+                        generated[i] = 2;
+                        break;
+                    case '3':
+                        generated[i] = 3;
+                        break;
+                    case '4':
+                        generated[i] = 4;
+                        break;
+                    case '5':
+                        generated[i] = 5;
+                        break;
+                    case '6':
+                        generated[i] = 6;
+                        break;
+                    case '7':
+                        generated[i] = 7;
+                        break;
+                    case '8':
+                        generated[i] = 8;
+                        break;
+                    case '9':
+                        generated[i] = 9;
+                        break;
+                    default:
+                        generated[i] = -1;
+                        break;
+                }
+            }
+            return generated;
+        }
     }
 }

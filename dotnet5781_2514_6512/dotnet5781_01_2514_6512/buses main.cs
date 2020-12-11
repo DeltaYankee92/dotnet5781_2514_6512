@@ -13,7 +13,8 @@ namespace dotnet5781_00_2514_6512
         enum CHOICE { EXIT, ADD, DRIVE, REFUEL_OR_REPAIRS, MILEAGE };
 
         private static List<Buses> database = new List<Buses>(); // again, as requested
-                static void Main(string[] args)
+
+        private static void Main(string[] args)
         {
             bool flag = false;
             CHOICE choice;

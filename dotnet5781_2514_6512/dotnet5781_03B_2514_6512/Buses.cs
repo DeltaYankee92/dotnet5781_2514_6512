@@ -27,7 +27,7 @@ namespace dotnet5781_03B_2514_6512
             LastMaintenance = v2;
             current_fuel = v3;
             MaintenanceDate = date;
-            
+            Status = status.Ready;
 
         }
 
@@ -120,5 +120,20 @@ namespace dotnet5781_03B_2514_6512
             }
             Console.WriteLine();
         }
+
+        public string turn_to_string()
+        {
+            string x="";
+            for (int i = 0; i < license_plate.Length; i++)
+            {
+                x += (license_plate[i]).ToString();
+            }
+            return x;
+        }
+        public override string ToString()
+        {
+            return $"{turn_to_string()} bus, with the status of {Status}";
+        }
+
     }
 }

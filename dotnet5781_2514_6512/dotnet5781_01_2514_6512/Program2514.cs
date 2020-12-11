@@ -8,7 +8,7 @@ namespace dotnet5781_00_2514_6512
 {
     partial class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Wellcome5124();
             Wellcome6512();

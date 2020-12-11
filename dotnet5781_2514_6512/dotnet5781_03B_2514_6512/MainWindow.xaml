@@ -8,12 +8,12 @@
         Title="Bus Contol App" Height="400" Width="500">
     <StackPanel>
         <TextBlock Text="Busses List" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-        <ListBox x:Name="Busses_List" Height="256" Margin="0,0,-0.4,0" ItemsSource="{Binding BusDatabase}"/>
+        <ListBox x:Name="Busses_List" Height="256" Margin="0,0,-0.4,0" />
         <Grid >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Name="InsertNewBus" Margin="0 0 10 0" Grid.Column="0" Content="Insert New Bus" Click="Insert_Click"/>
             <Button Margin="0 0 10 0" Grid.Column="1" Content="Send Bus To Drive" Click="SendBus_Click"/>

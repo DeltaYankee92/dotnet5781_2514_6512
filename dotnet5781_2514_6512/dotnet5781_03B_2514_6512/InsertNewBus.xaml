@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotnet5781_03B_2514_6512"
         mc:Ignorable="d"
-        Title="InsertNewBus" Height="400" Width="300">
+        Title="InsertNewBus" Height="500" Width="300">
     <StackPanel>
-        <Grid Margin="0,0,-0.4,105.4" Height="237">
+        <Grid Margin="0,0,-0.4,105.4" Height="320">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="87*"/>
-                <ColumnDefinition Width="206*"/>
+                <ColumnDefinition Width="208*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -20,12 +21,14 @@
             <TextBlock Text="ID" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
             <TextBlock Text="Milage" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
             <TextBlock Text="Fuel" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
-            <TextBox x:Name="ID_Text_Box" Grid.Row="0" Margin="9.8,31,10.6,31" Grid.Column="1"/>
-            <TextBox x:Name="Milage_Text_Box" Grid.Row="1" Margin="9.8,31,10.6,31" Grid.Column="1"/>
-            <TextBox x:Name="Fuel_Text_Box" Grid.Row="2" Margin="9.8,31,10.6,31" Grid.Column="1"/>
+            <TextBlock Text="Date" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            <TextBox x:Name="ID_Text_Box" Grid.Row="0" Margin="9.8,31,10.6,31" Grid.Column="1" TextChanged="ID_Text_Box_TextChanged"/>
+            <TextBox x:Name="Milage_Text_Box" Grid.Row="1" Margin="9.8,31,10.6,31" Grid.Column="1" TextChanged="Milage_Text_Box_TextChanged"/>
+            <TextBox x:Name="Fuel_Text_Box" Grid.Row="2" Margin="9.8,31,10.6,31" Grid.Column="1" TextChanged="Fuel_Text_Box_TextChanged" />
+            <TextBox x:Name="Date_Text_Box" Grid.Row="3" Margin="9.8,31,10.6,31" Grid.Column="1" TextChanged="Date_Text_Box_TextChanged"/>
 
         </Grid>
-        <Button x:Name="Enter_Button" Content="Enter" Margin="0,0,-0.4,0" Height="27"/>
+        <Button x:Name="Enter_Button" Content="Enter" Height="27" Click="Enter_Button_Click"/>
     </StackPanel>
 
 </Window>
