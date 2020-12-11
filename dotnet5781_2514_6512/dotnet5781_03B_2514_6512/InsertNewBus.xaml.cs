@@ -52,10 +52,54 @@ namespace dotnet5781_03B_2514_6512
         }
         private void Enter_Button_Click(object sender, RoutedEventArgs e)
         {
-            int[] x;
-            x = atoi(ID_Text_Box.Text);
+            DateTime d1;
+            int[] id_add;
+            id_add = atoi(ID_Text_Box.Text);// id
+            int milage, fuel;
+            milage = turn_full(atoi(Milage_Text_Box.Text));
+            fuel = turn_full(atoi(Fuel_Text_Box.Text));
+            try
+            {
+                d1 = valid_date(Date_Text_Box.Text);
+                check_id(id_add,d1);
+                Buses b1 = new Buses(d1,id_add,milage,0,fuel);
+                mainwindow1.BusData.Add(b1);
+                mainwindow1.Busses_List.Items.Refresh();
+                this.Close();
+            }
+            catch(Exception oops)
+            {
+                MessageBox.Show(oops.Message);
+                this.Close();
+            }
         }
 
+        private void check_id(int[] id_add, DateTime d1)
+        {
+            if (d1.Year >= 2018 && id_add.Length != 8)
+                throw new ArgumentException("ERROR: number of digits doesnt correspond to the correct year");
+            else if (d1.Year < 2018 && id_add.Length != 7)
+                throw new ArgumentException("ERROR: number of digits doesnt correspond to the correct year");
+        }
+
+        public static DateTime valid_date(string x)
+        {
+            bool flag = true;
+            DateTime date;
+              flag = DateTime.TryParse(x, out date);
+            if (flag == false)
+                throw new ArgumentException("ERROR: date is not valid. the format is: DD/MM/YYYY");
+            return date;
+        }
+        public static int turn_full(int[] temp)
+        {
+            int sum = 0;
+            for (int i = 0; i < temp.Length; i++)
+            {
+                sum += temp[i];
+            }
+            return sum;
+        }
         public static int[] atoi(string temp)
         {
             int[] generated = new int[temp.Length];

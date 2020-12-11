@@ -21,7 +21,12 @@ namespace dotnet5781_03B_2514_6512
     public partial class MainWindow : Window
     {
         public static bool flag = true;
-        static List<Buses> BusDatabase = new List<Buses>();
+        private static List<Buses> BusDatabase = new List<Buses>();
+        public List<Buses> BusData
+        {
+            get { return BusDatabase; }
+            set { BusDatabase = value; }
+        }
         public MainWindow()
         {
             int[] plate1 = { 4, 1, 2, 5, 9, 7, 3 };
