@@ -42,7 +42,19 @@ namespace dotnet5781_03B_2514_6512
         {
             return license_plate;
         }
-
+        public bool compare_plate(Buses b1)
+        {
+            int x = this.getplate().Length; // to prevent accessive use of .get() and length
+            if (x != b1.getplate().Length)
+                return false;
+            else
+            {
+                for (int i = 0; i < x; i++)
+                    if (this.getplate()[i] != b1.getplate()[i])
+                        return false;
+            }
+            return true;
+        }
         internal void fuel_up()
         {
             current_fuel = 1200;

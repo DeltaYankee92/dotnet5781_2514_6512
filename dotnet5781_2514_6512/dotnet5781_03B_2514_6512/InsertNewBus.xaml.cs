@@ -63,6 +63,11 @@ namespace dotnet5781_03B_2514_6512
                 d1 = valid_date(Date_Text_Box.Text);
                 check_id(id_add,d1);
                 Buses b1 = new Buses(d1,id_add,milage,0,fuel);
+                foreach (Buses it in mainwindow1.BusData)
+                {
+                    if (it.compare_plate(b1))
+                        throw new ArgumentException("plate already in system");
+                }
                 mainwindow1.BusData.Add(b1);
                 mainwindow1.Busses_List.Items.Refresh();
                 this.Close();
