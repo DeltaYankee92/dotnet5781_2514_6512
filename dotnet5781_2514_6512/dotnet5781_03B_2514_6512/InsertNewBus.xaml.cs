@@ -101,7 +101,7 @@ namespace dotnet5781_03B_2514_6512
             int sum = 0;
             for (int i = 0; i < temp.Length; i++)
             {
-                sum += temp[i];
+                sum += temp[i]*(int)(Math.Pow(10,i));
             }
             return sum;
         }
