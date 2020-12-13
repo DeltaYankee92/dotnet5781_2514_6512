@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{560A28E4-264B-4F65-A376-3494AD049016}</ProjectGuid>
+    <ProjectGuid>{8D1CA823-5849-43E8-9D34-05DC50A40E51}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>dotnet5781_03B_2514_6512</RootNamespace>
-    <AssemblyName>dotnet5781_03B_2514_6512</AssemblyName>
+    <RootNamespace>Testing</RootNamespace>
+    <AssemblyName>Testing</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,18 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ChooseBusToDrive.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DeleteBus.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="InsertNewBus.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,16 +64,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Buses.cs" />
-    <Compile Include="ChooseBusToDrive.xaml.cs">
-      <DependentUpon>ChooseBusToDrive.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteBus.xaml.cs">
-      <DependentUpon>DeleteBus.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="driver.cs" />
-    <Compile Include="InsertNewBus.xaml.cs">
-      <DependentUpon>InsertNewBus.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -109,15 +87,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\App.datasource" />
-    <None Include="Properties\DataSources\Buses.datasource" />
-    <None Include="Properties\DataSources\ChooseBusToDrive.datasource" />
-    <None Include="Properties\DataSources\DeleteBus.datasource" />
-    <None Include="Properties\DataSources\dotnet5781_03B_2514_6512.Properties.Resources.datasource" />
-    <None Include="Properties\DataSources\dotnet5781_03B_2514_6512.Properties.Settings.datasource" />
-    <None Include="Properties\DataSources\Driver.datasource" />
-    <None Include="Properties\DataSources\InsertNewBus.datasource" />
-    <None Include="Properties\DataSources\MainWindow.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
