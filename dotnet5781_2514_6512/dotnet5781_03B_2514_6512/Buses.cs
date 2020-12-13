@@ -69,6 +69,7 @@ namespace dotnet5781_03B_2514_6512
             MaintenanceDate = DateTime.Now;
             LastMaintenance = milage_total;
             milage = 0;
+
         }
 
         internal bool can_go(int amount_to_drive)

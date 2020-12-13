@@ -54,6 +54,15 @@ namespace dotnet5781_03B_2514_6512
             objChooseBusToDrive.Show();
         }
 
+        private void DoMaintenance_Click(object sender, RoutedEventArgs e)
+        {
+            var temp = (FrameworkElement)sender;
+            Buses b1 = (Buses)temp.DataContext;
+            b1.fix();
+            b1.Status = "Ready";
+            MessageBox.Show("The bus with the ID of: " + b1.License_Plate + " had a successful maintaintance");
+            Busses_List.Items.Refresh();
+        }
         private void DeleteBus_Click(object sender, RoutedEventArgs e)
         {
             int index = 0;
@@ -71,6 +80,7 @@ namespace dotnet5781_03B_2514_6512
             if (flag)
             {
                 BusDatabase.RemoveAt(index);
+                MessageBox.Show("The bus with the ID of: "+b1.License_Plate+" has been removed successfully");
             }
             Busses_List.Items.Refresh();
         }
