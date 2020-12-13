@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotnet5781_03B_2514_6512"
         mc:Ignorable="d"
-        Title="Bus Contol App" Height="400" Width="500">
-    <StackPanel>
+        Title="Bus Contol App" Height="400" Width="600">
+    <!--<StackPanel>
         <TextBlock Text="Busses List" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
         <ListBox x:Name="Busses_List" Height="256" Margin="0,0,-0.4,0" />
         <Grid >
@@ -19,6 +19,61 @@
             <Button Margin="0 0 10 0" Grid.Column="1" Content="Send Bus To Drive" Click="SendBus_Click"/>
             <Button Margin="0 0 10 0" Grid.Column="2" Content="Delete Bus" Click="DeleteBus_Click"/>
         </Grid>
+    </StackPanel>-->
+
+    <StackPanel>
+        <ListView ItemsSource="{Binding BusDatabase}" Name="Busses_List" Margin="0,0,-0.4,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="License Plate" x:Name="firstHeader" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=License_Plate}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Status" x:Name="secondHeader" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Status}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="SendBus" Content="Send To Drive" Click="DeleteBus_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="" Width="70">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="DeleteBus"  Content=" Delete" Command="{Binding Path=BindingContext.DeleteCommand, Source=x:Reference BusDatabase}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="DoMaintenance" Content=" Maintenance"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <!--<GridViewColumn DisplayMemberBinding="{Binding Path = License_Plate}" Header="License Plate" Width="150"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path = Status}" Header="Status" Width="150"></GridViewColumn>-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+        </Grid>
+        <Button Name="InsertNewBus" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" Margin="0 0 10 0" Grid.Column="0" Content="Insert New Bus" Click="Insert_Click"/>
     </StackPanel>
 
 </Window>

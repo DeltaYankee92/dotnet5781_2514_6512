@@ -4,33 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dotnet5781_03B_2514_6512
+namespace Testing
 {
-    //enum status { NotReady, Ready, Driving};
+    enum status { NotReady, Ready};
     public class Buses
     {
-        public string License_Plate { get; set; }
-        public int[] license_plate {get; set; }
-        public int milage { get; set; }      
-        public int milage_total { get; set; }
-        public int LastMaintenance { get; set; }
-        public int current_fuel { get; set; }
-        public DateTime registrationDate { get; set; }
-        public DateTime MaintenanceDate { get; set; }
-        public string Status { get; set; }
+        string license_plate;
+        //int[] license_plate; //not determining the size here, because there are 2 options. we will add the '-'s to the print function. 
+        int milage;       //milage since last maintenance
+        int milage_total; // kilometrag'
+        int LastMaintenance;  //km number of last maintenance
+        int current_fuel;     //fuel used by km
+        DateTime registrationDate, MaintenanceDate; // as requested.
+        status Status;
 
 
-        public Buses(DateTime date, int[] id, int v1, int v2, int v3) 
+        public Buses(DateTime date, string id, int v1, int v2, int v3) 
         {
-            MaintenanceDate = date;
+            
+            registrationDate = date;
             license_plate = id;
             milage = v1;
             LastMaintenance = v2;
             current_fuel = v3;
             MaintenanceDate = date;
-            Status = "Ready";
-            License_Plate = turn_to_string();
-            registrationDate = DateTime.Now;
+            Status = status.Ready;
+
         }
 
         internal void print_mileage()
@@ -40,23 +39,11 @@ namespace dotnet5781_03B_2514_6512
             Console.WriteLine("Drove: {0} kilometers", milage_total);
         }
 
-        internal int[] getplate()
+        string getplate()
         {
             return license_plate;
         }
-        public bool compare_plate(Buses b1)
-        {
-            int x = this.getplate().Length; // to prevent accessive use of .get() and length
-            if (x != b1.getplate().Length)
-                return false;
-            else
-            {
-                for (int i = 0; i < x; i++)
-                    if (this.getplate()[i] != b1.getplate()[i])
-                        return false;
-            }
-            return true;
-        }
+
         internal void fuel_up()
         {
             current_fuel = 1200;
@@ -141,16 +128,6 @@ namespace dotnet5781_03B_2514_6512
             for (int i = 0; i < license_plate.Length; i++)
             {
                 x += (license_plate[i]).ToString();
-            }
-            return x;
-        }
-
-        public string turn_to_string(int[] arr)
-        {
-            string x = "";
-            for (int i = 0; i < arr.Length; i++)
-            {
-                x += (arr[i]).ToString();
             }
             return x;
         }
