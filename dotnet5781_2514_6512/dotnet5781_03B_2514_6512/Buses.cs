@@ -9,15 +9,16 @@ namespace dotnet5781_03B_2514_6512
     //enum status { NotReady, Ready, Driving};
     public class Buses
     {
-        public string License_Plate { get; set; }
+        
         public int[] license_plate {get; set; }
-        public int milage { get; set; }      
-        public int milage_total { get; set; }
+        public int milage { get; set; }
+        public int milage_total  { get; set; }
         public int LastMaintenance { get; set; }
         public int current_fuel { get; set; }
         public DateTime registrationDate { get; set; }
         public DateTime MaintenanceDate { get; set; }
         public string Status { get; set; }
+        public string License_Plate { get; set; }
 
 
         public Buses(DateTime date, int[] id, int v1, int v2, int v3) 
@@ -25,6 +26,7 @@ namespace dotnet5781_03B_2514_6512
             MaintenanceDate = date;
             license_plate = id;
             milage = v1;
+            milage_total += milage;
             LastMaintenance = v2;
             current_fuel = v3;
             MaintenanceDate = date;
@@ -157,7 +159,7 @@ namespace dotnet5781_03B_2514_6512
         public override string ToString()
         {
             //return $"{turn_to_string()} bus, with the status of {Status}";
-            return $"Bus with license plate: {License_Plate}. \n Milage: {milage} \n Fuel: {current_fuel} \n Registered Date: {registrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers.";
+            return $"Bus with license plate: {License_Plate}. \n Milage: {milage_total} \n Fuel: {current_fuel} \n Registered Date: {registrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers.";
         }
 
     }

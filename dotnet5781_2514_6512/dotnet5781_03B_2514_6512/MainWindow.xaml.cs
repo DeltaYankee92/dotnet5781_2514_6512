@@ -40,17 +40,8 @@ namespace dotnet5781_03B_2514_6512
             BusDatabase.Add(busC);
             InitializeComponent();
             Busses_List.ItemsSource = BusDatabase;
-
-
-
         }
         
-
-        public void InitializeBuses()
-        {
-
-        }
-
         private void Insert_Click(object sender, RoutedEventArgs e)
         {
             InsertNewBus objInsertNewBus = new InsertNewBus();
