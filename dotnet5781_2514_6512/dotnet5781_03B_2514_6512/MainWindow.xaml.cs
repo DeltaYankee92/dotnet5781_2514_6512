@@ -65,16 +65,23 @@ namespace dotnet5781_03B_2514_6512
 
         private void DeleteBus_Click(object sender, RoutedEventArgs e)
         {
+            int index = 0;
+            bool flag = false;
             var temp = (FrameworkElement)sender;
             Buses b1 = (Buses)temp.DataContext;
             foreach (Buses item in BusDatabase)
             {
-                if (item.pl)
+                if (item.compare_plate(b1))
                 {
-
+                    index = BusDatabase.IndexOf(item);
+                    flag = true;
                 }
             }
-
+            if (flag)
+            {
+                BusDatabase.RemoveAt(index);
+            }
+            Busses_List.Items.Refresh();
         }
 
         private void SendToDrive_Click(object sender, RoutedEventArgs e)

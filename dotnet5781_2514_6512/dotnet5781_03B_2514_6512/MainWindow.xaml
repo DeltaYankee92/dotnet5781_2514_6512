@@ -42,14 +42,14 @@
                     <GridViewColumn Header="" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="SendBus" Content="Send To Drive" Click="DeleteBus_Click"/>
+                                <Button Name="SendBus" Content="Send To Drive"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="DeleteBus"  Content=" Delete" Command="{Binding Path=BindingContext.DeleteCommand, Source=x:Reference BusDatabase}"/>
+                                <Button Name="DeleteBus"  Content=" Delete"  Click="DeleteBus_Click"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
