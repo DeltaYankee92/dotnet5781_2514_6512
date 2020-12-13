@@ -66,7 +66,7 @@ namespace dotnet5781_03B_2514_6512
                 foreach (Buses it in mainwindow1.BusData)
                 {
                     if (it.compare_plate(b1))
-                        throw new ArgumentException("plate already in system");
+                        throw new ArgumentException("plate already in system"); // if already exists
                 }
                 mainwindow1.BusData.Add(b1);
                 mainwindow1.Busses_List.Items.Refresh();
