@@ -88,5 +88,21 @@ namespace dotnet5781_03B_2514_6512
         {
 
         }
+
+        private void Busses_List_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (sender != null)
+                {
+                    ListView ls = sender as ListView;
+                    MessageBox.Show(ls.SelectedItem.ToString());
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

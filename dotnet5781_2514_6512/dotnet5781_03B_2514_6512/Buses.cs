@@ -156,7 +156,8 @@ namespace dotnet5781_03B_2514_6512
         }
         public override string ToString()
         {
-            return $"{turn_to_string()} bus, with the status of {Status}";
+            //return $"{turn_to_string()} bus, with the status of {Status}";
+            return $"Bus with license plate: {License_Plate}. \n Milage: {milage} \n Fuel: {current_fuel} \n Registered Date: {registrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers.";
         }
 
     }

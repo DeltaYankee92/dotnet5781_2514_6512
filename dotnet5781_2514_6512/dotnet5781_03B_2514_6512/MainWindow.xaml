@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotnet5781_03B_2514_6512"
         mc:Ignorable="d"
-        Title="Bus Contol App" Height="400" Width="600">
+        Title="Bus Contol App" Height="400" Width="700"
+
+        
+        >
+
     <!--<StackPanel>
         <TextBlock Text="Busses List" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
         <ListBox x:Name="Busses_List" Height="256" Margin="0,0,-0.4,0" />
@@ -22,7 +26,7 @@
     </StackPanel>-->
 
     <StackPanel>
-        <ListView ItemsSource="{Binding BusDatabase}" Name="Busses_List" Margin="0,0,-0.4,0">
+        <ListView ItemsSource="{Binding BusDatabase}" Name="Busses_List" Margin="0,0,-0.4,0" MouseDoubleClick="Busses_List_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="License Plate" x:Name="firstHeader" Width="150">
@@ -53,10 +57,17 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="" Width="120">
+                    <GridViewColumn Header="" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Name="DoMaintenance" Content=" Maintenance"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="DoRefuel" Content=" Refuel"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
