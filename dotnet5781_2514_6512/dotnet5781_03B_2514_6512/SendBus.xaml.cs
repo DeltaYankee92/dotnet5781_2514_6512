@@ -54,7 +54,7 @@ namespace dotnet5781_03B_2514_6512
             if (line.can_go(dist))
             {
                 line.drive(dist);
-                if (line.milage >= 20000)
+                if ((line.Milage >= 20000)||(line.Current_Fuel == 0))
                 {
                     line.Status = "Not Ready";
                 }
@@ -62,7 +62,7 @@ namespace dotnet5781_03B_2514_6512
             }
             else
             {
-                MessageBox.Show("This bus cant drive with these parameters");
+                MessageBox.Show($"This bus cant drive with these parameters. \nBus has enough fuel for: {line.Current_Fuel} kilometers \nBus can drive {20000-line.Milage} kilometers before next maintenance.");
                 this.Close();
             }
         }
@@ -106,7 +106,7 @@ namespace dotnet5781_03B_2514_6512
                         generated[i] = 9;
                         break;
                     default:
-                        generated[i] = -1;
+                        MessageBox.Show("Insert only numbers!");
                         break;
                 }
             }
