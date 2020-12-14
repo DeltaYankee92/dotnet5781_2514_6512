@@ -54,6 +54,10 @@ namespace dotnet5781_03B_2514_6512
             if (line.can_go(dist))
             {
                 line.drive(dist);
+                if (line.milage >= 20000)
+                {
+                    line.Status = "Not Ready";
+                }
                 this.Close();
             }
             else
