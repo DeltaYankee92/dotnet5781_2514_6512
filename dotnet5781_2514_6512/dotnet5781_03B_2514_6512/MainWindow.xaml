@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:dotnet5781_03B_2514_6512"
         mc:Ignorable="d"
         Title="Bus Contol App" Height="400" Width="700">
-    
+
     <StackPanel>
         <ListView ItemsSource="{Binding BusDatabase}" Name="Busses_List" Margin="0,0,-0.4,0" MouseDoubleClick="Busses_List_MouseDoubleClick">
             <ListView.View>
