@@ -118,9 +118,9 @@ namespace dotnet5781_03B_2514_6512
 
                 }
             }
-            catch (Exception)
+            catch (Exception exep)
             {
-
+                MessageBox.Show(exep.Message);
             }
         }
 
