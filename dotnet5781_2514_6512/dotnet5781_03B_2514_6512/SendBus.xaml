@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="SendBus:" Height="166.4" Width="450">
     <Grid>
-        <TextBox x:Name="DistanceTextBox" HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" TextWrapping="Wrap" Text="Enter Distance:" VerticalAlignment="Top" Width="175" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
-        <TextBox x:Name="DistanceInputBox" HorizontalAlignment="Left" Height="49" Margin="190,11,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="243" TextChanged="DistanceInputBox_TextChanged"/>
+        <TextBox x:Name="DistanceTextBox" HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" TextWrapping="Wrap" BorderThickness="0" Text="Enter Distance:" VerticalAlignment="Top" Width="175" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBox x:Name="DistanceInputBox" HorizontalAlignment="Left" Height="35" Margin="190,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" FontSize="20" TextChanged="DistanceInputBox_TextChanged"/>
         <Button x:Name="Send" Content="Send to drive" HorizontalAlignment="Left" Margin="255,80,0,0" VerticalAlignment="Top" Width="178" Height="47" Click="Send_Click"/>
 
     </Grid>

@@ -29,15 +29,36 @@ namespace dotnet5781_03B_2514_6512
         }
         public MainWindow()
         {
-            int[] plate1 = { 4, 1, 2, 5, 9, 7, 3 };
-            int[] plate2 = { 5, 2, 3, 4, 0, 8, 4 };
-            int[] plate3 = { 6, 3, 4, 5, 1, 9, 5 };
-            Buses busA = new Buses(DateTime.Now, plate1, 0, 0, 1000);
-            Buses busB = new Buses(DateTime.Now, plate2, 0, 0, 1000);
-            Buses busC = new Buses(DateTime.Now, plate3, 0, 0, 1000);
-            BusDatabase.Add(busA);
-            BusDatabase.Add(busB);
-            BusDatabase.Add(busC);
+            int[] plate1 = { 4, 1, 2, 5, 9, 7, 3, 0 };
+            int[] plate2 = { 5, 2, 3, 4, 0, 8, 4, 5 };
+            int[] plate3 = { 6, 3, 4, 5, 1, 9, 5, 6 };
+            int[] plate4 = { 4, 1, 4, 6, 2, 6, 3, 5 };
+            int[] plate5 = { 2, 6, 4, 6, 3, 3, 7, 5 };
+            int[] plate6 = { 5, 1, 7, 4, 2, 5, 4, 7 };
+            int[] plate7 = { 5, 1, 8, 3, 5, 2, 5, 7 };
+            int[] plate8 = { 5, 1, 6, 4, 7, 3, 5, 2 };
+            int[] plate9 = { 4, 7, 3, 6, 2, 4, 3, 6 };
+            int[] plate10 = { 5, 2, 7, 5, 7, 3, 4, 6 };
+            Buses bus1 = new Buses(DateTime.Now, plate1, 39000, 20000, 1000);
+            Buses bus2 = new Buses(DateTime.Now, plate2, 17000, 0, 200);
+            Buses bus3 = new Buses(DateTime.Now, plate3, 15000, 0, 0);
+            Buses bus4 = new Buses(DateTime.Now, plate3, 41000, 0, 1000);
+            Buses bus5 = new Buses(DateTime.Now, plate3, 0, 0, 1000);
+            Buses bus6 = new Buses(DateTime.Now, plate3, 0, 0, 1000);
+            Buses bus7 = new Buses(DateTime.Now, plate3, 0, 0, 1000);
+            Buses bus8 = new Buses(DateTime.Now, plate3, 0, 0, 1000);
+            Buses bus9 = new Buses(DateTime.Now, plate3, 0, 0, 1000);
+            Buses bus10 = new Buses(DateTime.Now, plate3, 0, 0, 0);
+            BusDatabase.Add(bus1);
+            BusDatabase.Add(bus2);
+            BusDatabase.Add(bus3);
+            BusDatabase.Add(bus4);
+            BusDatabase.Add(bus5);
+            BusDatabase.Add(bus6);
+            BusDatabase.Add(bus7);
+            BusDatabase.Add(bus8);
+            BusDatabase.Add(bus9);
+            BusDatabase.Add(bus10);
             InitializeComponent();
             Busses_List.ItemsSource = BusDatabase;
         }

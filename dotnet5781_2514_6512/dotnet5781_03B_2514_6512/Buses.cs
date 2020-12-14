@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dotnet5781_03B_2514_6512
 {
@@ -10,41 +6,48 @@ namespace dotnet5781_03B_2514_6512
     public class Buses
     {
         
-        public int[] license_plate {get; set; }
-        public int milage { get; set; }
-        public int milage_total  { get; set; }
+        public int[] licensePlateArray {get; set; }
+        public int Milage { get; set; }
+        public int MilageTotal  { get; set; }
         public int LastMaintenance { get; set; }
-        public int current_fuel { get; set; }
-        public DateTime registrationDate { get; set; }
+        public int Current_Fuel { get; set; }
+        public DateTime RegistrationDate { get; set; }
         public DateTime MaintenanceDate { get; set; }
         public string Status { get; set; }
         public string License_Plate { get; set; }
 
 
-        public Buses(DateTime date, int[] id, int v1, int v2, int v3) 
+        public Buses(DateTime date, int[] id, int milage, int last_maintenance, int current_fuel) 
         {
             MaintenanceDate = date;
-            license_plate = id;
-            milage = v1;
-            milage_total += milage;
-            LastMaintenance = v2;
-            current_fuel = v3;
+            licensePlateArray = id;
+            Milage = milage;
+            MilageTotal += Milage;
+            LastMaintenance = last_maintenance;
+            Current_Fuel = current_fuel;
             MaintenanceDate = date;
-            Status = "Ready";
+            if ((20000 < MilageTotal-LastMaintenance)||(Current_Fuel == 0))
+            {
+                Status = "Not Ready";
+            }
+            else
+            {
+                Status = "Ready";
+            }
             License_Plate = turn_to_string();
-            registrationDate = DateTime.Now;
+            RegistrationDate = DateTime.Now;
         }
 
         internal void print_mileage()
         {
             Console.Write("the bus with the ID: ");
             print(this);
-            Console.WriteLine("Drove: {0} kilometers", milage_total);
+            Console.WriteLine("Drove: {0} kilometers", MilageTotal);
         }
 
         internal int[] getplate()
         {
-            return license_plate;
+            return licensePlateArray;
         }
         public bool compare_plate(Buses b1)
         {
@@ -61,14 +64,14 @@ namespace dotnet5781_03B_2514_6512
         }
         internal void fuel_up()
         {
-            current_fuel = 1000;
+            Current_Fuel = 1000;
         }
 
         internal void fix()
         {
             MaintenanceDate = DateTime.Now;
-            LastMaintenance = milage_total;
-            milage = 0;
+            LastMaintenance = MilageTotal;
+            Milage = 0;
             this.Status = "Ready";
         }
 
@@ -76,17 +79,14 @@ namespace dotnet5781_03B_2514_6512
         {
             if ((LastMaintenance+amount_to_drive) >= (LastMaintenance+20000))
             {
-                Console.WriteLine("Bus needs maintenance!");
                 return false;
             }
-            if (current_fuel<amount_to_drive)
+            if (Current_Fuel<amount_to_drive)
             {
-                Console.WriteLine("Not enough fuel!");
                 return false;
             }
-            if (current_fuel-amount_to_drive < 0)
+            if (Current_Fuel-amount_to_drive < 0)
             {
-                Console.WriteLine("Not enough fuel!");
                 return false;
             }
             return true;
@@ -94,10 +94,10 @@ namespace dotnet5781_03B_2514_6512
 
         internal void drive(int amount_to_drive)
         {
-            milage += amount_to_drive;
-            milage_total += amount_to_drive;
-            current_fuel -= amount_to_drive;
-            if (this.milage >= 20000)
+            Milage += amount_to_drive;
+            MilageTotal += amount_to_drive;
+            Current_Fuel -= amount_to_drive;
+            if (this.Milage >= 20000)
             {
                 this.Status = "Not Ready";
             }
@@ -105,38 +105,38 @@ namespace dotnet5781_03B_2514_6512
 
         internal void print(Buses bus)
         {
-            if (license_plate.Length == 7)
+            if (licensePlateArray.Length == 7)
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    Console.Write("{0}", license_plate[i]);
+                    Console.Write("{0}", licensePlateArray[i]);
                 }
                 Console.Write("-");
                 for (int i = 0; i < 3; i++)
                 {
-                    Console.Write("{0}", license_plate[i]);
+                    Console.Write("{0}", licensePlateArray[i]);
                 }
                 Console.Write("-");
                 for (int i = 0; i < 2; i++)
                 {
-                    Console.Write("{0}", license_plate[i]);
+                    Console.Write("{0}", licensePlateArray[i]);
                 }
             }
-            else if (license_plate.Length == 8)
+            else if (licensePlateArray.Length == 8)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Console.Write("{0}", license_plate[i]);
+                    Console.Write("{0}", licensePlateArray[i]);
                 }
                 Console.Write("-");
                 for (int i = 0; i < 2; i++)
                 {
-                    Console.Write("{0}", license_plate[i]);
+                    Console.Write("{0}", licensePlateArray[i]);
                 }
                 Console.Write("-");
                 for (int i = 0; i < 3; i++)
                 {
-                    Console.Write("{0}", license_plate[i]);
+                    Console.Write("{0}", licensePlateArray[i]);
                 }
             }
             Console.WriteLine();
@@ -145,9 +145,9 @@ namespace dotnet5781_03B_2514_6512
         public string turn_to_string()
         {
             string x="";
-            for (int i = 0; i < license_plate.Length; i++)
+            for (int i = 0; i < licensePlateArray.Length; i++)
             {
-                x += (license_plate[i]).ToString();
+                x += (licensePlateArray[i]).ToString();
             }
             return x;
         }
@@ -164,7 +164,7 @@ namespace dotnet5781_03B_2514_6512
         public override string ToString()
         {
             //return $"{turn_to_string()} bus, with the status of {Status}";
-            return $"Bus with license plate: {License_Plate}. \n Milage: {milage_total} \n Fuel: {current_fuel} \n Registered Date: {registrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers. \n Next Maintenance in: {20000 - milage} \n Status: {Status}" ;
+            return $"Bus with license plate: {License_Plate}. \n Milage: {MilageTotal} \n Fuel: {Current_Fuel} \n Registered Date: {RegistrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers. \n Next Maintenance in: {20000 - Milage} \n Status: {Status}" ;
         }
 
     }
