@@ -85,10 +85,6 @@ namespace dotnet5781_03B_2514_6512
             Busses_List.Items.Refresh();
         }
 
-        private void SendToDrive_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Busses_List_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -98,12 +94,48 @@ namespace dotnet5781_03B_2514_6512
                 {
                     ListView ls = sender as ListView;
                     MessageBox.Show(ls.SelectedItem.ToString());
+
                 }
             }
             catch (Exception)
             {
 
             }
+        }
+
+        private void Send_Bus_Click(object sender, RoutedEventArgs e)
+        {
+            var temp = (FrameworkElement)sender;
+            Buses line = (Buses)temp.DataContext;
+            if (line.Status != "Ready")
+            {
+                MessageBox.Show("Bus not ready to drive");
+                return;
+            }
+            ChooseBusToDrive cbtd = new ChooseBusToDrive(ref temp);
+            cbtd.Show();
+        }
+
+        private void Refuel_Click(object sender, RoutedEventArgs e)
+        {
+            int index = 0;
+            bool flag = false;
+            var temp = (FrameworkElement)sender;
+            Buses b1 = (Buses)temp.DataContext;
+            foreach (Buses item in BusDatabase)
+            {
+                if (item.compare_plate(b1))
+                {
+                    index = BusDatabase.IndexOf(item);
+                    flag = true;
+                }
+            }
+            if (flag)
+            {
+                b1.fuel_up();
+                MessageBox.Show("The bus with the ID of: " + b1.License_Plate + " Was successfuly fueled up.");
+            }
+            Busses_List.Items.Refresh();
         }
     }
 }
