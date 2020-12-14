@@ -24,7 +24,7 @@ namespace dotnet5781_03B_2514_6512
     {
         DispatcherTimer timer;
         public static bool flag = true;
-        private static List<Buses> BusDatabase = new List<Buses>();
+        public static List<Buses> BusDatabase = new List<Buses>();
         public List<Buses> BusData
         {
             get { return BusDatabase; }
@@ -74,7 +74,7 @@ namespace dotnet5781_03B_2514_6512
         {
             foreach(Buses b1 in BusDatabase)
             {
-                if( b1.Status == "under maintanance"&&b1.time.TimeNow=="00:00:00")
+                if( b1.Status == "under maintanance" && b1.time.TimeNow=="00:00:00")
                 {
                     b1.Status = "Ready";
                     b1.time.Blank();
@@ -82,12 +82,12 @@ namespace dotnet5781_03B_2514_6512
                     MessageBox.Show("The bus with the ID of: " + b1.License_Plate + " had a successful maintaintance");
                     Busses_List.Items.Refresh();                  
                 }
-                if (b1.Status == "Drive" && b1.time.TimeNow == "00:00:00")
+                if (b1.Status == "in_drive" && b1.time.TimeNow == "00:00:00")
                 {
                     b1.Status = "Ready";
                     b1.time.Blank();
+                    MessageBox.Show("The bus with the ID of: " + b1.License_Plate + " had a successful drive");
                     Busses_List.Items.Refresh();
-                    return;
                 }
             }
         }
@@ -105,15 +105,20 @@ namespace dotnet5781_03B_2514_6512
 
         private void DoMaintenance_Click(object sender, RoutedEventArgs e)
         {
-            
             var temp = (FrameworkElement)sender;
             Buses b1 = (Buses)temp.DataContext;
-            b1.Status = "under maintanance";
-            Busses_List.Items.Refresh();
-            b1.time = new Timerclasstest(144);
-            Busses_List.Items.Refresh();
-            timer.Start();
-         
+            if (b1.Status== "under maintanance" || b1.Status == "in_drive")
+            {
+                MessageBox.Show("can't start a new action. in the middle of one");
+            }
+            else
+            {
+                b1.Status = "under maintanance";
+                Busses_List.Items.Refresh();
+                b1.time = new Timerclasstest(144);
+                Busses_List.Items.Refresh();
+                timer.Start();
+            }
 
         }
         private void DeleteBus_Click(object sender, RoutedEventArgs e)
@@ -163,10 +168,13 @@ namespace dotnet5781_03B_2514_6512
             if (line.Status != "Ready")
             {
                 MessageBox.Show("Bus not ready to drive");
-                return;
             }
-            ChooseBusToDrive cbtd = new ChooseBusToDrive(ref temp);
-            cbtd.Show();
+            else
+            {
+                int fuel_before = line.Current_Fuel;
+                ChooseBusToDrive cbtd = new ChooseBusToDrive(ref temp);
+                cbtd.Show();
+            }
         }
 
         private void Refuel_Click(object sender, RoutedEventArgs e)
@@ -189,6 +197,19 @@ namespace dotnet5781_03B_2514_6512
                 MessageBox.Show("The bus with the ID of: " + b1.License_Plate + " Was successfuly fueled up.");
             }
             Busses_List.Items.Refresh();
+        }
+        public void drive_timer(Buses line, int fuel_before)
+        {
+            int dist = line.Current_Fuel - fuel_before;
+            if (dist != 0)
+            {
+                line.Status = "in_drive";
+                Busses_List.Items.Refresh();
+                line.time = new Timerclasstest(dist * 60);
+                Busses_List.Items.Refresh();
+                timer.Start();
+            }
+
         }
     }
 }

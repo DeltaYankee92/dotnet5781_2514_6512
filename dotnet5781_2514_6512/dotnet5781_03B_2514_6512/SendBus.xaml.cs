@@ -51,10 +51,11 @@ namespace dotnet5781_03B_2514_6512
                 dist *= 10;
                 dist += arr[i];
             }
-            if (line.can_go(dist))
+          if (line.can_go(dist))
             {
+
                 line.drive(dist);
-                if ((line.Milage >= 20000)||(line.Current_Fuel == 0))
+                if ((line.Milage >= 20000) || (line.Current_Fuel == 0))
                 {
                     line.Status = "Not Ready";
                 }
@@ -112,6 +113,7 @@ namespace dotnet5781_03B_2514_6512
             }
             return generated;
         }
+
     }
 
 }
