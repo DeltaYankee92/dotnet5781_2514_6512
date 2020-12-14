@@ -61,7 +61,7 @@ namespace dotnet5781_03B_2514_6512
         }
         internal void fuel_up()
         {
-            current_fuel = 1200;
+            current_fuel = 1000;
         }
 
         internal void fix()
@@ -69,7 +69,7 @@ namespace dotnet5781_03B_2514_6512
             MaintenanceDate = DateTime.Now;
             LastMaintenance = milage_total;
             milage = 0;
-
+            this.Status = "Ready";
         }
 
         internal bool can_go(int amount_to_drive)
@@ -97,6 +97,10 @@ namespace dotnet5781_03B_2514_6512
             milage += amount_to_drive;
             milage_total += amount_to_drive;
             current_fuel -= amount_to_drive;
+            if (this.milage >= 20000)
+            {
+                this.Status = "Not Ready";
+            }
         }
 
         internal void print(Buses bus)
@@ -160,7 +164,7 @@ namespace dotnet5781_03B_2514_6512
         public override string ToString()
         {
             //return $"{turn_to_string()} bus, with the status of {Status}";
-            return $"Bus with license plate: {License_Plate}. \n Milage: {milage_total} \n Fuel: {current_fuel} \n Registered Date: {registrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers.";
+            return $"Bus with license plate: {License_Plate}. \n Milage: {milage_total} \n Fuel: {current_fuel} \n Registered Date: {registrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers. \n Next Maintenance in: {20000 - milage} \n Status: {Status}" ;
         }
 
     }

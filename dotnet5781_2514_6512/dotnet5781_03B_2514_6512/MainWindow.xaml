@@ -6,22 +6,7 @@
         xmlns:local="clr-namespace:dotnet5781_03B_2514_6512"
         mc:Ignorable="d"
         Title="Bus Contol App" Height="400" Width="700">
-
-    <!--<StackPanel>
-        <TextBlock Text="Busses List" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-        <ListBox x:Name="Busses_List" Height="256" Margin="0,0,-0.4,0" />
-        <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Name="InsertNewBus" Margin="0 0 10 0" Grid.Column="0" Content="Insert New Bus" Click="Insert_Click"/>
-            <Button Margin="0 0 10 0" Grid.Column="1" Content="Send Bus To Drive" Click="SendBus_Click"/>
-            <Button Margin="0 0 10 0" Grid.Column="2" Content="Delete Bus" Click="DeleteBus_Click"/>
-        </Grid>
-    </StackPanel>-->
-
+    
     <StackPanel>
         <ListView ItemsSource="{Binding BusDatabase}" Name="Busses_List" Margin="0,0,-0.4,0" MouseDoubleClick="Busses_List_MouseDoubleClick">
             <ListView.View>
@@ -43,7 +28,7 @@
                     <GridViewColumn Header="" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="SendBus" Content="Send To Drive"/>
+                                <Button Name="SendBus" Content="Send To Drive" Click="Send_Bus_Click"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -64,12 +49,10 @@
                     <GridViewColumn Header="" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="DoRefuel" Content=" Refuel"/>
+                                <Button Name="DoRefuel" Content=" Refuel" Click="Refuel_Click"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <!--<GridViewColumn DisplayMemberBinding="{Binding Path = License_Plate}" Header="License Plate" Width="150"></GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path = Status}" Header="Status" Width="150"></GridViewColumn>-->
                 </GridView>
             </ListView.View>
         </ListView>
