@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace dotnet5781_03B_2514_6512
 {
@@ -20,7 +22,7 @@ namespace dotnet5781_03B_2514_6512
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        DispatcherTimer timer;
         public static bool flag = true;
         private static List<Buses> BusDatabase = new List<Buses>();
         public List<Buses> BusData
@@ -62,8 +64,33 @@ namespace dotnet5781_03B_2514_6512
             BusDatabase.Add(bus10);
             InitializeComponent();
             Busses_List.ItemsSource = BusDatabase;
+            timer = new DispatcherTimer();
+            timer.Tick += new EventHandler(CheckUpdate);
+            timer.Interval = new TimeSpan(0, 0, 2);
+           
+
         }
-        
+        private void CheckUpdate(Object obj,EventArgs e)
+        {
+            foreach(Buses b1 in BusDatabase)
+            {
+                if( b1.Status == "under maintanance"&&b1.time.TimeNow=="00:00:00")
+                {
+                    b1.Status = "Ready";
+                    b1.time.Blank();
+                    b1.fix();
+                    MessageBox.Show("The bus with the ID of: " + b1.License_Plate + " had a successful maintaintance");
+                    Busses_List.Items.Refresh();                  
+                }
+                if (b1.Status == "Drive" && b1.time.TimeNow == "00:00:00")
+                {
+                    b1.Status = "Ready";
+                    b1.time.Blank();
+                    Busses_List.Items.Refresh();
+                    return;
+                }
+            }
+        }
         private void Insert_Click(object sender, RoutedEventArgs e)
         {
             InsertNewBus objInsertNewBus = new InsertNewBus();
@@ -78,12 +105,16 @@ namespace dotnet5781_03B_2514_6512
 
         private void DoMaintenance_Click(object sender, RoutedEventArgs e)
         {
+            
             var temp = (FrameworkElement)sender;
             Buses b1 = (Buses)temp.DataContext;
-            b1.fix();
-            b1.Status = "Ready";
-            MessageBox.Show("The bus with the ID of: " + b1.License_Plate + " had a successful maintaintance");
+            b1.Status = "under maintanance";
             Busses_List.Items.Refresh();
+            b1.time = new Timerclasstest(144);
+            Busses_List.Items.Refresh();
+            timer.Start();
+            
+
         }
         private void DeleteBus_Click(object sender, RoutedEventArgs e)
         {

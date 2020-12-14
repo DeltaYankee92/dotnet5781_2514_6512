@@ -15,6 +15,13 @@ namespace dotnet5781_03B_2514_6512
         public DateTime MaintenanceDate { get; set; }
         public string Status { get; set; }
         public string License_Plate { get; set; }
+        private Timerclasstest Time;
+        public Timerclasstest time 
+        { get =>Time;
+            set
+            {
+                this.Time = value;            
+            } }
 
 
         public Buses(DateTime date, int[] id, int milage, int last_maintenance, int current_fuel) 
