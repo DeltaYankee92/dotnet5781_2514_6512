@@ -24,15 +24,15 @@ namespace dotnet5781_03B_2514_6512
             } }
 
 
-        public Buses(DateTime date, int[] id, int milage, int last_maintenance, int current_fuel) 
+        public Buses(DateTime date, int[] id, int milage, int last_maintenance, int total_milage, int current_fuel) 
         {
             MaintenanceDate = date;
             licensePlateArray = id;
-            Milage = milage;
-            MilageTotal += Milage;
+            MilageTotal = total_milage;
             LastMaintenance = last_maintenance;
             Current_Fuel = current_fuel;
             MaintenanceDate = date;
+            Milage = MilageTotal - LastMaintenance;
             if ((20000 < MilageTotal-LastMaintenance)||(Current_Fuel == 0))
             {
                 Status = "Not Ready";
@@ -71,7 +71,7 @@ namespace dotnet5781_03B_2514_6512
         }
         internal void fuel_up()
         {
-            Current_Fuel = 1000;
+            Current_Fuel = 5000;
         }
 
         internal void fix()
@@ -171,7 +171,7 @@ namespace dotnet5781_03B_2514_6512
         public override string ToString()
         {
             //return $"{turn_to_string()} bus, with the status of {Status}";
-            return $"Bus with license plate: {License_Plate}. \n Milage: {MilageTotal} \n Fuel: {Current_Fuel} \n Registered Date: {RegistrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers. \n Next Maintenance in: {20000 - Milage} \n Status: {Status}" ;
+            return $"Bus with license plate: {License_Plate}. \n Milage: {MilageTotal} \n Fuel: {Current_Fuel} \n Registered Date: {RegistrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers. \n Next Maintenance in: {20000-Milage} \n Status: {Status}" ;
         }
 
     }

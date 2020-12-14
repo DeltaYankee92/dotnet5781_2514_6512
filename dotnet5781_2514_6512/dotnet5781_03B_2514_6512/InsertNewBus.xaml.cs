@@ -50,19 +50,25 @@ namespace dotnet5781_03B_2514_6512
         {
 
         }
+        private void Last_Maintenance_km_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
         private void Enter_Button_Click(object sender, RoutedEventArgs e)
         {
             DateTime d1;
             int[] id_add;
             id_add = atoi(ID_Text_Box.Text);// id
-            int milage, fuel;
-            milage = turn_full(atoi(Milage_Text_Box.Text));
+            int milage, last_maintenance_km, total_milage, fuel;
+            total_milage = turn_full(atoi(Milage_Text_Box.Text));
+            last_maintenance_km = turn_full(atoi(Last_Maintenance_km.Text));
+            milage = total_milage - last_maintenance_km;
             fuel = turn_full(atoi(Fuel_Text_Box.Text));
             try
             {
                 d1 = valid_date(Date_Text_Box.Text);
                 check_id(id_add,d1);
-                Buses b1 = new Buses(d1,id_add,milage,0,fuel);
+                Buses b1 = new Buses(d1,id_add,milage,last_maintenance_km, total_milage,fuel);
                 foreach (Buses it in mainwindow1.BusData)
                 {
                     if (it.compare_plate(b1))
@@ -99,9 +105,14 @@ namespace dotnet5781_03B_2514_6512
         public static int turn_full(int[] temp)
         {
             int sum = 0;
+            //for (int i = 0; i < temp.Length; i++)
+            //{
+            //    sum += temp[i]*(int)(Math.Pow(10,i));
+            //}
             for (int i = 0; i < temp.Length; i++)
             {
-                sum += temp[i]*(int)(Math.Pow(10,i));
+                sum *= 10;
+                sum += temp[i];
             }
             return sum;
         }
@@ -113,6 +124,9 @@ namespace dotnet5781_03B_2514_6512
                 char x = temp[i];
                 switch (x)
                 {
+                    case '0':
+                        generated[i] = 0;
+                        break;
                     case '1':
                         generated[i] = 1;
                         break;
@@ -141,11 +155,13 @@ namespace dotnet5781_03B_2514_6512
                         generated[i] = 9;
                         break;
                     default:
-                        generated[i] = -1;
+                        MessageBox.Show("Insert numbers only!");
                         break;
                 }
             }
             return generated;
         }
+
+
     }
 }
