@@ -100,9 +100,9 @@ namespace dotnet5781_03B_2514_6512
                     MessageBox.Show(ls.SelectedItem.ToString());
                 }
             }
-            catch (Exception)
+            catch (Exception exep)
             {
-
+                MessageBox.Show(exep.Message);
             }
         }
     }
