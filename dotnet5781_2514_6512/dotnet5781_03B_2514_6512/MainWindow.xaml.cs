@@ -122,15 +122,15 @@ namespace dotnet5781_03B_2514_6512
         {
             var temp = (FrameworkElement)sender;
             Buses b1 = (Buses)temp.DataContext;
-            if (b1.Status== "under maintanance" || b1.Status == "in_drive")
+            if (b1.Status== "Under Maintenance" || b1.Status == "in_drive")
             {
                 MessageBox.Show("can't start a new action. in the middle of one");
             }
             else
             {
-                b1.Status = "under maintanance";
+                b1.Status = "Under Maintenance";
                 Busses_List.Items.Refresh();
-                b1.time = new Timerclasstest(1);
+                b1.time = new Timerclasstest(30);
                 Busses_List.Items.Refresh();
                 timer.Start();
             }
