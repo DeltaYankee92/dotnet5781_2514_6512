@@ -5,23 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotnet5781_03B_2514_6512"
         mc:Ignorable="d"
-        Title="Bus Contol App" Height="400" Width="700">
+        Title="Bus Contol App" Height="400" Width="700" Icon="Bus_icon.ico">
 
-    <StackPanel>
-        <ListView ItemsSource="{Binding BusDatabase}" Name="Busses_List" Margin="0,0,-0.4,0" MouseDoubleClick="Busses_List_MouseDoubleClick">
+    <!--code to change colors based on the Status of the bus-->
+    <Window.Resources>
+        <Style TargetType="ListViewItem">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Status}" Value="Ready">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="Not Ready">
+                    <Setter Property="Background" Value="red"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="Under Maintenance">
+                    <Setter Property="Background" Value="LightYellow"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <StackPanel Background="Snow">
+        <ListView ItemsSource="{Binding BusDatabase}" Name="Busses_List" Margin="0,0,-0.4,0" MouseDoubleClick="Busses_List_MouseDoubleClick" Background="AliceBlue">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="License Plate" x:Name="firstHeader" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=License_Plate}"/>
+                                <TextBlock Text="{Binding Path=License_Plate}" HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Status" x:Name="secondHeader" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=Status}"/>
+                                <TextBlock Text="{Binding Path=Status}" Foreground="{Binding StatusColorSelector}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

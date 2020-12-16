@@ -3,7 +3,7 @@
 namespace dotnet5781_03B_2514_6512
 {
     //enum status { NotReady, Ready, Driving};
-    public class Buses
+    public class Buses  
     {
         
         public int[] licensePlateArray {get; set; }

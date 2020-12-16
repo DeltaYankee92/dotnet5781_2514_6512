@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,11 +16,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+
+
+//-----------------Bonuses:---------------------
+//Timer is displaed for each bus seperately. "send drive button is not preducng a timer. we couldn't sove this.
+//Rows change colors based on the bus status (Ready / Not Ready / Under Maintenance).
+//The action button are loaded for each bus seperatly. No need to open window and pick a bus. The button will preform the action on thw row it was called from.
+
+
+
 namespace dotnet5781_03B_2514_6512
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    
     public partial class MainWindow : Window
     {
         DispatcherTimer timer;
@@ -32,6 +40,7 @@ namespace dotnet5781_03B_2514_6512
         }
         public MainWindow()
         {
+            //---------------------Busses List initialization-------------------------------
             int[] plate1 = { 4, 1, 2, 5, 9, 7, 3, 0 };
             int[] plate2 = { 5, 2, 3, 4, 0, 8, 4, 5 };
             int[] plate3 = { 6, 3, 4, 5, 1, 9, 5, 6 };
@@ -70,16 +79,18 @@ namespace dotnet5781_03B_2514_6512
            
 
         }
+
+        //-----------------------Function to refresh the display and update the statuses of the busses-------------------------
         private void CheckUpdate(Object obj,EventArgs e)
         {
             foreach(Buses b1 in BusDatabase)
             {
-                if( b1.Status == "under maintanance" && b1.time.TimeNow=="00:00:00")
+                if( b1.Status == "Under Maintenance" && b1.time.TimeNow=="00:00:00")
                 {
                     b1.Status = "Ready";
                     b1.time.Blank();
                     b1.fix();
-                    MessageBox.Show("The bus with the ID of: " + b1.License_Plate + " had a successful maintaintance");
+                    MessageBox.Show("The bus with the ID of: " + b1.License_Plate + " had a successful maintenance");
                     Busses_List.Items.Refresh();                  
                 }
                 if (b1.Status == "in_drive" && b1.time.TimeNow == "00:00:00")
@@ -91,11 +102,14 @@ namespace dotnet5781_03B_2514_6512
                 }
             }
         }
+
+        //----------------Button "insert" which inserts a new bus to the database-------------------------
         private void Insert_Click(object sender, RoutedEventArgs e)
         {
             InsertNewBus objInsertNewBus = new InsertNewBus();
             objInsertNewBus.Show();
         }
+
 
         private void SendBus_Click(object sender, RoutedEventArgs e)
         {
@@ -103,6 +117,7 @@ namespace dotnet5781_03B_2514_6512
             objChooseBusToDrive.Show();
         }
 
+        //----------------button to send bus to mantenance. the button will appear in each row and is specific to that bus-----------------
         private void DoMaintenance_Click(object sender, RoutedEventArgs e)
         {
             var temp = (FrameworkElement)sender;
@@ -144,6 +159,7 @@ namespace dotnet5781_03B_2514_6512
         }
 
 
+        //---------------this will cuase a bus information window to appear when double clicking a bus (the row)-------------------
         private void Busses_List_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
@@ -160,6 +176,8 @@ namespace dotnet5781_03B_2514_6512
                 MessageBox.Show(exep.Message);
             }
         }
+        //----------------Button to send bus to drive. will generate a new window to enter detailes-------------------
+        //----------------------the button will appear in each row and is specific to that bus------------------------
 
         private void Send_Bus_Click(object sender, RoutedEventArgs e)
         {
@@ -177,6 +195,7 @@ namespace dotnet5781_03B_2514_6512
             }
         }
 
+        //-------------------------refuel button code. individual to each bus-------------------
         private void Refuel_Click(object sender, RoutedEventArgs e)
         {
             int index = 0;

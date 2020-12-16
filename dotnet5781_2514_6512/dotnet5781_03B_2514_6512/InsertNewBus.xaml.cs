@@ -54,6 +54,8 @@ namespace dotnet5781_03B_2514_6512
         {
 
         }
+
+        //---------------code for the enter button after inserting the new bus info--------------------
         private void Enter_Button_Click(object sender, RoutedEventArgs e)
         {
             DateTime d1;
@@ -85,14 +87,16 @@ namespace dotnet5781_03B_2514_6512
             }
         }
 
+        //---------------functon to validate propper license plate insertion (8 digit plate)--------------------
         private void check_id(int[] id_add, DateTime d1)
         {
             if (d1.Year >= 2018 && id_add.Length != 8)
-                throw new ArgumentException("ERROR: number of digits doesnt correspond to the correct year");
+                throw new ArgumentException("ERROR: number of digits doesnt correspond to the correct year. since 2018 - license plates are 8 digits.");
             else if (d1.Year < 2018 && id_add.Length != 7)
-                throw new ArgumentException("ERROR: number of digits doesnt correspond to the correct year");
+                throw new ArgumentException("ERROR: number of digits doesnt correspond to the correct year. before 2018 - license plates are 7 digits");
         }
 
+        //---------------functon to validate propper date insertion--------------------
         public static DateTime valid_date(string x)
         {
             bool flag = true;
@@ -102,13 +106,11 @@ namespace dotnet5781_03B_2514_6512
                 throw new ArgumentException("ERROR: date is not valid. the format is: DD/MM/YYYY");
             return date;
         }
+
+        //------------------function to turn array of intengers into one intenger----------------
         public static int turn_full(int[] temp)
         {
             int sum = 0;
-            //for (int i = 0; i < temp.Length; i++)
-            //{
-            //    sum += temp[i]*(int)(Math.Pow(10,i));
-            //}
             for (int i = 0; i < temp.Length; i++)
             {
                 sum *= 10;
@@ -116,6 +118,8 @@ namespace dotnet5781_03B_2514_6512
             }
             return sum;
         }
+
+        //-----------------function to read data from user input and accept only numbers-------------------
         public static int[] atoi(string temp)
         {
             int[] generated = new int[temp.Length];
