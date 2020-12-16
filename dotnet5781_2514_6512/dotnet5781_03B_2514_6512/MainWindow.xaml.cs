@@ -115,7 +115,7 @@ namespace dotnet5781_03B_2514_6512
             {
                 b1.Status = "under maintanance";
                 Busses_List.Items.Refresh();
-                b1.time = new Timerclasstest(144);
+                b1.time = new Timerclasstest(1);
                 Busses_List.Items.Refresh();
                 timer.Start();
             }
@@ -209,7 +209,6 @@ namespace dotnet5781_03B_2514_6512
                 Busses_List.Items.Refresh();
                 timer.Start();
             }
-
         }
     }
 }
