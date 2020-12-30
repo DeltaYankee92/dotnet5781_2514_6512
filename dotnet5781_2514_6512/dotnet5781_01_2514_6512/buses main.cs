@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace dotnet5781_00_2514_6512
 {
     class buses_main
-    {
+    {/*
         enum CHOICE { EXIT, ADD, DRIVE, REFUEL_OR_REPAIRS, MILEAGE };
 
         private static List<Buses> database = new List<Buses>(); // again, as requested
@@ -241,6 +241,96 @@ namespace dotnet5781_00_2514_6512
             } while (flag == false) ;
             return date;
         }
+        */
+
+
+        static public bool isnum(char tav)
+        {
+            if (tav >= '1' && tav <= '9')
+                return true;
+            return false;
+        }
+        public static int arrtonum(int[] arr)
+        {
+            int temp = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                temp *= 10;
+                temp += arr[i];
+            }
+            return temp;
+        }
+
+        static public int message_system()
+        {
+            int num = 0;
+            string temp = "";
+            bool flag = false;
+            string new_name = "moshiko3423 moshiko 2423";
+            for (int i = 0; i < new_name.Length; i++)
+            {
+                if (isnum(new_name[i]))
+                {
+                    temp += new_name[i];
+                    flag = true;
+                }
+                else if (flag == true)
+                {
+                    flag = false;
+                    num = arrtonum(atoi(temp));
+                }
+            }
+            return num;
+        }
+        public static int[] atoi(string temp)
+        {
+            int[] generated = new int[temp.Length];
+            for (int i = 0; i < temp.Length; i++)
+            {
+                switch (temp[i])
+                {
+                    case '0':
+                        generated[i] = 0;
+                        break;
+                    case '1':
+                        generated[i] = 1;
+                        break;
+                    case '2':
+                        generated[i] = 2;
+                        break;
+                    case '3':
+                        generated[i] = 3;
+                        break;
+                    case '4':
+                        generated[i] = 4;
+                        break;
+                    case '5':
+                        generated[i] = 5;
+                        break;
+                    case '6':
+                        generated[i] = 6;
+                        break;
+                    case '7':
+                        generated[i] = 7;
+                        break;
+                    case '8':
+                        generated[i] = 8;
+                        break;
+                    case '9':
+                        generated[i] = 9;
+                        break;
+                    default:
+                        return null;
+                }
+            }
+            return generated;
+        }
+
+        private static void Main(string[] args)
+        {
+            Console.WriteLine(message_system());
+        }
     }
+
 }
 

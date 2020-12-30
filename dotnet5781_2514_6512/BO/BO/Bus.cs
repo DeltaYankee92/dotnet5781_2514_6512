@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace dotnet5781_03B_2514_6512
+namespace BL.BO
 {
     //enum status { NotReady, Ready, Driving};
-    public class Buses
+    public class Bus
     {
-
+        #region 
         public int[] licensePlateArray { get; set; }
         public int Milage { get; set; }
         public int MilageTotal { get; set; }
@@ -16,9 +16,10 @@ namespace dotnet5781_03B_2514_6512
         public string Status { get; set; }
         public string License_Plate { get; set; }
 
+        #endregion
 
-
-        public Buses(DateTime date, int[] id, int milage, int last_maintenance, int total_milage, int current_fuel)
+        #region ctor,get
+        public Bus(DateTime date, int[] id, int milage, int last_maintenance, int total_milage, int current_fuel)
         {
             MaintenanceDate = date;
             licensePlateArray = id;
@@ -50,7 +51,10 @@ namespace dotnet5781_03B_2514_6512
         {
             return licensePlateArray;
         }
-        public bool compare_plate(Buses b1)
+        #endregion
+
+        #region functions
+        public bool compare_plate(Bus b1)
         {
             int x = this.getplate().Length; // to prevent accessive use of .get() and length
             if (x != b1.getplate().Length)
@@ -103,8 +107,10 @@ namespace dotnet5781_03B_2514_6512
                 this.Status = "Not Ready";
             }
         }
+        #endregion
 
-        internal void print(Buses bus)
+        #region printing
+        internal void print(Bus bus)
         {
             if (licensePlateArray.Length == 7)
             {
@@ -168,6 +174,6 @@ namespace dotnet5781_03B_2514_6512
             //return $"{turn_to_string()} bus, with the status of {Status}";
             return $"Bus with license plate: {License_Plate}. \n Milage: {MilageTotal} \n Fuel: {Current_Fuel} \n Registered Date: {RegistrationDate} \n Last Maintenace: {MaintenanceDate}, at: {LastMaintenance} kilometers. \n Next Maintenance in: {20000 - Milage} \n Status: {Status}";
         }
-
+        #endregion
     }
 }

@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace dotnet5781_01_2514_6512
+namespace dotnet5781_2514_6512_project
 {
     class Program
     {
-       private static void Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
         }
