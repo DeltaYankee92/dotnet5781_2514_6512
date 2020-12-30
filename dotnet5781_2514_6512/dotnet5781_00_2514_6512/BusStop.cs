@@ -22,7 +22,6 @@ namespace dotnet5781_00_2514_6512
         {
             return this.BusStationKey;
         }
-
         public double getlatitute()// return the Latitude value.
         {
             return this.Latitude;
