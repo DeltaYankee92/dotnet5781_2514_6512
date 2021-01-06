@@ -19,6 +19,11 @@ namespace DalApi.DO
         #endregion
 
         #region ctor,get
+
+        public Bus()
+        {
+
+        }
         public Bus(DateTime date, int[] id, int milage, int last_maintenance, int total_milage, int current_fuel)
         {
             MaintenanceDate = date;
@@ -39,6 +44,7 @@ namespace DalApi.DO
             License_Plate = turn_to_string();
             RegistrationDate = DateTime.Now;
         }
+
 
         internal void print_mileage()
         {

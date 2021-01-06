@@ -42,13 +42,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cloning.cs" />
-    <Compile Include="DalObject.cs" />
+    <Compile Include="DalObj.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BO\BL.csproj">
+      <Project>{FD434837-D40E-4D3B-AE13-3BE8D170DDE8}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DalApi\DalApi.csproj">
       <Project>{D147DB1E-AC9F-4F60-8ADE-C4727C8C1CFB}</Project>
       <Name>DalApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DS\DS.csproj">
+      <Project>{E7D87D22-4AA3-4B43-B21D-52FF4156D7FA}</Project>
+      <Name>DS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

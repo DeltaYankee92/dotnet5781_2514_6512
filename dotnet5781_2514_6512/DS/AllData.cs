@@ -1,4 +1,5 @@
-﻿using BL.BO;
+﻿
+using DalApi.DO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,12 @@ namespace DS
         public static List<LineStation> List_LineStation;
         static AllData()
         {
-            InitAllLists();
+            start();
         }
 
-         static void InitAllLists() // add initilizer
+         static void start() 
         {
-            throw new NotImplementedException();
+            List_Bus = new List<Bus>();
         }
     }
 }

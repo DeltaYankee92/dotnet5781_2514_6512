@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DalObject
 {
-    static class Cloning // add here too
+    static class Cloning 
     {
         //first way - No Bonus
         //do it for each DO entity
@@ -47,3 +47,4 @@ namespace DalObject
         }
     }
 }
+
