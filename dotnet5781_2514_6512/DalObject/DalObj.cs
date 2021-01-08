@@ -13,10 +13,12 @@ namespace DalObject
     sealed class DalObject : IDL // implamenting the interface
     {
         static readonly DalObject instance = new DalObject();
-        static bool comparearr(int[] arr1,int[] arr2)
+
+        #region static helpers
+        static bool comparearr(int[] arr1, int[] arr2)
         {
-            if(arr1.Length!=arr2.Length)
-            return false;
+            if (arr1.Length != arr2.Length)
+                return false;
             for (int i = 0; i < arr1.Length; i++)
             {
                 if (arr1[i] != arr2[i])
@@ -24,97 +26,165 @@ namespace DalObject
             }
             return true;
         }
-        #region bus
+
+        #endregion
+
+        #region bus_func
         public IEnumerable<Bus> GetAllBuses()
         {
             return from bus in AllData.List_Bus
                    select bus.Clone();
         }
-        public Bus GetBus(int[] id)
+        public Bus GetBus(int[] plate)
         {
-            throw new NotImplementedException();
+            Bus in_system = AllData.List_Bus.Find(bus => comparearr(bus.licensePlateArray, plate));
+            if (in_system == null)
+                throw new ArgumentException("No bus already in system");
+            return in_system;
         }
-        public void removeBus(int id)
+        public void addBus(Bus bus)
         {
-            throw new NotImplementedException();
+            Bus in_system = AllData.List_Bus.Find(bus2 => comparearr(bus2.licensePlateArray , bus.licensePlateArray));
+            if (in_system != null)
+                throw new ArgumentException("Bus already in system");
+            AllData.List_Bus.Add(bus.Clone());
         }
-        public void updateBus(Bus bus)
+
+        public void removeBus(int[] plate)
         {
-            throw new NotImplementedException();
+            Bus in_system = AllData.List_Bus.Find(bus => comparearr(bus.licensePlateArray, plate));
+            if (in_system == null)
+                throw new ArgumentException("No bus already in system");
+            AllData.List_Bus.Remove(in_system);
+        }
+        public void Details(Bus bus)
+        {
+            Bus in_system = AllData.List_Bus.Find(bus1 => comparearr(bus1.licensePlateArray, bus.licensePlateArray));
+            if (in_system == null)
+                throw new ArgumentException("No bus already in system");
+            AllData.List_Bus.Remove(in_system);
+            AllData.List_Bus.Add(bus.Clone()); // remove the one in the system, add the clone.
 
         }
-        public void refuel(int id)
+        public void Fuel(int[] plate)
         {
-            throw new NotImplementedException();
+            Bus in_system = AllData.List_Bus.Find(bus1 => comparearr(bus1.licensePlateArray, plate));
+            if (in_system == null)
+                throw new ArgumentException("No bus already in system");
+            AllData.List_Bus.Remove(in_system);
+            in_system.fuel_up();
+            AllData.List_Bus.Add(in_system.Clone()); // remove the one in the system, add the clone.
         }
-        public void maintain(int id)
+        public void Maintain(int[] plate)
         {
-            throw new NotImplementedException();
+            Bus in_system = AllData.List_Bus.Find(bus1 => comparearr(bus1.licensePlateArray, plate));
+            if (in_system == null)
+                throw new ArgumentException("No bus already in system");
+            in_system.fix();
+            AllData.List_Bus.Add(in_system.Clone()); // remove the one in the system, add the clone.
         }
         #endregion
 
-
-      
-
-        public void removebusLineStation(int id)
+        #region Line_func
+        public IEnumerable<BusLine> GetAllBusLines()
         {
-            throw new NotImplementedException();
+            return from line in AllData.List_BusLine
+                   select line.Clone();
         }
-
-        public void removeLine(int id)
+        public BusLine GetBusLines(int linenum)
         {
-            throw new NotImplementedException();
+            BusLine in_system = AllData.List_BusLine.Find(line1 => linenum == line1.BusNumber);
+            if (in_system == null)
+                throw new ArgumentException("No line to get");
+            return in_system.Clone();
         }
-
-
-        public void updatebusLineStation(LineStation line)
+        public void AddBusLine(BusLine line)
         {
-            throw new NotImplementedException();
+            BusLine in_system = AllData.List_BusLine.Find(line1 => line.BusNumber == line1.BusNumber);
+            if (in_system != null)
+                throw new ArgumentException("Can't add line. already in system");
+            AllData.List_BusLine.Add(line.Clone());
         }
-
-        public void updateLine(BusLine line)
+        public void RemoveBusLine(int linenum)
         {
-            throw new NotImplementedException();
+            BusLine in_system = AllData.List_BusLine.Find(line1 => linenum == line1.BusNumber);
+            if (in_system == null)
+                throw new ArgumentException("No line to remove");
+            AllData.List_BusLine.Remove(in_system.Clone());
         }
-
-        public IEnumerable<BusLine> GetAllbusLines()
+        public void Details_Line(BusLine line)
         {
-            throw new NotImplementedException();
+            BusLine in_system = AllData.List_BusLine.Find(line1 => line.BusNumber == line1.BusNumber);
+            if (in_system == null)
+                throw new ArgumentException("No line to update details");
+            AllData.List_BusLine.Remove(in_system.Clone());
+            AllData.List_BusLine.Add(line.Clone());
         }
+        #endregion
 
-        public BusLine GetBusLine(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void addLine(BusLine line)
-        {
-            throw new NotImplementedException();
-        }
-
+        #region LineStation_func
         public void addStation(BusLine station)
         {
-            throw new NotImplementedException();
+            AllData.List_LineStation;
         }
-
         public IEnumerable<LineStation> GetAllbusLineStation()
         {
-            throw new NotImplementedException();
+
+        }
+        public LineStation GetbusLineStation(int[] id)
+        {
+
+        }
+        public void removebusLineStation(int[] id)
+        {
+
+        }
+        public void updatebusLineStation(LineStation line)
+        {
+
         }
 
-        public LineStation GetbusLineStation(int id)
+        /*
+                 public void addStation(DO.busLineStation station)
         {
-            throw new NotImplementedException();
+            var result = DataSource.LineStations.Find(b => b.code == station.code);
+            if ((result != null) && (result.enabled == true))
+                throw new itemAlreadyExistsException($"ID number {station.code} is already taken");
+            DataSource.LineStations.Add(station.Clone());
         }
+        public IEnumerable<busLineStation> GetAllbusLineStation()
+        {
+            return from bus in DataSource.LineStations
+                   select bus.Clone();
+        }
+        public busLineStation GetbusLineStation(int id)
+        {
+            var result = DataSource.LineStations.Find(b => b.id == id);
+            if (result == null)
+                throw new NoSuchEntryException($"No entry Matches ID number {id}");
+            return result;
+        }
+      
+        public void removebusLineStation(int id)
+        {
+            var result = DataSource.LineStations.Find(b => b.id == id);
+            if (result == null)
+                throw new NoSuchEntryException($"No entry Matches ID number {id}");
+            result.enabled = false;
+        }
+        public void updatebusLineStation(busLineStation station)
+        {
+            var result = DataSource.LineStations.Find(b => b.id == station.id);
+            if (result == null)
+                throw new NoSuchEntryException($"No entry Matches ID number {station.id}");
+            DataSource.LineStations.Remove(result);
+            DataSource.LineStations.Add(station.Clone());
+        }
+         
+         
+         */
 
-        public Bus GetBus(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void addBus(Bus bus)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
     }
 }

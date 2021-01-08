@@ -73,12 +73,12 @@ namespace DalApi.DO
             }
             return true;
         }
-        internal void fuel_up()
+        public void fuel_up()
         {
             Current_Fuel = 5000;
         }
 
-        internal void fix()
+        public void fix()
         {
             MaintenanceDate = DateTime.Now;
             LastMaintenance = MilageTotal;
@@ -86,7 +86,7 @@ namespace DalApi.DO
             this.Status = "Ready";
         }
 
-        internal bool can_go(int amount_to_drive)
+        public bool can_go(int amount_to_drive)
         {
             if ((LastMaintenance + amount_to_drive) >= (LastMaintenance + 20000))
             {
@@ -103,7 +103,7 @@ namespace DalApi.DO
             return true;
         }
 
-        internal void drive(int amount_to_drive)
+        public void drive(int amount_to_drive)
         {
             Milage += amount_to_drive;
             MilageTotal += amount_to_drive;
@@ -116,7 +116,7 @@ namespace DalApi.DO
         #endregion
 
         #region printing
-        internal void print(Bus bus)
+        public void print(Bus bus)
         {
             if (licensePlateArray.Length == 7)
             {
