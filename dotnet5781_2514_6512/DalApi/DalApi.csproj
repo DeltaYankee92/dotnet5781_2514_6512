@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DO\activity.cs" />
+    <Compile Include="DO\exceptions.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="DLconfig.cs" />
     <Compile Include="DLFactory.cs" />
