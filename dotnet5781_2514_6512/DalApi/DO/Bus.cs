@@ -3,7 +3,7 @@
 namespace DalApi.DO
 {
     //enum status { NotReady, Ready, Driving};
-    public class Bus
+    public class Bus : Activity
     {
         #region 
         public int[] licensePlateArray { get; set; }

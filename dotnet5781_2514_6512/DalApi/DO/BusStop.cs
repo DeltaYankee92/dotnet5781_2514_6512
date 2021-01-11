@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DalApi.DO
 {
 
-   public class BusStop
+   public class BusStop : Activity
     {
         #region func,get
         Random rand = new Random();

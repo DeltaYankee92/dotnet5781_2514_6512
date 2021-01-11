@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DalApi.DO
 {
-    public class BusLine : IComparable<BusLine>
+    public class BusLine : Activity
     {
 
         //----------------------------DATA---------------------------------------------
@@ -52,31 +52,6 @@ namespace DalApi.DO
         }
 
         //----------------------------overloads----------------------------------
-        public int CompareTo(BusLine other)
-        {
-            TimeSpan ThisTotalTime = new TimeSpan(0, 0, 0);
-            TimeSpan OtherTotalTime = new TimeSpan(0, 0, 0);
-            foreach (LineStation s in this.Stations)
-            {
-                ThisTotalTime += s.time;
-            }
-            foreach (LineStation s in other.Stations)
-            {
-                OtherTotalTime += s.time;
-            }
-            if (ThisTotalTime < OtherTotalTime)
-            {
-                return 1;
-            }
-            else if (ThisTotalTime > OtherTotalTime)
-            {
-                return -1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
 
         public override string ToString()
         {

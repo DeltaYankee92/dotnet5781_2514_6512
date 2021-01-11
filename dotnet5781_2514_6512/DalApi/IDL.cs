@@ -11,33 +11,35 @@ namespace DLAPI
     // Update - update properties of an instance
     // Delete - delete an instance
     public interface IDL
-    {
+    { 
         #region Bus
-        IEnumerable<Bus> GetAllBuses();
-        Bus GetBus(int[] plate);
-        void addBus(Bus bus);
-        void removeBus(int[] plate);
-        void Details(Bus bus);
-        void Fuel(int[] plate);
-        void Maintain(int[] plate);
 
+        void addBus(Bus bus); // Crud
+
+        Bus GetBus(int[] plate);//cRud
+        IEnumerable<Bus> GetAllBuses();//cRud
+        void Details(Bus bus); // crUd
+        void Fuel(int[] plate); // crUd
+        void Maintain(int[] plate); //crUd
+
+        void removeBus(int[] plate); // cruD
         #endregion
 
         #region busLine 
-        
-        IEnumerable<BusLine> GetAllBusLines();
-        BusLine GetBusLines(int linenum);
-        void AddBusLine(BusLine line);
-        void RemoveBusLine(int linenum);
-        void Details_Line(BusLine line);
+
+        void AddBusLine(BusLine line); // Crud
+        IEnumerable<BusLine> GetAllBusLines(); //cRud
+        BusLine GetBusLine(int linenum); //cRud
+        void Details_Line(BusLine line);//crUd
+        void RemoveBusLine(int linenum);// cruD
         #endregion
 
         #region LineStation
-        void addStation(BusStop station);
-        IEnumerable<LineStation> GetAllbusLineStation();
-        LineStation GetbusLineStation(int[] id);
-        void removeLineStation(int[] id);
-        void updatebusLineStation(LineStation line);
+        void addStation(LineStation line); //Crud
+        IEnumerable<LineStation> GetLines(); //cRud
+        LineStation GetLineStation(int linenum); //cRud
+        void removeLineStation(int linenum); //crUd
+        void Details_LineStation(LineStation line); //cruD
 
         #endregion
 
