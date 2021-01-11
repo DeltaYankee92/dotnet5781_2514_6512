@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-   public static class DeepCopy
+   public static class Utility
     {
         #region BL to DAL converters
-        internal static T BLtoDAL_Bus<T,S>(S bus) where T: DalApi.DO.Bus, new() where S : BO.Bus, new()
+        internal static T BOtoDO_Bus<T,S>(S bus) where T: DalApi.DO.Bus, new() where S : BO.Bus, new()
         {
             T output = new T();
             foreach (PropertyInfo propto in output.GetType().GetProperties())
@@ -26,7 +26,7 @@ namespace BL
             return output;
         }
 
-        internal static T BLtoDAL_BusLine<T, S>(S linenum) where T : DalApi.DO.BusLine, new() where S : BO.BusLine, new()
+        internal static T BOtoDO_BusLine<T, S>(S linenum) where T : DalApi.DO.BusLine, new() where S : BO.BusLine, new()
         {
             T output = new T();
             foreach (PropertyInfo propto in output.GetType().GetProperties())
@@ -41,7 +41,7 @@ namespace BL
             return output;
         }
 
-        internal static T BLtoDAL_BusStop<T, S>(S busStop) where T : DalApi.DO.BusStop, new() where S : BO.BusStop, new()
+        internal static T BOtoDO_BusStop<T, S>(S busStop) where T : DalApi.DO.BusStop, new() where S : BO.BusStop, new()
         {
             T output = new T();
             foreach (PropertyInfo propto in output.GetType().GetProperties())
@@ -56,24 +56,7 @@ namespace BL
             return output;
         }
 
-        internal static T BLtoDAL_BusStop<T, S>(S busStop) where T : DalApi.DO.BusStop, new() where S : BO.BusStop, new()
-        {
-            T output = new T();
-            foreach (PropertyInfo propto in output.GetType().GetProperties())
-            {
-                PropertyInfo propfrom = busStop.GetType().GetProperty(propto.Name);
-                if (propfrom == null || propto.PropertyType != propfrom.PropertyType)
-                {
-                    continue;
-                }
-                propto.SetValue(output, propfrom.GetValue(busStop, null));
-            }
-            return output;
-        }
-
-
-
-        internal static T BLtoDAL_LineStation<T, S>(S station) where T : DalApi.DO.LineStation, new() where S : BO.LineStation, new()
+        internal static T BOtoDO_LineStation<T, S>(S station) where T : DalApi.DO.LineStation, new() where S : BO.LineStation, new()
         {
             T output = new T();
             foreach (PropertyInfo propto in output.GetType().GetProperties())
@@ -90,7 +73,7 @@ namespace BL
         #endregion
 
         #region DAL to BL converters
-        internal static T DALtoBL_Bus<T, S>(S bus) where T : BO.Bus, new() where S : DalApi.DO.Bus, new()
+        internal static T DOtoBO_Bus<T, S>(S bus) where T : BO.Bus, new() where S : DalApi.DO.Bus, new()
         {
             T output = new T();
             foreach (PropertyInfo propto in output.GetType().GetProperties())
@@ -105,7 +88,7 @@ namespace BL
             return output;
         }
 
-        internal static T DALtoBL_BusLine<T, S>(S busLine) where T : BO.BusLine, new() where S : DalApi.DO.BusLine, new()
+        internal static T DOtoBO_BusLine<T, S>(S busLine) where T : BO.BusLine, new() where S : DalApi.DO.BusLine, new()
         {
             T output = new T();
             foreach (PropertyInfo propto in output.GetType().GetProperties())
@@ -120,7 +103,7 @@ namespace BL
             return output;
         }
 
-        internal static T DALtoBL_BusStop<T, S>(S busStop) where T : BO.BusStop, new() where S : DalApi.DO.BusStop, new()
+        internal static T DOtoBO_BusStop<T, S>(S busStop) where T : BO.BusStop, new() where S : DalApi.DO.BusStop, new()
         {
             T output = new T();
             foreach (PropertyInfo propto in output.GetType().GetProperties())
@@ -135,7 +118,7 @@ namespace BL
             return output;
         }
 
-        internal static T DALtoBL_LineStation<T, S>(S lineStation) where T : BO.LineStation, new() where S : DalApi.DO.LineStation, new()
+        internal static T DOtoBO_LineStation<T, S>(S lineStation) where T : BO.LineStation, new() where S : DalApi.DO.LineStation, new()
         {
             T output = new T();
             foreach (PropertyInfo propto in output.GetType().GetProperties())

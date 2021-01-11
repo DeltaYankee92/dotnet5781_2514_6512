@@ -21,7 +21,6 @@ namespace DLAPI
         void Details(Bus bus); // crUd
         void Fuel(int[] plate); // crUd
         void Maintain(int[] plate); //crUd
-
         void removeBus(int[] plate); // cruD
         #endregion
 

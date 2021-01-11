@@ -7,111 +7,124 @@ using System.Collections.Generic;
 
 namespace BL
 {
-
-    class BLimp :IBL // internal: add manually.
+    
+    class BLimp : IBL // internal: add manually.
     {
-        #region Bus Functions
+        
         IDL dl = DLFactory.GetDL();
-        public void addBus(Bus bus)
-        {
-            dl.addBus(DeepCopy.BLtoDAL_Bus<DalApi.DO.Bus, BO.Bus>(bus));
-        }
 
+        #region Bus
         public void AddBus(Bus bus)
         {
-            dl.addBus(DeepCopy.BLtoDAL_Bus<DalApi.DO.Bus, BO.Bus>(bus));
+            dl.addBus(Utility.BOtoDO_Bus<DalApi.DO.Bus, BO.Bus>(bus));
         }
-        #endregion
-
-        #region BusLine Functions
-        public void DeleteLine(int linenum)
+        public void removeBus(int[] plate)
         {
-            dl.RemoveBusLine(DeepCopy.BLtoDAL_BusLine<DalApi.DO.BusLine, BO.BusLine>(linenum));
+            dl.removeBus(plate);
         }
-        #endregion
-
-        #region BusStop Functions
-        public void DeleteStop(BusStop stop)
-        {
-            throw new NotImplementedException();   //No function in IDL
-        }
-        #endregion
-
-        #region LineStation Functions
-        public void addStation(LineStation station)
-        {
-            dl.addStation(DeepCopy.BLtoDAL_LineStation<DalApi.DO.LineStation, BO.LineStation>(station));
-        }
-        public void DeleteLineStation(LineStation station)
-        {
-            dl.removeLineStation(DeepCopy.BLtoDAL_LineStation<DalApi.DO.LineStation, BO.LineStation>(station));
-        }
-        #endregion
-
-
-        //public void removeBus(int[] plate)
-        //{
-        //    dl.removeBus(DeepCopy.BLtoDAL_Bus<DalApi.DO.Bus, BO.Bus>(bus));
-        //}
         public Bus GetBus(int[] plate)
         {
-            throw new NotImplementedException();
+            return Utility.DOtoBO_Bus<BO.Bus, DalApi.DO.Bus>(dl.GetBus(plate));
         }
-
-        public IEnumerable<Bus> GetBuses()
-        {
-            throw new NotImplementedException();
-        }
-
-        public BusLine GetBusLine(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<BusLine> GetBusLines()
-        {
-            throw new NotImplementedException();
-        }
-
-        public BusStop GetBusStop(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public LineStation GetLineStation(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<LineStation> GetLineStatons()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<BusStop> GetStops()
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateBus(int[] plate)
         {
             throw new NotImplementedException();
         }
+        public IEnumerable<Bus> GetAllBuses()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
 
+        #region BusLine
+        public void DeleteLine(int id)
+        {
+            dl.RemoveBusLine(id);
+        }
         public void UpdateLine(BusLine line)
         {
             throw new NotImplementedException();
         }
-
-        public void UpdateLineStation(LineStation station)
+        public BusLine GetBusLine(int id)
+        {
+            return Utility.DOtoBO_BusLine<BO.BusLine, DalApi.DO.BusLine>(dl.GetBusLine(id));
+        }
+        public IEnumerable<BusLine> GetAllBusLines()
         {
             throw new NotImplementedException();
         }
+        #endregion
 
+        #region BusStop
+        public void DeleteStop(BusStop stop)
+        {
+            throw new NotImplementedException();
+        }
         public void UpdateStop(BusStop stop)
         {
             throw new NotImplementedException();
         }
-    }
+        public BusStop GetBusStop(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public IEnumerable<BusStop> GetAllStops()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
 
+        #region LineStation
+        public void addStation(LineStation station)
+        {
+            dl.addStation(Utility.BOtoDO_LineStation<DalApi.DO.LineStation, BO.LineStation>(station));
+        }
+        public void DeleteLineStation(int id)
+        {
+            dl.removeLineStation(id);
+        }
+        public void UpdateLineStation(LineStation station)
+        {
+            throw new NotImplementedException();
+        }
+        public LineStation GetLineStation(int id)
+        {
+            return Utility.DOtoBO_LineStation<BO.LineStation, DalApi.DO.LineStation>(dl.GetLineStation(id));
+        }
+        public IEnumerable<LineStation> GetAllLineStatons()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 }
