@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DalApi\DalApi.csproj">
-      <Project>{D147DB1E-AC9F-4F60-8ADE-C4727C8C1CFB}</Project>
+      <Project>{d147db1e-ac9f-4f60-8ade-c4727c8c1cfb}</Project>
       <Name>DalApi</Name>
     </ProjectReference>
   </ItemGroup>

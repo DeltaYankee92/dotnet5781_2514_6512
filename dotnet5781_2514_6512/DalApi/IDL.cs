@@ -33,10 +33,10 @@ namespace DLAPI
         #endregion
 
         #region LineStation
-        void addStation(BusLine station);
+        void addStation(BusStop station);
         IEnumerable<LineStation> GetAllbusLineStation();
         LineStation GetbusLineStation(int[] id);
-        void removebusLineStation(int[] id);
+        void removeLineStation(int[] id);
         void updatebusLineStation(LineStation line);
 
         #endregion

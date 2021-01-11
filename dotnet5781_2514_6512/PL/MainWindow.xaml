@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="281.4" Width="323.2">
     <Grid>
-        
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="30" Margin="40,10,0,0" TextWrapping="Wrap" Text="Bus Manager" TextAlignment="Center" FontSize="20" FontWeight="ExtraBold" VerticalAlignment="Top" Width="235" BorderThickness="0"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="30" Margin="40,45,0,0" TextWrapping="Wrap" Text="Please choose login type:" TextAlignment="Center" FontSize="16" VerticalAlignment="Top" Width="235" BorderThickness="0"/>
+        <Button x:Name="button" Content="Administrator" HorizontalAlignment="Left" Height="50" Margin="40,100,0,0" VerticalAlignment="Top" Width="235" FontSize="15"/>
+        <Button x:Name="button_Copy" Content="Employee" HorizontalAlignment="Left" Height="50" Margin="40,165,0,0" VerticalAlignment="Top" Width="235" FontSize="15"/>
     </Grid>
 </Window>

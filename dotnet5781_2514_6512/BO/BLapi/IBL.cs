@@ -9,39 +9,41 @@ using System.Threading.Tasks;
 
 namespace BL.BLapi
 {
-    public interface IBL // missing: implamenting vis a vis the program
+    public interface IBL
     {
-        //Add Person to Course
-        //get all courses for student
-        //etc...
+        #region Bus
+        IEnumerable<Bus> GetBuses();
 
-        /*
-        #region Student
-        BO.Student GetStudent(int id);
-        IEnumerable<BO.Student> GetAllStudents();
-        IEnumerable<BO.ListedPerson> GetStudentIDNameList();
+        Bus GetBus(int[] plate);
 
-        IEnumerable<BO.Student> GetStudentsBy(Predicate<BO.Student> predicate);
+        void AddBus(Bus bus);
 
-        void UpdateStudentPersonalDetails(BO.Student student);
+        //void removeBus(int[] plate);
 
-        void DeleteStudent(int id);
-
+        void UpdateBus(int[] plate);
         #endregion
 
-        #region StudentInCourse
-        void AddStudentInCourse(int perID, int courseID, float grade = 0);
-        void UpdateStudentGradeInCourse(int perID, int courseID, float grade);
-        void DeleteStudentInCourse(int perID, int courseID);
-
+        #region BusLine
+        IEnumerable<BusLine> GetBusLines();
+        BusLine GetBusLine(int id);
+        void DeleteLine(int linenum);
+        void UpdateLine(BusLine line);
         #endregion
 
-        #region Course
-        IEnumerable<BO.Course> GetAllCourses();
+        #region BusStop
+        IEnumerable<BusStop> GetStops();
+        BusStop GetBusStop(int id);
+        void DeleteStop(BusStop stop);
+        void UpdateStop(BusStop stop);
         #endregion
 
-
-        */
+        #region LineStation
+        IEnumerable<LineStation> GetLineStatons();
+        LineStation GetLineStation(int id);
+        void addStation(LineStation station);
+        void DeleteLineStation(LineStation station);
+        void UpdateLineStation(LineStation station);
+        #endregion
 
     }
 }

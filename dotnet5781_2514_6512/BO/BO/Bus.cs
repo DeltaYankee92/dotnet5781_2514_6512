@@ -40,6 +40,7 @@ namespace BL.BO
             RegistrationDate = DateTime.Now;
         }
 
+        public Bus() { }
         internal void print_mileage()
         {
             Console.Write("the bus with the ID: ");
