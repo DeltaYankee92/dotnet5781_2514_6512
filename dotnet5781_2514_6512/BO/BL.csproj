@@ -47,7 +47,10 @@
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\BusLine.cs" />
     <Compile Include="BO\BusStop.cs" />
+    <Compile Include="BO\LineCycle.cs" />
     <Compile Include="BO\LineStation.cs" />
+    <Compile Include="BO\Moving_bus.cs" />
+    <Compile Include="BO\Twostops.cs" />
     <Compile Include="DeepCopy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

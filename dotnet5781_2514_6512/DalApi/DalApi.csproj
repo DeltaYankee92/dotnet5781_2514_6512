@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="DO\activity.cs" />
     <Compile Include="DO\exceptions.cs" />
+    <Compile Include="DO\LineCycle.cs" />
+    <Compile Include="DO\Moving_bus.cs" />
+    <Compile Include="DO\Twostops.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="DLconfig.cs" />
     <Compile Include="DLFactory.cs" />
