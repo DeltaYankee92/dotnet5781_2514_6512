@@ -10,6 +10,7 @@ namespace DalObject
     sealed class DalObject : IDL // implamenting the interface
     {
         #region singleton
+        
         static readonly DalObject instance = new DalObject();
         DalObject() { } //  ctor
         public static DalObject Idal { get => instance; } // connect via the singleton.
@@ -27,7 +28,6 @@ namespace DalObject
             }
             return true;
         }
-
         #endregion
 
 
