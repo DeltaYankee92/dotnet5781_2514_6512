@@ -15,12 +15,12 @@ namespace DalApi.DO
         public DateTime MaintenanceDate { get; set; }
         public string Status { get; set; }
         public string License_Plate { get; set; }
-        internal void fuel_up()
+        public void fuel_up()
         {
             Current_Fuel = 5000;
         }
 
-        internal void fix()
+        public void fix()
         {
             MaintenanceDate = DateTime.Now;
             LastMaintenance = MilageTotal;
