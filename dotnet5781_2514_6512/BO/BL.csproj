@@ -52,7 +52,7 @@
     <Compile Include="BO\Moving_bus.cs" />
     <Compile Include="BO\Twostops.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility.cs" />
+    <Compile Include="Converter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DalApi\DalApi.csproj">

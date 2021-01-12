@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-   public static class Utility
+   public static class Converter
     {
-        #region BL to DAL converters
+        #region BL to DO converters
         internal static T BOtoDO_Bus<T,S>(S bus) where T: DalApi.DO.Bus, new() where S : BO.Bus, new()
         {
             T output = new T();
@@ -70,9 +70,54 @@ namespace BL
             }
             return output;
         }
+
+        internal static T BOtoDO_LineCycle<T, S>(S station) where T : DalApi.DO.LineCycle, new() where S : BO.LineCycle, new()
+        {
+            T output = new T();
+            foreach (PropertyInfo propto in output.GetType().GetProperties())
+            {
+                PropertyInfo propfrom = station.GetType().GetProperty(propto.Name);
+                if (propfrom == null || propto.PropertyType != propfrom.PropertyType)
+                {
+                    continue;
+                }
+                propto.SetValue(output, propfrom.GetValue(station, null));
+            }
+            return output;
+        }
+
+        internal static T BOtoDO_Moving_bus<T, S>(S station) where T : DalApi.DO.Moving_bus, new() where S : BO.Moving_bus, new()
+        {
+            T output = new T();
+            foreach (PropertyInfo propto in output.GetType().GetProperties())
+            {
+                PropertyInfo propfrom = station.GetType().GetProperty(propto.Name);
+                if (propfrom == null || propto.PropertyType != propfrom.PropertyType)
+                {
+                    continue;
+                }
+                propto.SetValue(output, propfrom.GetValue(station, null));
+            }
+            return output;
+        }
+
+        internal static T BOtoDO_TwoStops<T, S>(S station) where T : DalApi.DO.Twostops, new() where S : BO.Twostops, new()
+        {
+            T output = new T();
+            foreach (PropertyInfo propto in output.GetType().GetProperties())
+            {
+                PropertyInfo propfrom = station.GetType().GetProperty(propto.Name);
+                if (propfrom == null || propto.PropertyType != propfrom.PropertyType)
+                {
+                    continue;
+                }
+                propto.SetValue(output, propfrom.GetValue(station, null));
+            }
+            return output;
+        }
         #endregion
 
-        #region DAL to BL converters
+        #region DO to BL converters
         internal static T DOtoBO_Bus<T, S>(S bus) where T : BO.Bus, new() where S : DalApi.DO.Bus, new()
         {
             T output = new T();
@@ -118,21 +163,64 @@ namespace BL
             return output;
         }
 
-        internal static T DOtoBO_LineStation<T, S>(S lineStation) where T : BO.LineStation, new() where S : DalApi.DO.LineStation, new()
+        internal static T DOtoBO_LineStation<T, S>(S station) where T : BO.LineStation, new() where S : DalApi.DO.LineStation, new()
         {
             T output = new T();
             foreach (PropertyInfo propto in output.GetType().GetProperties())
             {
-                PropertyInfo propfrom = lineStation.GetType().GetProperty(propto.Name);
+                PropertyInfo propfrom = station.GetType().GetProperty(propto.Name);
                 if (propfrom == null || propto.PropertyType != propfrom.PropertyType)
                 {
                     continue;
                 }
-                propto.SetValue(output, propfrom.GetValue(lineStation, null));
+                propto.SetValue(output, propfrom.GetValue(station, null));
             }
             return output;
         }
-        
+        internal static T DOtoBO_Moving_bus<T, S>(S bus) where T : BO.Moving_bus, new() where S : DalApi.DO.Moving_bus, new()
+        {
+            T output = new T();
+            foreach (PropertyInfo propto in output.GetType().GetProperties())
+            {
+                PropertyInfo propfrom = bus.GetType().GetProperty(propto.Name);
+                if (propfrom == null || propto.PropertyType != propfrom.PropertyType)
+                {
+                    continue;
+                }
+                propto.SetValue(output, propfrom.GetValue(bus, null));
+            }
+            return output;
+        }
+
+        internal static T DOtoBO_LineCycle<T, S>(S cycle) where T : BO.LineCycle, new() where S : DalApi.DO.LineCycle, new()
+        {
+            T output = new T();
+            foreach (PropertyInfo propto in output.GetType().GetProperties())
+            {
+                PropertyInfo propfrom = cycle.GetType().GetProperty(propto.Name);
+                if (propfrom == null || propto.PropertyType != propfrom.PropertyType)
+                {
+                    continue;
+                }
+                propto.SetValue(output, propfrom.GetValue(cycle, null));
+            }
+            return output;
+        }
+
+        internal static T DOtoBO_Twostops<T, S>(S stops) where T : BO.Twostops, new() where S : DalApi.DO.Twostops, new()
+        {
+            T output = new T();
+            foreach (PropertyInfo propto in output.GetType().GetProperties())
+            {
+                PropertyInfo propfrom = stops.GetType().GetProperty(propto.Name);
+                if (propfrom == null || propto.PropertyType != propfrom.PropertyType)
+                {
+                    continue;
+                }
+                propto.SetValue(output, propfrom.GetValue(stops, null));
+            }
+            return output;
+        }
 
         //write function to convert from DO.IEnumerable<T> to BO.IEnumrable<T>
         #endregion

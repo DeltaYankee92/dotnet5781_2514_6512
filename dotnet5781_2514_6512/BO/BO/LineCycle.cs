@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BO.BO
+namespace BL.BO
 {
-    class LineCycle // class for a cycle of a bus, when it leaves and for how long etc
+    public class LineCycle // class for a cycle of a bus, when it leaves and for how long etc
     {
         public static int counter = 0;
         public BusLine line { get; set; } // the bus leaving at what times

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BO.BO
+namespace BL.BO
 {
     public class Twostops // two stops have stuff between them. what? here we are.
     {

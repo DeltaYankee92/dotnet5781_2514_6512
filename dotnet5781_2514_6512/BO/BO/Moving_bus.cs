@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BO.BO
+namespace BL.BO
 {
     public class Moving_bus // a bus that is busy driving is a new thing now
     {
