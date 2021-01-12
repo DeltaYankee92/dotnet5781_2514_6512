@@ -11,7 +11,18 @@ namespace DLAPI
     // Update - update properties of an instance
     // Delete - delete an instance
     public interface IDL
-    { 
+    {
+
+        #region BusStop
+        void addBusStop(BusStop bus); // Crud
+
+        BusStop GetBusStop(int stopnum);//cRud
+        IEnumerable<BusStop> GetAllBusStops();//cRud
+        IEnumerable<BusStop> GetAllBusStops_history();//cRud
+        void Details_BusStop(BusStop bus); // crUd
+        void removeBusStop(int stopnum); // cruD
+        #endregion
+
         #region Bus
 
         void addBus(Bus bus); // Crud

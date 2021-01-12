@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 namespace DS
 {
     public class AllData
-    { // there is no list of bus stops.
+    {
+        public static List<BusStop> List_BusStop;
         public static List<BusLine> List_BusLine;
         public static List<Bus> List_Bus;
         public static List<LineStation> List_LineStation;
@@ -23,6 +24,7 @@ namespace DS
 
          static void start() 
         {
+            /*
             #region Bus Database Initialization
             BusList = new List<Bus>();
             Bus b1 = new Bus(new DateTime(2020, 01, 01), new int[] { 4, 1, 2, 5, 9, 7, 4, 1 }, 10000, 0, 10000, 2000);
@@ -70,7 +72,7 @@ namespace DS
             BusLineList = new List<BusLine>();
             BusStopList = new List<BusStop>();
             LineStationList = new List<LineStation>();
-             
+             */
         }
     }
 }
