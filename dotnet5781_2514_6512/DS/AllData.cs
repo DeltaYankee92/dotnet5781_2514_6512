@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 namespace DS
 {
     public class AllData
-    {
-        public static List<Bus> BusList;
-        public static List<BusLine> BusLineList;
-        public static List<BusStop> BusStopList;
-        public static List<LineStation> LineStationList;
+    { // there is no list of bus stops.
+        public static List<BusLine> List_BusLine;
+        public static List<Bus> List_Bus;
+        public static List<LineStation> List_LineStation;
+        public static List<LineCycle> List_LineCycle;
+        public static List<Moving_bus> List_Moving_bus;
+        public static List<Twostops> List_Twostops;
         static AllData()
         {
             start();
