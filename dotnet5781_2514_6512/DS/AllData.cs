@@ -24,9 +24,10 @@ namespace DS
 
          static void start() 
         {
-            /*
+
+
             #region Bus Database Initialization
-            BusList = new List<Bus>();
+            List_Bus = new List<Bus>();
             Bus b1 = new Bus(new DateTime(2020, 01, 01), new int[] { 4, 1, 2, 5, 9, 7, 4, 1 }, 10000, 0, 10000, 2000);
             Bus b2 = new Bus(new DateTime(2020, 01, 01), new int[] { 5, 2, 2, 5, 9, 7, 4, 2 }, 10000, 0, 10000, 2000);
             Bus b3 = new Bus(new DateTime(2020, 01, 01), new int[] { 6, 3, 2, 5, 9, 7, 4, 3 }, 10000, 0, 10000, 2000);
@@ -47,32 +48,28 @@ namespace DS
             Bus b18 = new Bus(new DateTime(2020, 09, 01), new int[] { 1, 8, 2, 5, 3, 7, 4, 9 }, 10000, 0, 10000, 2000);
             Bus b19 = new Bus(new DateTime(2020, 09, 01), new int[] { 2, 9, 2, 5, 4, 7, 4, 0 }, 10000, 0, 10000, 2000);
             Bus b20 = new Bus(new DateTime(2020, 09, 01), new int[] { 3, 10, 2, 5, 5, 7, 4, 1 }, 10000, 0, 10000, 2000);
-            BusList.Add(b1);
-            BusList.Add(b2);
-            BusList.Add(b3);
-            BusList.Add(b4);
-            BusList.Add(b5);
-            BusList.Add(b6);
-            BusList.Add(b7);
-            BusList.Add(b8);
-            BusList.Add(b9);
-            BusList.Add(b10);
-            BusList.Add(b11);
-            BusList.Add(b12);
-            BusList.Add(b13);
-            BusList.Add(b14);
-            BusList.Add(b15);
-            BusList.Add(b16);
-            BusList.Add(b17);
-            BusList.Add(b18);
-            BusList.Add(b19);
-            BusList.Add(b20);
+            List_Bus.Add(b1);
+            List_Bus.Add(b2);
+            List_Bus.Add(b3);
+            List_Bus.Add(b4);
+            List_Bus.Add(b5);
+            List_Bus.Add(b6);
+            List_Bus.Add(b7);
+            List_Bus.Add(b8);
+            List_Bus.Add(b9);
+            List_Bus.Add(b10);
+            List_Bus.Add(b11);
+            List_Bus.Add(b12);
+            List_Bus.Add(b13);
+            List_Bus.Add(b14);
+            List_Bus.Add(b15);
+            List_Bus.Add(b16);
+            List_Bus.Add(b17);
+            List_Bus.Add(b18);
+            List_Bus.Add(b19);
+            List_Bus.Add(b20);
             #endregion
 
-            BusLineList = new List<BusLine>();
-            BusStopList = new List<BusStop>();
-            LineStationList = new List<LineStation>();
-             */
         }
     }
 }
