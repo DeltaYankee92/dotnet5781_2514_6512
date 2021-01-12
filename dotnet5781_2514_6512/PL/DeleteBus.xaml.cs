@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PL
+namespace dotnet5781_03B_2514_6512
 {
     /// <summary>
-    /// Interaction logic for Administrator.xaml
+    /// Interaction logic for DeleteBus.xaml
     /// </summary>
-    public partial class Administrator : Window
+    public partial class DeleteBus : Window
     {
-        public Administrator()
+        public DeleteBus()
         {
             InitializeComponent();
         }
