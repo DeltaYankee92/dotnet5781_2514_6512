@@ -26,7 +26,6 @@ namespace DLAPI
         #region Bus
 
         void addBus(Bus bus); // Crud
-
         Bus GetBus(int[] plate);//cRud
         IEnumerable<Bus> GetAllBuses();//cRud
         IEnumerable<Bus> GetAllBuses_history();//cRud
