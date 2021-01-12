@@ -3,7 +3,7 @@ using BL.BO;
 using DLAPI;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace BL
 {
@@ -32,7 +32,19 @@ namespace BL
         }
         public IEnumerable<Bus> GetAllBuses()
         {
-            throw new NotImplementedException();
+            var result = dl.GetAllBuses();
+            return (from item in result
+                    where (item != null)
+                    orderby item.licensePlateArray ascending
+                    select Utility.DOtoBO_Bus<BO.Bus, DalApi.DO.Bus>(item)).ToList();
+        }
+        public IEnumerable<Bus> GetAllBuses_history()
+        {
+            var result = dl.GetAllBuses_history();
+            return (from item in result
+                    where (item != null)
+                    orderby item.licensePlateArray ascending
+                    select Utility.DOtoBO_Bus<BO.Bus, DalApi.DO.Bus>(item)).ToList();
         }
         #endregion
 
@@ -49,9 +61,21 @@ namespace BL
         {
             return Utility.DOtoBO_BusLine<BO.BusLine, DalApi.DO.BusLine>(dl.GetBusLine(id));
         }
-        public IEnumerable<BusLine> GetAllBusLines()
+        public IEnumerable<BusLine> GetAllBuseLines()
         {
-            throw new NotImplementedException();
+            var result = dl.GetAllBusLines();
+            return (from item in result
+                    where (item != null)
+                    orderby item.BusNumber ascending
+                    select Utility.DOtoBO_BusLine<BO.BusLine, DalApi.DO.BusLine>(item)).ToList();
+        }
+        public IEnumerable<BusLine> GetAllBusesLines_history()
+        {
+            var result = dl.GetAllBusLines_history();
+            return (from item in result
+                    where (item != null)
+                    orderby item.BusNumber ascending
+                    select Utility.DOtoBO_BusLine<BO.BusLine, DalApi.DO.BusLine>(item)).ToList();
         }
         #endregion
 
