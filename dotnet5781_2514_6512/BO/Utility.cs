@@ -132,6 +132,8 @@ namespace BL
             }
             return output;
         }
+
+        //write function to convert from DO.IEnumerable<T> to BO.IEnumrable<T>
         #endregion
     }
 }

@@ -1,0 +1,30 @@
+﻿<Window x:Class="PL.User"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="User" Height="491.4" Width="668.1">
+    <Grid>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="285" Margin="25,95,0,0" VerticalAlignment="Top" Width="295">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="listView_Copy" HorizontalAlignment="Left" Height="285" Margin="340,95,0,0" VerticalAlignment="Top" Width="295">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="35" Margin="25,60,0,0" TextWrapping="Wrap" Text="Starting Station:" TextAlignment="Center" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Width="295" BorderThickness="0"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="35" Margin="340,60,0,0" TextWrapping="Wrap" Text="Destination Station" TextAlignment="Center" FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Width="295" BorderThickness="0"/>
+        <Button x:Name="button" Content="Find Lines" HorizontalAlignment="Left" Height="51" Margin="225,401,0,0" VerticalAlignment="Top" FontSize="20" Width="205"/>
+        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="35" Margin="185,10,0,0" TextWrapping="Wrap" Text="Line Finder" TextAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Width="295" BorderThickness="0"/>
+
+    </Grid>
+</Window>
