@@ -15,6 +15,18 @@ namespace DalApi.DO
         public DateTime MaintenanceDate { get; set; }
         public string Status { get; set; }
         public string License_Plate { get; set; }
+        public void fuel_up()
+        {
+            Current_Fuel = 5000;
+        }
+
+        public void fix()
+        {
+            MaintenanceDate = DateTime.Now;
+            LastMaintenance = MilageTotal;
+            Milage = 0;
+            this.Status = "Ready";
+        }
 
         #endregion
 
