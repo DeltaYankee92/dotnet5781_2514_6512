@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DalApi.DO
+namespace DLAPI
 {
     //enum status { NotReady, Ready, Driving};
     public class Bus : Activity

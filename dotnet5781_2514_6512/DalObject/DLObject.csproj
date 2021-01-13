@@ -7,8 +7,8 @@
     <ProjectGuid>{D4176BC2-EB17-479F-A087-1FBFE077ECCF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DalObject</RootNamespace>
-    <AssemblyName>DalObject</AssemblyName>
+    <RootNamespace>DLObject</RootNamespace>
+    <AssemblyName>DLObject</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,13 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cloning.cs" />
-    <Compile Include="DalObj.cs" />
+    <Compile Include="DLObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DalApi\DalApi.csproj">
+    <ProjectReference Include="..\DalApi\DLAPI.csproj">
       <Project>{D147DB1E-AC9F-4F60-8ADE-C4727C8C1CFB}</Project>
-      <Name>DalApi</Name>
+      <Name>DLAPI</Name>
     </ProjectReference>
     <ProjectReference Include="..\DS\DS.csproj">
       <Project>{E7D87D22-4AA3-4B43-B21D-52FF4156D7FA}</Project>

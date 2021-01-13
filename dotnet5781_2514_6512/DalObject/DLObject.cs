@@ -1,19 +1,22 @@
-﻿using DalApi.DO;
+﻿
+
+
 using DLAPI;
+
 using DS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DalObject
+namespace DL
 {
-    sealed class DalObject : IDL // implamenting the interface
+    sealed class DLObject : IDL // implamenting the interface
     {
         #region singleton
         
-        static readonly DalObject instance = new DalObject();
-        DalObject() { } //  ctor
-        public static DalObject Idal { get => instance; } // connect via the singleton.
+        static readonly DLObject instance = new DLObject();
+        DLObject() { } //  ctor
+        public static DLObject Instance { get => instance; } // connect via the singleton.
         #endregion
 
         #region static helpers

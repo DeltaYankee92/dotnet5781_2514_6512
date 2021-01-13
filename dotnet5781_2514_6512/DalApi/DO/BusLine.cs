@@ -1,4 +1,4 @@
-﻿using DalApi.DO;
+﻿
 
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 
 
-namespace DalApi.DO
+namespace DLAPI
 {
     public class BusLine : Activity
     {

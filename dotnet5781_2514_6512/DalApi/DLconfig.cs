@@ -9,7 +9,7 @@ namespace DLAPI
     /**
      <summary>
      Class for processing config.xml file and getting from there
-     information which is relevant for initialization of DalApi<br/>
+     information which is relevant for initialization of DLAPI<br/>
      The file has to include in the 1st level:<br/>
      <list type="bullet">
         <item><b>&lt;dal&gt;</b> element with the name of the entry in the packages' list</item>
@@ -28,7 +28,7 @@ namespace DLAPI
 &lt;config&gt;<br/>
     &lt;dal&gt;data&lt;/dal&gt;<br/>
     &lt;dal-packages&gt;<br/>
-    &lt;data&gt;DalObject&lt;/data&gt;<br/>
+    &lt;data&gt;DLObject&lt;/data&gt;<br/>
     &lt;xml namespace="DAL" class="DalXml"&gt;DalXml&lt;/xml&gt;<br/>
     &lt;oracle namespace="DL" class="DalDbOracle"&gt;DalOracle&lt;/oracle&gt;<br/>
     &lt;/dal-packages&gt;<br/>
@@ -74,7 +74,7 @@ namespace DLAPI
     }
 
     /// <summary>
-    /// Represents errors during DalApi initialization
+    /// Represents errors during DLAPI initialization
     /// </summary>
     [Serializable]
     public class DLConfigException : Exception

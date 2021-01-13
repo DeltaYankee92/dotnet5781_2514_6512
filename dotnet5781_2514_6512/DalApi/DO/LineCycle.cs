@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DalApi.DO
+namespace DLAPI
 {
     public class LineCycle:Activity // a class to manage the cycles of a given bus
     {
