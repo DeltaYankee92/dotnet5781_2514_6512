@@ -18,28 +18,13 @@ namespace DLAPI
 
         public Bus(DateTime date, int[] id, int milage, int last_maintenance, int total_milage, int current_fuel)
         {
-            MaintenanceDate = date;
-            licensePlateArray = id;
-            MilageTotal = total_milage;
-            LastMaintenance = last_maintenance;
-            Current_Fuel = current_fuel;
-            MaintenanceDate = date;
-            Milage = MilageTotal - LastMaintenance;
-            if ((20000 < MilageTotal - LastMaintenance) || (Current_Fuel == 0))
-            {
-                Status = "Not Ready";
-            }
-            else
-            {
                 Status = "Ready";
-            }
-            License_Plate = turn_to_string();
-            RegistrationDate = DateTime.Now;
+            isactive = true;
         }
 
         public Bus()
         {
-
+            isactive = true;
         }
         public string turn_to_string()
         {
@@ -74,6 +59,10 @@ namespace DLAPI
             this.Status = "Ready";
         }
 
+        public override string ToString()
+        {
+            return $"{this.turn_to_string()} hello";
+        }
         #endregion
 
     }

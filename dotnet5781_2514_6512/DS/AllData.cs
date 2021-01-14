@@ -20,10 +20,16 @@ namespace DS
         public static List<Twostops> List_Twostops;
         static AllData()
         {
-            start();
+            start_bus();
+            start_busLine();
+            start_busStop();
+            start_LineCycle();
+            start_LineStation();
+            start_Moving_bus();
+            start_TwoStops();
         }
 
-         static void start() 
+         static void start_bus() 
         {
 
 
@@ -72,5 +78,31 @@ namespace DS
             #endregion
 
         }
+
+        internal static void start_busStop()
+        {
+
+        }
+        internal static void start_busLine()
+        {
+
+        }
+        internal static void start_LineStation()
+        {
+
+        }
+        internal static void start_LineCycle()
+        {
+
+        }
+        internal static void start_Moving_bus()
+        {
+
+        }
+        internal static void start_TwoStops()
+        {
+
+        }
+
     }
 }

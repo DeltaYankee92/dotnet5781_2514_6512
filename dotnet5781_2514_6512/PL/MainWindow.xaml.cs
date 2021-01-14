@@ -44,11 +44,12 @@ namespace PL
         {
             InitializeComponent();
             Busses_List.ItemsSource = bl.GetAllBuses();
-            timer = new DispatcherTimer();
-            timer.Tick += new EventHandler(CheckUpdate);
-            timer.Interval = new TimeSpan(0, 0, 2);
+            //         timer = new DispatcherTimer();
+            //         timer.Tick += new EventHandler(CheckUpdate);
+            //        timer.Interval = new TimeSpan(0, 0, 2);
 
-
+            char x;
+            x = '5';
         }
 
 
