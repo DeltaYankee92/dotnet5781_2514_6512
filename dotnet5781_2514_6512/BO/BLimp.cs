@@ -35,7 +35,6 @@ namespace BL
             var result = dl.GetAllBuses();
             return (from item in result
                     where (item != null)
-                    orderby item.licensePlateArray ascending
                     select Converter.DOtoBO_Bus<BO.Bus, DLAPI.Bus>(item)).ToList();
         }
         public IEnumerable<BO.Bus> GetAllBuses_history()

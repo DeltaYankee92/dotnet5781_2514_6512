@@ -8,7 +8,7 @@ namespace DLAPI
 {
     public class LineCycle:Activity // a class to manage the cycles of a given bus
     {
-        readonly int start_hour = 7; //all bus cycles will start at 7.
+     //   readonly int start_hour = 7; //all bus cycles will start at 7.
 
         public static int counter = 0;
         public BusLine line { get; set; } // the bus leaving at what times

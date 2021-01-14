@@ -32,7 +32,7 @@ namespace PL
     public partial class MainWindow : Window
     {
         BL.BLapi.IBL bl = BLapi.BLFactory.GetBL();
-        DispatcherTimer timer;
+    //    DispatcherTimer timer;
         public static bool flag = true;
         //public static List<Buses> BusDatabase = new List<Buses>();
         //public List<Buses> BusData
@@ -48,8 +48,7 @@ namespace PL
             //         timer.Tick += new EventHandler(CheckUpdate);
             //        timer.Interval = new TimeSpan(0, 0, 2);
 
-            char x;
-            x = '5';
+
         }
 
 

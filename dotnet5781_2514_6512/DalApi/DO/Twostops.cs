@@ -14,7 +14,7 @@ namespace DLAPI
         public int distance { get; set; }
         public TimeSpan between { get; set; }
         public int id { get; set; }
-        Twostops()
+        public Twostops()
         {
             counter++;
             isactive = true;

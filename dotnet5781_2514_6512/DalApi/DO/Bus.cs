@@ -16,16 +16,31 @@ namespace DLAPI
         public string Status { get; set; }
         public string License_Plate { get; set; }
 
-        public Bus(DateTime date, int[] id, int milage, int last_maintenance, int total_milage, int current_fuel)
-        {
-                Status = "Ready";
-            isactive = true;
-        }
+
 
         public Bus()
         {
             isactive = true;
         }
+
+        public Bus(int[] licensePlateArray, int milage, int milageTotal, int lastMaintenance, int current_Fuel, DateTime registrationDate, DateTime maintenanceDate, string status)
+        {
+            this.licensePlateArray = new int[licensePlateArray.Length];
+            for (int i = 0; i < licensePlateArray.Length; i++)
+            {
+                this.licensePlateArray[i] = licensePlateArray[i];
+            }
+            Milage = milage;
+            MilageTotal = milageTotal;
+            LastMaintenance = lastMaintenance;
+            Current_Fuel = current_Fuel;
+            RegistrationDate = registrationDate;
+            MaintenanceDate = maintenanceDate;
+            Status = status;
+            License_Plate = turn_to_string(licensePlateArray);
+            isactive = true;
+        }
+
         public string turn_to_string()
         {
             string x = "";
@@ -37,7 +52,7 @@ namespace DLAPI
 
         }
 
-        public string turn_to_string(int[] arr)
+        public static string turn_to_string(int[] arr)
         {
             string x = "";
             for (int i = 0; i < arr.Length; i++)
