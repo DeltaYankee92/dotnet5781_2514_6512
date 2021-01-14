@@ -18,6 +18,18 @@ namespace DLAPI
         public int BusNumber { get; set; }
         public string Area { get; set; }
 
+        public BusLine()
+        {
+            isactive = true;
+        }
+        public BusLine(BusStop _firststation,BusStop _laststation, int busnumber, string area)
+        {
+            isactive = true;
+            FirstStation = _firststation;
+            LastStation = _laststation;
+            BusNumber = busnumber;
+            Area = area;
+        }
     }
 
 }

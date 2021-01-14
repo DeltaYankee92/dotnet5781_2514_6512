@@ -17,5 +17,24 @@ namespace DLAPI
         public int time_to_next { get; set; }
         public int id { get; set; }
 
+
+        public Moving_bus()
+        {
+            counter++;
+                isactive = true;
+        }
+
+        public Moving_bus(bool is_driving, int[] plate, int everyXmins, TimeSpan time_out, int last_stop, int time_to_next, int id)
+        {
+            this.is_driving = is_driving;
+            this.plate = plate;
+            this.everyXmins = everyXmins;
+            this.time_out = time_out;
+            this.last_stop = last_stop;
+            this.time_to_next = time_to_next;
+            this.id = id;
+            counter++;
+            isactive = true;
+        }
     }
 }
