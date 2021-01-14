@@ -30,7 +30,7 @@
                     <GridViewColumn Header="License Plate" x:Name="firstHeader" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=licensePlateArray}" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding Path=License_Plate}" HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
