@@ -21,8 +21,12 @@ namespace DLAPI
 
         #endregion
 
-        public LineStation(double distance, TimeSpan time)
+        public LineStation(BusStop stop, double distance, TimeSpan time)
         {
+            BusStationKey = stop.BusStationKey;
+            Latitude = stop.Latitude;
+            Longitude = stop.Longitude;
+            Adress = stop.Adress;
             this.distance = distance;
             this.time = time;
             isactive = true;

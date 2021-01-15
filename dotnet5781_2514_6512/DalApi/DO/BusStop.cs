@@ -14,7 +14,7 @@ namespace DLAPI
         public int BusStationKey { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public string adress { get; set; }
+        public string Adress { get; set; }
         public BusStop()
         {
             isactive = true;
@@ -24,7 +24,7 @@ namespace DLAPI
             BusStationKey = busStationKey;
             Latitude = latitude;
             Longitude = longitude;
-            this.adress = adress;
+            this.Adress = adress;
             isactive = true;
         }
 
