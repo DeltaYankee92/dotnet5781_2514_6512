@@ -3,55 +3,42 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:dotnet5781_03B_2514_6512"
+        xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Bus Contol App" Height="400" Width="700">
-
-    <!--code to change colors based on the Status of the bus-->
-    <Window.Resources>
-        <Style TargetType="ListViewItem">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Status}" Value="Ready">
-                    <Setter Property="Background" Value="LightGreen"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status}" Value="Not Ready">
-                    <Setter Property="Background" Value="red"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Status}" Value="Under Maintenance">
-                    <Setter Property="Background" Value="LightYellow"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
-    <StackPanel Background="Snow">
-        <ListView ItemsSource="{Binding}" Name="Busses_List" Margin="0,0,-0.4,0" MouseDoubleClick="Busses_List_MouseDoubleClick" Background="AliceBlue">
+        Title="Bus Manager" Height="681.4" Width="1143.2">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="BusesView" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="520" Margin="20,60,0,0" VerticalAlignment="Top" Width="505" MouseDoubleClick="Busses_List_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="License Plate" x:Name="firstHeader" Width="150">
+                    <GridViewColumn Header="License Plate" x:Name="BusLicencePlateHeader" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=License_Plate}" HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Status" x:Name="secondHeader" Width="150">
+                    <GridViewColumn Header="Status" x:Name="BusStatusHeader" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Status}" Foreground="{Binding StatusColorSelector}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Time" x:Name="Time" Width="60">
+                    <GridViewColumn Header="Time" x:Name="BusTimeHeader" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=time.TimeNow}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="" Width="100">
+                    <GridViewColumn Header="" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="SendBus" Content="Send To Drive" Click="Send_Bus_Click"/>
+                                <Button Name="Refuel" Content="Refuel" Click="Refuel_Click"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -72,22 +59,88 @@
                     <GridViewColumn Header="" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="DoRefuel" Content=" Refuel" Click="Refuel_Click"/>
+                                <!--<Button Name="DoRefuel" Content=" Refuel" Click="Refuel_Click"/>-->
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            
-        </Grid>
-        <Button Name="InsertNewBus" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" Margin="0 0 10 0" Grid.Column="0" Content="Insert New Bus" Click="Insert_Click"/>
-    </StackPanel>
+        <ListView x:Name="StationsView" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="520" Margin="545,60,0,0" VerticalAlignment="Top" Width="265">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Station Code" x:Name="BusStopStationCode" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=BusStationKey}" HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Adress" x:Name="BusStopAdressHeader" Width="160">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Adress}" Foreground="{Binding StatusColorSelector}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <!--<GridViewColumn Header="" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="SendBus" Content="Send To Drive" Click="Send_Bus_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>-->
+                    <!--<GridViewColumn Header="" Width="70">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="DeleteBus"  Content=" Delete"  Click="DeleteBus_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>-->
+                    <!--<GridViewColumn Header="" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                -->
+                    <!--<Button Name="DoMaintenance" Content="Maintenance" Click="DoMaintenance_Click"/>-->
+                    <!--
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>-->
+                    <!--<GridViewColumn Header="" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                -->
+                    <!--<Button Name="DoRefuel" Content=" Refuel" Click="Refuel_Click"/>-->
+                    <!--
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="LinesView" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="520" Margin="830,60,0,0" VerticalAlignment="Top" Width="285">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Line Number" x:Name="BusLineNumberHeader" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=BusNumber}" Foreground="{Binding StatusColorSelector}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Area" x:Name="BusLineAreaHeader" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Area}" Foreground="{Binding StatusColorSelector}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="AddBusButton" Content="Add Bus" HorizontalAlignment="Left" Height="35" Margin="320,585,0,0" VerticalAlignment="Top" Width="135" Click="AddBusButton_Click"/>
+        <Button x:Name="AddStationButton" Content="Add Station" HorizontalAlignment="Left" Height="35" Margin="625,585,0,0" VerticalAlignment="Top" Width="135" Click="AddStationButton_Click"/>
+        <Button x:Name="AddLineButton" Content="Add Bus Line" HorizontalAlignment="Left" Height="35" Margin="980,585,0,0" VerticalAlignment="Top" Width="135" Click="AddLineButton_Click"/>
 
+    </Grid>
 </Window>

@@ -40,7 +40,7 @@ namespace BL.BO
             this.Longitude = y;
             Console.WriteLine("enter the adress");
             string str = Console.ReadLine();
-            this.adress = str;
+            this.Adress = str;
             Console.WriteLine("enter distance from previous station");
             double temp;
             bool parse_success;
@@ -70,14 +70,14 @@ namespace BL.BO
             BusStationKey = i1;
             Latitude = f1;
             Longitude = f2;
-            adress = str;
+            Adress = str;
         }
         internal LineStation(double d, double x, int i1, double f1, double f2, string str)
         {
             distance = d;
             time = Convert_to_time(x);
             this.BusStationKey = i1;
-            this.adress = str;
+            this.Adress = str;
             this.Latitude = f1;
             this.Longitude = f2;
         }

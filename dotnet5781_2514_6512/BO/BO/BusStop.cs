@@ -15,7 +15,7 @@ namespace BL.BO
         public int BusStationKey { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public string adress { get; set; }
+        public string Adress { get; set; }
 
         internal int getkey()
         {
@@ -32,7 +32,7 @@ namespace BL.BO
         }
         public string getadress()
         {
-            return this.adress;
+            return this.Adress;
         }
         #endregion
 
@@ -40,14 +40,14 @@ namespace BL.BO
         public BusStop()
         {
             this.BusStationKey = -1;
-            this.adress = "";
+            this.Adress = "";
             this.Latitude = -1;
         }
 
         internal BusStop(int i1, float f1, float f2, string str)
         {
             this.BusStationKey = i1;
-            this.adress = str;
+            this.Adress = str;
             this.Latitude = f1;
             this.Longitude = f2;
         }
@@ -118,7 +118,7 @@ namespace BL.BO
             this.Longitude = y;
             Console.WriteLine("enter the adress");
             string str = Console.ReadLine();
-            this.adress = str;
+            this.Adress = str;
         }
         public override string ToString()
         {

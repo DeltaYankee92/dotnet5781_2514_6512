@@ -21,8 +21,8 @@ namespace DS
         static AllData()
         {
             start_bus();
-            start_busLine();
             start_busStop();
+            start_busLine();
             start_LineCycle();
             start_LineStation();
             start_Moving_bus();
@@ -80,11 +80,12 @@ namespace DS
 
         internal static void start_busStop()
         {
-            BusStop s1 = new BusStop(2595, 31.76003, 35.18315, "Kadish Luz 8-16, Jerusalem");
-            BusStop s2 = new BusStop(2592, 31.75837, 35.18602, "Perets Bernstein 19-1, Jerusalem");
-            BusStop s3 = new BusStop(2783, 31.75919, 35.18730, "David P Merets St 22, Jerusalem");
-            BusStop s4 = new BusStop(1518, 31.75913, 35.18918, "Peretz Bernstein/Nezer David, Jerusalem");
-            BusStop s5 = new BusStop(6273, 31.76228, 35.19157, "Barukh Duvdevani St 40, Jerusalem");
+            BusStop s1 = new BusStop(2595, 31.76003, 35.18315, "Kadish Luz 8-16");
+            BusStop s2 = new BusStop(2592, 31.75837, 35.18602, "Perets Bernstein 19-1");
+            BusStop s3 = new BusStop(2783, 31.75919, 35.18730, "David P Merets St 22");
+            BusStop s4 = new BusStop(1518, 31.75913, 35.18918, "Peretz Bernstein/Nezer David");
+            BusStop s5 = new BusStop(6273, 31.76228, 35.19157, "Barukh Duvdevani St 40");
+            List_BusStop = new List<BusStop>();
             List_BusStop.Add(s1);
             List_BusStop.Add(s2);
             List_BusStop.Add(s3);
@@ -96,6 +97,8 @@ namespace DS
         internal static void start_busLine()
         {
             BusLine Line1 = new BusLine(List_BusStop[0], List_BusStop[4], 21, "Ramat Sharet");
+            List_BusLine = new List<BusLine>();
+            List_BusLine.Add(Line1);
         }
         internal static void start_LineStation()
         {
@@ -104,6 +107,12 @@ namespace DS
             LineStation ls3 = new LineStation(List_BusStop[2], 350, TimeSpan.FromMinutes(2));
             LineStation ls4 = new LineStation(List_BusStop[3], 600, TimeSpan.FromMinutes(3));
             LineStation ls5 = new LineStation(List_BusStop[4], 200, TimeSpan.FromMinutes(6));
+            List_LineStation = new List<LineStation>();
+            List_LineStation.Add(ls1);
+            List_LineStation.Add(ls2);
+            List_LineStation.Add(ls3);
+            List_LineStation.Add(ls4);
+            List_LineStation.Add(ls5);
         }
         internal static void start_LineCycle()
         {
