@@ -138,8 +138,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="AddBusButton" Content="Add Bus" HorizontalAlignment="Left" Height="35" Margin="320,585,0,0" VerticalAlignment="Top" Width="135" Click="AddBusButton_Click"/>
-        <Button x:Name="AddStationButton" Content="Add Station" HorizontalAlignment="Left" Height="35" Margin="625,585,0,0" VerticalAlignment="Top" Width="135" Click="AddStationButton_Click"/>
+        <Button x:Name="AddBusButton" Content="Add Bus" HorizontalAlignment="Left" Height="35" Margin="390,585,0,0" VerticalAlignment="Top" Width="135" Click="AddBusButton_Click"/>
+        <Button x:Name="AddStationButton" Content="Add Station" HorizontalAlignment="Left" Height="35" Margin="675,585,0,0" VerticalAlignment="Top" Width="135" Click="AddStationButton_Click"/>
         <Button x:Name="AddLineButton" Content="Add Bus Line" HorizontalAlignment="Left" Height="35" Margin="980,585,0,0" VerticalAlignment="Top" Width="135" Click="AddLineButton_Click"/>
 
     </Grid>

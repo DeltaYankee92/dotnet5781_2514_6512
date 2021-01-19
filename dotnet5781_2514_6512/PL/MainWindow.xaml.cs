@@ -75,6 +75,7 @@ namespace PL
             objInsertNewBus.Show();
             BusesView.ItemsSource = bl.GetAllBuses();
             BusesView.Items.Refresh();
+            InitializeComponent();
         }
 
         private void AddStationButton_Click(object sender, RoutedEventArgs e)
