@@ -21,12 +21,14 @@ namespace DS
         static AllData()
         {
             start_bus();
+
             start_busStop();
             start_busLine();
             start_LineCycle();
             start_LineStation();
             start_Moving_bus();
             start_TwoStops();
+            start_busLine();
         }
 
         #region Bus Database Initialization
@@ -100,7 +102,7 @@ namespace DS
             List_BusLine = new List<BusLine>();
             List_BusLine.Add(Line1);
         }
-        internal static void start_LineStation()
+        internal static void start_LineStation()   
         {
             LineStation ls1 = new LineStation(List_BusStop[0], 400, TimeSpan.FromMinutes(2));
             LineStation ls2 = new LineStation(List_BusStop[1], 500, TimeSpan.FromMinutes(4));
