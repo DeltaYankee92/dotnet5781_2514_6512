@@ -25,5 +25,20 @@ namespace DLAPI
             public ItemIsInactiveException() { }
             public ItemIsInactiveException(string Meassage) : base(Meassage) { } // sends the exception with the meassage
         }
+    
+
+[Serializable]
+public class XelementCreationFailedException : Exception
+{
+    public XelementCreationFailedException() { }
+    public XelementCreationFailedException(string Meassage, string v) : base(Meassage+v) { } // sends the exception with the meassage
+}
+
+    [Serializable]
+    public class XelementSearchFailedException : Exception
+    {
+        public XelementSearchFailedException() { }
+        public XelementSearchFailedException(string Meassage, string v) : base(Meassage + v) { } // sends the exception with the meassage
     }
+}
 
