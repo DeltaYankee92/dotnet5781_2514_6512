@@ -76,6 +76,14 @@ namespace DLXML
             }
             return generated;
         }
+
+        public static string convert_to_string(int[] arr)
+        {
+            string str = "";
+            for (int i = 0; i < arr.Length; i++)
+                str += arr[i];
+            return str;
+        }
         public Bus GetBus_XML(string License_Plate)
         {
             XElement BusElement = XMLTools.LoadListFromXMLElement(BusPath);
@@ -118,22 +126,28 @@ namespace DLXML
         public BusLine GetBusLine_XML(int key)
         {
             XElement BusLineElement = XMLTools.LoadListFromXMLElement(BusLinePath);
+            List<BusLine> BusLine_List = XMLTools.LoadListFromXMLSerializer<BusLine>(BusLinePath);
+
+            BusStop b1 = null  , b2 = null;
+            foreach (var line2 in BusLine_List)
+            {
+                if (line2.BusNumber == key)
+                {
+                    b1 = line2.FirstStation;
+                    b2 = line2.LastStation;
+                }
+            }
+            if (b1 == null || b2 == null)
+                throw new NotFoundException();
+
             BusLine line = (from line1 in BusLineElement.Elements()
                             where (Int32.Parse(line1.Element("BusNumber").Value) == key)
                             select new BusLine()
                             {
-                                FirstStation = new BusStop(
-                                Int32.Parse(line1.Element("BusStationKey").Value),
-                                double.Parse(line1.Element("Latitude").Value),
-                                double.Parse(line1.Element("Longitude").Value),
-                                (line1.Element("Adress").Value)
-                                    ),
-                                LastStation = new BusStop(
-                                Int32.Parse(line1.Element("BusStationKey").Value),
-                                double.Parse(line1.Element("Latitude").Value),
-                                double.Parse(line1.Element("Longitude").Value),
-                                (line1.Element("Adress").Value)
-                                    ),
+                                FirstStation = b1
+                                    ,
+                                LastStation= b2
+                                    ,
                                 BusNumber = Int32.Parse(line1.Element("BusNumber").Value),
                                 Area = (line1.Element("Area").Value)
                             }).FirstOrDefault();
@@ -207,234 +221,497 @@ namespace DLXML
                             }).FirstOrDefault();
 
             return stop;
-
         }
         #endregion
 
+        #region staticXML setters
+
+        public void setBus_XML(Bus b)
+        {
+
+            List<Bus> Bus_List = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
+            if (b == null || b.License_Plate == null || b.isactive == false)
+                throw new ItemIsInactiveException("no bus fits, or bus is not active");
+            if (Bus_List.FirstOrDefault(b1 => b1.License_Plate == b.License_Plate) != null)
+                throw new InsystemException("object already in system");
+            Bus_List.Add(b);
+            XMLTools.SaveListToXMLSerializer(Bus_List,BusPath);
+        }
+
+        public void setBusStop_XML(BusStop b)
+        {
+
+            List<BusStop> BusStop_List = XMLTools.LoadListFromXMLSerializer<BusStop>(BusStopPath);
+            if (b == null || b.isactive == false)
+                throw new ItemIsInactiveException("no BusStop fits, or BusStop is not active");
+            if (BusStop_List.FirstOrDefault(b1 => b1.BusStationKey == b.BusStationKey) != null)
+                throw new InsystemException("object already in system");
+            BusStop_List.Add(b);
+            XMLTools.SaveListToXMLSerializer(BusStop_List, BusStopPath);
+        }
+        public void setBusLine_XML(BusLine l)
+        {
+
+            List<BusLine> BusLine_List = XMLTools.LoadListFromXMLSerializer<BusLine>(BusLinePath);
+            if (l == null || l.isactive == false)
+                throw new ItemIsInactiveException("no BusLine fits, or BusLine is not active");
+            if (BusLine_List.FirstOrDefault(l1 => l1.BusNumber == l.BusNumber) != null)
+                throw new InsystemException("object already in system");
+            BusLine_List.Add(l);
+            XMLTools.SaveListToXMLSerializer(BusLine_List, BusLinePath);
+        }
+        public void setLineStation_XML(LineStation l)
+        {
+            List<LineStation> LineStation_List = XMLTools.LoadListFromXMLSerializer<LineStation>(LineStationPath);
+            if (l == null || l.isactive == false)
+                throw new ItemIsInactiveException("no LineStation fits, or LineStation is not active");
+            if (LineStation_List.FirstOrDefault(l1 => l1.BusStationKey == l.BusStationKey) != null)
+                throw new InsystemException("object already in system");
+            LineStation_List.Add(l);
+            XMLTools.SaveListToXMLSerializer(LineStation_List, LineStationPath);
+        }
+        public void setLineCycle_XML(LineCycle c)
+        {
+            List<LineCycle> LineCycle_List = XMLTools.LoadListFromXMLSerializer<LineCycle>(LineCyclePath);
+            if (c == null || c.isactive == false)
+                throw new ItemIsInactiveException("no LineCycle fits, or LineCycle is not active");
+            if (LineCycle_List.FirstOrDefault(b1 => b1.id == c.id) != null)
+                throw new InsystemException("object already in system");
+            LineCycle_List.Add(c);
+            XMLTools.SaveListToXMLSerializer(LineCycle_List, LineCyclePath);
+
+        }
+        public void setMoving_bus_XML(Moving_bus m)
+        {
+            List<Moving_bus> Moving_bus_List = XMLTools.LoadListFromXMLSerializer<Moving_bus>(Moving_busPath);
+            if (m == null || m.isactive == false)
+                throw new ItemIsInactiveException("no Moving_bus fits, or Moving_bus is not active");
+            if (Moving_bus_List.FirstOrDefault(m1 => m1.id == m.id) != null)
+                throw new InsystemException("object already in system");
+            Moving_bus_List.Add(m);
+            XMLTools.SaveListToXMLSerializer(Moving_bus_List, Moving_busPath);
+
+        }
+        public void setTwostops_XML(Twostops t)
+        {
+            List<Twostops> Twostops_List = XMLTools.LoadListFromXMLSerializer<Twostops>(TwostopsPath);
+            if (t == null || t.isactive == false)
+                throw new ItemIsInactiveException("no Twostops fits, or Twostops is not active");
+            if (Twostops_List.FirstOrDefault(t1 => t1.id == t.id) != null)
+                throw new InsystemException("object already in system");
+            Twostops_List.Add(t);
+            XMLTools.SaveListToXMLSerializer(Twostops_List, TwostopsPath);
+        }
+
+        #endregion
+
+        #region staticXML removers
+
+        public static void removeBus_XML(Bus b1)
+        {
+
+            XElement element = XMLTools.LoadListFromXMLElement(BusPath);
+            XElement target = ( from b in element.Elements()
+                where (b.Element("License_Plate").Value) == b1.License_Plate
+                select b
+                ).FirstOrDefault();
+            if (target == null)
+                throw new NotFoundException("no bus exists to remove");
+            else
+            {
+                target.Remove(); // removes node from the parent
+                XMLTools.SaveListToXMLElement(element, BusPath);
+            }
+        }
+        public static void removeBusStop_XML(BusStop b1)
+        {
+            XElement element = XMLTools.LoadListFromXMLElement(BusStopPath);
+            XElement target = (from b in element.Elements()
+                               where int.Parse(b.Element("BusStationKey").Value) == b1.BusStationKey
+                               select b
+                ).FirstOrDefault();
+            if (target == null)
+                throw new NotFoundException("no BusStop exists to remove");
+            else
+            {
+                target.Remove(); // removes node from the parent
+                XMLTools.SaveListToXMLElement(element, BusStopPath);
+            }
+        }
+        public static void removeBusLine_XML(BusLine l1)
+        {
+            XElement element = XMLTools.LoadListFromXMLElement(BusLinePath);
+            XElement target = (from b in element.Elements()
+                               where int.Parse(b.Element("BusNumber").Value) == l1.BusNumber
+                               select b
+                ).FirstOrDefault();
+            if (target == null)
+                throw new NotFoundException("no BusLine exists to remove");
+            else
+            {
+                target.Remove(); // removes node from the parent
+                XMLTools.SaveListToXMLElement(element, BusLinePath);
+            }
+        }
+        public static void removeLineStation_XML(LineStation l1)
+        {
+            XElement element = XMLTools.LoadListFromXMLElement(LineStationPath);
+            XElement target = (from b in element.Elements()
+                               where int.Parse(b.Element("BusStationKey").Value) == l1.BusStationKey
+                               select b
+                ).FirstOrDefault();
+            if (target == null)
+                throw new NotFoundException("no LineStation exists to remove");
+            else
+            {
+                target.Remove(); // removes node from the parent
+                XMLTools.SaveListToXMLElement(element, LineStationPath);
+            }
+        }
+        public static void removeLineCycle_XML(LineCycle c1)
+        {
+            XElement element = XMLTools.LoadListFromXMLElement(LineCyclePath);
+            XElement target = (from b in element.Elements()
+                               where int.Parse(b.Element("id").Value) == c1.id
+                               select b
+                ).FirstOrDefault();
+            if (target == null)
+                throw new NotFoundException("no LineCycle exists to remove");
+            else
+            {
+                target.Remove(); // removes node from the parent
+                XMLTools.SaveListToXMLElement(element, LineCyclePath);
+            }
+        }
+        public static void removeMoving_bus_XML(Moving_bus b1)
+        {
+            XElement element = XMLTools.LoadListFromXMLElement(BusPath);
+            XElement target = (from b in element.Elements()
+                               where int.Parse(b.Element("id").Value) == b1.id
+                               select b
+                ).FirstOrDefault();
+            if (target == null)
+                throw new NotFoundException("no bus exists to remove");
+            else
+            {
+                target.Remove(); // removes node from the parent
+                XMLTools.SaveListToXMLElement(element, BusPath);
+            }
+        }
+        public static void removeTwostops_XML(Twostops ts1)
+        {
+            XElement element = XMLTools.LoadListFromXMLElement(BusPath);
+            XElement target = (from b in element.Elements()
+                               where int.Parse(b.Element("id").Value) == ts1.id
+                               select b
+                ).FirstOrDefault();
+            if (target == null)
+                throw new NotFoundException("no bus exists to remove");
+            else
+            {
+                target.Remove(); // removes node from the parent
+                XMLTools.SaveListToXMLElement(element, BusPath);
+            }
+        }
+
+        #endregion
 
         #region BusStop
 
         public void addBusStop(BusStop bus)
         {
-
+            setBusStop_XML(bus);
         }
 
         public BusStop GetBusStop(int stopnum)
         {
-            throw new NotImplementedException();
+            return GetBusStop_XML(stopnum);
         }
 
         public IEnumerable<BusStop> GetAllBusStops()
         {
-            throw new NotImplementedException();
+            List<BusStop> Bus_List = XMLTools.LoadListFromXMLSerializer<BusStop>(BusStopPath);
+            return from Stop in Bus_List
+                   where Stop.isactive
+                   select Stop;
         }
 
         public IEnumerable<BusStop> GetAllBusStops_history()
         {
-            throw new NotImplementedException();
+            List<BusStop> Bus_List = XMLTools.LoadListFromXMLSerializer<BusStop>(BusStopPath);
+            return from Stop in Bus_List
+                   select Stop;
         }
 
         public void Details_BusStop(BusStop bus)
         {
-            throw new NotImplementedException();
+                BusStop b = GetBusStop_XML(bus.BusStationKey); // a check if it is in the system
+                removeBusStop_XML(b); // remove it
+                setBusStop_XML(bus); // then add it.
         }
 
         public void removeBusStop(int stopnum)
         {
-            throw new NotImplementedException();
+            BusStop b = GetBusStop_XML(stopnum);
+            removeBusStop_XML(b);
         }
         #endregion
+
+        #region Bus
         public void addBus(Bus bus)
         {
-            throw new NotImplementedException();
+            setBus_XML(bus);
         }
 
         public Bus GetBus(int[] plate)
         {
-            throw new NotImplementedException();
+            return GetBus_XML(convert_to_string(plate));
         }
 
         public IEnumerable<Bus> GetAllBuses()
         {
-            throw new NotImplementedException();
+            List<Bus> Bus_List = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
+            return from bus in Bus_List
+                   where bus.isactive
+                   select bus;
         }
 
         public IEnumerable<Bus> GetAllBuses_history()
         {
-            throw new NotImplementedException();
+            List<Bus> Bus_List = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
+            return from bus in Bus_List
+                   select bus;
         }
 
         public void Details(Bus bus)
         {
-            throw new NotImplementedException();
+            Bus b = GetBus_XML(bus.License_Plate); // a check if it is in the system
+            removeBus_XML(b); // remove it
+            setBus_XML(bus); // then add it.
         }
 
         public void Fuel(int[] plate)
         {
-            throw new NotImplementedException();
+            Bus b = GetBus_XML(convert_to_string(plate));
+            b.fuel_up();
+            this.Details(b);
         }
 
         public void Maintain(int[] plate)
         {
-            throw new NotImplementedException();
+            Bus b = GetBus_XML(convert_to_string(plate));
+            b.fix();
+            this.Details(b);
         }
 
         public void removeBus(int[] plate)
         {
-            throw new NotImplementedException();
+            Bus b = GetBus_XML(convert_to_string(plate));
+            removeBus_XML(b);
         }
 
+        #endregion
+
+        #region BusLine
         public void AddBusLine(BusLine line)
         {
-            throw new NotImplementedException();
+            setBusLine_XML(line);
         }
 
         public IEnumerable<BusLine> GetAllBusLines()
         {
-            throw new NotImplementedException();
+            List<BusLine> BusLine_List = XMLTools.LoadListFromXMLSerializer<BusLine>(BusLinePath);
+            return from line in BusLine_List
+                   where line.isactive
+                   select line;
         }
 
         public IEnumerable<BusLine> GetAllBusLines_history()
         {
-            throw new NotImplementedException();
+            List<BusLine> BusLine_List = XMLTools.LoadListFromXMLSerializer<BusLine>(BusLinePath);
+            return from line in BusLine_List
+                   select line;
         }
 
         public BusLine GetBusLine(int linenum)
         {
-            throw new NotImplementedException();
+            return GetBusLine_XML(linenum);
         }
 
         public void Details_Line(BusLine line)
         {
-            throw new NotImplementedException();
+            BusLine l = GetBusLine_XML(line.BusNumber); // a check if it is in the system
+            removeBusLine_XML(l); // remove it
+            setBusLine_XML(line); // then add it.
         }
 
         public void RemoveBusLine(int linenum)
         {
-            throw new NotImplementedException();
+            BusLine l = GetBusLine_XML(linenum);
+            removeBusLine_XML(l);
         }
+
+        #endregion
+
+        #region LineStation
 
         public void addStation(LineStation line)
         {
-            throw new NotImplementedException();
+            setLineStation_XML(line);
         }
-
         public IEnumerable<LineStation> GetLines()
         {
-            throw new NotImplementedException();
+            List<LineStation> LineStation_List = XMLTools.LoadListFromXMLSerializer<LineStation>(LineStationPath);
+            return from Station in LineStation_List
+                   where Station.isactive
+                   select Station;
         }
 
         public IEnumerable<LineStation> GetLines_history()
         {
-            throw new NotImplementedException();
+            List<LineStation> LineStation_List = XMLTools.LoadListFromXMLSerializer<LineStation>(LineStationPath);
+            return from Station in LineStation_List
+                   select Station;
         }
 
         public LineStation GetLineStation(int linenum)
         {
-            throw new NotImplementedException();
+            return GetLineStation_XML(linenum);
         }
 
         public void removeLineStation(int linenum)
         {
-            throw new NotImplementedException();
+            LineStation b = GetLineStation_XML(linenum);
+            removeLineStation_XML(b);
         }
 
         public void Details_LineStation(LineStation line)
         {
-            throw new NotImplementedException();
+            LineStation l = GetLineStation_XML(line.BusStationKey); // a check if it is in the system
+            removeLineStation_XML(l); // remove it
+            setLineStation_XML(line); // then add it.
         }
 
+        #endregion
+
+        #region LineCycle
         public void addCycle(LineCycle line)
         {
-            throw new NotImplementedException();
+            setLineCycle_XML(line);
         }
 
         public IEnumerable<LineCycle> GetCycles()
         {
-            throw new NotImplementedException();
+            List<LineCycle> LineCycle_List = XMLTools.LoadListFromXMLSerializer<LineCycle>(LineCyclePath);
+            return from cycle in LineCycle_List
+                   where cycle.isactive
+                   select cycle;
         }
 
         public IEnumerable<LineCycle> GetCycles_history()
         {
-            throw new NotImplementedException();
+            List<LineCycle> LineCycle_List = XMLTools.LoadListFromXMLSerializer<LineCycle>(LineCyclePath);
+            return from cycle in LineCycle_List
+                   select cycle;
         }
 
         public LineCycle GetCycle(int counted)
         {
-            throw new NotImplementedException();
+            return GetLineCycle_XML(counted);
         }
 
         public void RemoveCycle(int counted)
         {
-            throw new NotImplementedException();
+            LineCycle c = GetLineCycle_XML(counted);
+            removeLineCycle_XML(c);
         }
 
         public void Details_Cycle(LineCycle line)
         {
-            throw new NotImplementedException();
+            LineCycle l = GetLineCycle_XML(line.id); // a check if it is in the system
+            removeLineCycle_XML(l); // remove it
+            setLineCycle_XML(line); // then add it.
         }
+        #endregion
 
+        #region MovingBus
         public void addMoving_Bus(Moving_bus bus)
         {
-            throw new NotImplementedException();
+            setMoving_bus_XML(bus);
         }
 
         public IEnumerable<Moving_bus> Moving_Bus()
         {
-            throw new NotImplementedException();
+            List<Moving_bus> Moving_bus_List = XMLTools.LoadListFromXMLSerializer<Moving_bus>(Moving_busPath);
+            return from M_bus in Moving_bus_List
+                   where M_bus.isactive
+                   select M_bus;
         }
 
         public IEnumerable<Moving_bus> Moving_Bus_history()
         {
-            throw new NotImplementedException();
+            List<Moving_bus> Moving_bus_List = XMLTools.LoadListFromXMLSerializer<Moving_bus>(Moving_busPath);
+            return from M_bus in Moving_bus_List
+                   select M_bus;
         }
 
         public Moving_bus GetMoving_Bus(int counted)
         {
-            throw new NotImplementedException();
+            return GetMoving_bus_XML(counted);
         }
 
         public void removeMoving_Bus(int counted)
         {
-            throw new NotImplementedException();
+            Moving_bus m = GetMoving_bus_XML(counted);
+            removeMoving_bus_XML(m);
         }
 
         public void Details_Moving_Bus(Moving_bus bus)
         {
-            throw new NotImplementedException();
+            Moving_bus l = GetMoving_bus_XML(bus.id); // a check if it is in the system
+            removeMoving_bus_XML(l); // remove it
+            setMoving_bus_XML(bus); // then add it.
         }
+        #endregion
 
+        #region TwoStops
         public void addTwostops(Twostops route)
         {
-            throw new NotImplementedException();
+            setTwostops_XML(route);
         }
 
         public IEnumerable<Twostops> GetTwostops()
         {
-            throw new NotImplementedException();
+            List<Twostops> Twostops_List = XMLTools.LoadListFromXMLSerializer<Twostops>(TwostopsPath);
+            return from Stops in Twostops_List
+                   where Stops.isactive
+                   select Stops;
         }
 
         public IEnumerable<Twostops> GetTwostops_history()
         {
-            throw new NotImplementedException();
+            List<Twostops> Twostops_List = XMLTools.LoadListFromXMLSerializer<Twostops>(TwostopsPath);
+            return from Stops in Twostops_List
+                   select Stops;
         }
 
         public Twostops GetGetTwostopS(int counted)
         {
-            throw new NotImplementedException();
+            return GetTwostops_XML(counted);
         }
 
         public void removeTwostops(int counted)
         {
-            throw new NotImplementedException();
+            Twostops t = GetTwostops_XML(counted);
+            removeTwostops_XML(t);
         }
 
         public void Details_LineStation(Twostops route)
         {
-            throw new NotImplementedException();
+            Twostops t = GetTwostops_XML(route.id); // a check if it is in the system
+            removeTwostops_XML(t); // remove it
+            setTwostops_XML(route); // then add it.
         }
-
-
-
+        #endregion
     }
 }
