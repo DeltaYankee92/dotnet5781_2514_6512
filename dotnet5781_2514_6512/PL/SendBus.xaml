@@ -1,0 +1,32 @@
+﻿<Window x:Class="PL.SendBus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="Send_Bus" Height="450" Width="328.2">
+    <Grid>
+        <ListView x:Name="BusLineList" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="360" Margin="20,40,0,0" VerticalAlignment="Top" Width="275">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Line Number" x:Name="BusLineNumberHeader" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=BusNumber}" Foreground="{Binding StatusColorSelector}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Area" x:Name="BusLineAreaHeader" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Area}" Foreground="{Binding StatusColorSelector}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="35" Margin="20,5,0,0" TextWrapping="Wrap" Text="Pick Which Bus Line To Serve:" VerticalAlignment="Top" Width="275" FontSize="16" TextAlignment="Center"/>
+    </Grid>
+</Window>

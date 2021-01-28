@@ -6,6 +6,21 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="Bus Manager" Height="681.4" Width="1143.2">
+    <Window.Resources>
+        <Style TargetType="ListViewItem">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Status}" Value="Ready">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="Not Ready">
+                    <Setter Property="Background" Value="red"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="Under Maintenance">
+                    <Setter Property="Background" Value="LightYellow"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -63,10 +78,17 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <GridViewColumn Header="Send Bus" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="SendBus" Content="Send" Click="SendBus_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="StationsView" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="520" Margin="545,60,0,0" VerticalAlignment="Top" Width="265">
+        <ListView x:Name="StopsView" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="520" Margin="545,60,0,0" VerticalAlignment="Top" Width="265" MouseDoubleClick="StopsView_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Station Code" x:Name="BusStopStationCode" Width="80">
@@ -83,13 +105,13 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <!--<GridViewColumn Header="" Width="60">
+                    <GridViewColumn Header="" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="SendBus" Content="Send To Drive" Click="Send_Bus_Click"/>
+                                <Button Name="DeleteStationButton" Content="DeleteStation" Click="DeleteStop_Click"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>-->
+                    </GridViewColumn>
                     <!--<GridViewColumn Header="" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -141,6 +163,5 @@
         <Button x:Name="AddBusButton" Content="Add Bus" HorizontalAlignment="Left" Height="35" Margin="390,585,0,0" VerticalAlignment="Top" Width="135" Click="AddBusButton_Click"/>
         <Button x:Name="AddStationButton" Content="Add Station" HorizontalAlignment="Left" Height="35" Margin="675,585,0,0" VerticalAlignment="Top" Width="135" Click="AddStationButton_Click"/>
         <Button x:Name="AddLineButton" Content="Add Bus Line" HorizontalAlignment="Left" Height="35" Margin="980,585,0,0" VerticalAlignment="Top" Width="135" Click="AddLineButton_Click"/>
-
     </Grid>
 </Window>

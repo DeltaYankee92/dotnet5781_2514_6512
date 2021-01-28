@@ -29,7 +29,6 @@ namespace PL
                 {
                     mainwindow1 = window as MainWindow;
                 }
-                
             }
             InitializeComponent();
         }

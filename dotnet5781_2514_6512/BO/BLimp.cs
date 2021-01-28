@@ -64,7 +64,7 @@ namespace BL
         {
             return Converter.DOtoBO_BusLine<BO.BusLine, DLAPI.BusLine>(dl.GetBusLine(id));
         }
-        public IEnumerable<BO.BusLine> GetAllBuseLines()
+        public IEnumerable<BO.BusLine> GetAllBusLines()
         {
             var result = dl.GetAllBusLines();
             return (from item in result
@@ -114,6 +114,17 @@ namespace BL
                     where (item != null)
                     orderby item.BusStationKey ascending
                     select Converter.DOtoBO_BusStop<BO.BusStop, DLAPI.BusStop>(item)).ToList();
+        }
+
+        public bool CheckIfExists(BO.BusStop stop)
+        {
+            var result = dl.GetAllBusStops();
+            foreach (DLAPI.BusStop item in result)
+            {
+                if (item.BusStationKey == stop.BusStationKey)
+                    return true;
+            }
+            return false;
         }
         #endregion
 
@@ -255,10 +266,57 @@ namespace BL
                     orderby item.id ascending
                     select Converter.DOtoBO_Twostops<BO.Twostops, DLAPI.Twostops>(item)).ToList();
         }
+
+        public void UpdateBusesStatus(IEnumerable<BO.Bus> data)
+        {
+            var result = dl.GetAllBuses();
+            IEnumerable<BO.Bus> get_to_update = (from item in result
+                    where (item != null)
+                    select Converter.DOtoBO_Bus<BO.Bus, DLAPI.Bus>(item)).ToList();
+            foreach (var item in get_to_update)
+            {
+                if (item.can_go(1))
+                {
+                    item.Status = "Ready";
+                }
+                else
+                {
+                    item.Status = "Not Ready";
+                }
+            }
+            foreach (var item in get_to_update)
+            {
+                dl.Details(Converter.BOtoDO_Bus<DLAPI.Bus, BO.Bus>(item));
+            }
+        }
         #endregion
 
 
+        public double DistanceTo(double lat1, double lon1, double lat2, double lon2, char unit = 'K')
+        {
+            double rlat1 = Math.PI * lat1 / 180;
+            double rlat2 = Math.PI * lat2 / 180;
+            double theta = lon1 - lon2;
+            double rtheta = Math.PI * theta / 180;
+            double dist =
+                Math.Sin(rlat1) * Math.Sin(rlat2) + Math.Cos(rlat1) *
+                Math.Cos(rlat2) * Math.Cos(rtheta);
+            dist = Math.Acos(dist);
+            dist = dist * 180 / Math.PI;
+            dist = dist * 60 * 1.1515;
 
+            switch (unit)
+            {
+                case 'K': //Kilometers -> default
+                    return dist * 1.609344;
+                case 'N': //Nautical Miles 
+                    return dist * 0.8684;
+                case 'M': //Miles
+                    return dist;
+            }
+
+            return dist;
+        }
 
 
 

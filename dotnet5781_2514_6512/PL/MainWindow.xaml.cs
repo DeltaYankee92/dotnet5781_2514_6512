@@ -24,9 +24,10 @@ namespace PL
         public MainWindow()
         {
             InitializeComponent();
+            bl.UpdateBusesStatus(bl.GetAllBuses());
             BusesView.ItemsSource = bl.GetAllBuses();
-            StationsView.ItemsSource = bl.GetAllBusStops();
-            LinesView.ItemsSource = bl.GetAllBuseLines();
+            StopsView.ItemsSource = bl.GetAllBusStops();
+            LinesView.ItemsSource = bl.GetAllBusLines();
         }
 
         private void DeleteBus_Click(object sender, RoutedEventArgs e)
@@ -34,6 +35,8 @@ namespace PL
             var temp = (FrameworkElement)sender;
             BL.BO.Bus b1 = (BL.BO.Bus)temp.DataContext;
             bl.removeBus(b1.licensePlateArray);
+            BusesView.ItemsSource = null;
+            BusesView.ItemsSource = bl.GetAllBuses();
             BusesView.Items.Refresh();
         }
         private void DoMaintenance_Click(object sender, RoutedEventArgs e)
@@ -73,19 +76,54 @@ namespace PL
         {
             InsertNewBus objInsertNewBus = new InsertNewBus();
             objInsertNewBus.Show();
+            BusesView.ItemsSource = null;
             BusesView.ItemsSource = bl.GetAllBuses();
             BusesView.Items.Refresh();
-            InitializeComponent();
+            
         }
 
         private void AddStationButton_Click(object sender, RoutedEventArgs e)
         {
-
+            AddStop objAddStopButton = new AddStop();
+            objAddStopButton.Show();
         }
 
         private void AddLineButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void StopsView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (sender != null)
+                {
+                    ListView ls = sender as ListView;
+                    MessageBox.Show(ls.SelectedItem.ToString());
+
+                }
+            }
+            catch (Exception exep)
+            {
+                MessageBox.Show(exep.Message);
+            }
+        }
+
+        private void DeleteStop_Click(object sender, RoutedEventArgs e)
+        {
+            var temp = (FrameworkElement)sender;
+            BL.BO.BusStop stop = (BL.BO.BusStop)temp.DataContext;
+            bl.DeleteStop(stop.BusStationKey);
+            StopsView.ItemsSource = null;
+            StopsView.ItemsSource = bl.GetAllBusStops();
+            StopsView.Items.Refresh();
+        }
+
+        private void SendBus_Click(object sender, RoutedEventArgs e)
+        {
+            SendBus objSendBus = new SendBus();
+            objSendBus.Show();
         }
     }
 }

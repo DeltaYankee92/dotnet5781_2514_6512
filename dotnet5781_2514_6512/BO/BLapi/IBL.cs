@@ -21,7 +21,7 @@ namespace BL.BLapi
         #endregion
 
         #region BusLine
-        IEnumerable<BusLine> GetAllBuseLines();
+        IEnumerable<BusLine> GetAllBusLines();
         IEnumerable<BusLine> GetAllBusesLines_history();
         void addLine(BusLine line);
         BusLine GetBusLine(int id);
@@ -36,6 +36,7 @@ namespace BL.BLapi
         BusStop GetBusStop(int id);
         void DeleteStop(int key);
         void UpdateStop(BusStop stop);
+        bool CheckIfExists(BusStop stop);
         #endregion
 
         #region LineStation
@@ -76,5 +77,11 @@ namespace BL.BLapi
 
 
         #endregion
+
+        void UpdateBusesStatus(IEnumerable<Bus> data);
+
+        double DistanceTo(double lat1, double lon1, double lat2, double lon2, char unit = 'K');
+
+
     }
 }

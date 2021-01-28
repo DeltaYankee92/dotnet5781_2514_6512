@@ -34,7 +34,7 @@ namespace DS
         #region Bus Database Initialization
         static void start_bus()
         {
-            Bus b1 = new Bus(new int[] { 1, 4, 2, 7, 9, 7, 4, 0 }, 0, 0, 0, 0, new DateTime(2020, 01, 01), new DateTime(2020, 01, 01), "ready");
+            Bus b1 = new Bus(new int[] { 1, 4, 2, 7, 9, 7, 4, 0 }, 2000, 2000, 2000, 2000, new DateTime(2020, 01, 01), new DateTime(2020, 01, 01), "ready");
             Bus b2 = new Bus(new int[] { 2, 5, 3, 8, 9, 7, 4, 1 }, 0, 0, 0, 0, new DateTime(2020, 01, 01), new DateTime(2020, 01, 01), "ready");
             Bus b3 = new Bus(new int[] { 3, 6, 4, 9, 9, 7, 4, 2 }, 0, 0, 0, 0, new DateTime(2020, 01, 01), new DateTime(2020, 01, 01), "ready");
             Bus b4 = new Bus(new int[] { 4, 7, 5, 0, 9, 7, 4, 3 }, 0, 0, 0, 0, new DateTime(2020, 01, 01), new DateTime(2020, 01, 01), "ready");

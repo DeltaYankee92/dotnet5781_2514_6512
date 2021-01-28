@@ -44,7 +44,7 @@ namespace BL.BO
             this.Latitude = -1;
         }
 
-        internal BusStop(int i1, float f1, float f2, string str)
+        public BusStop(int i1, float f1, float f2, string str)
         {
             this.BusStationKey = i1;
             this.Adress = str;
