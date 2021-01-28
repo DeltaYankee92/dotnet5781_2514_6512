@@ -65,6 +65,7 @@
     <Compile Include="SendBus.xaml.cs">
       <DependentUpon>SendBus.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TimerClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InsertNewBus.xaml.cs">
