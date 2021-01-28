@@ -13,9 +13,9 @@ namespace DLAPI
 {
     public class BusLine : Activity
     {
+        public int BusNumber { get; set; }
         public BusStop FirstStation { get; set; }
         public BusStop LastStation { get; set; }
-        public int BusNumber { get; set; }
         public string Area { get; set; }
 
         public BusLine()
