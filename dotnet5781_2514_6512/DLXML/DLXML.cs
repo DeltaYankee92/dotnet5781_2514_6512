@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace DLXML
+namespace DL
 {
     sealed class DLXML : IDL    //internal
     {
