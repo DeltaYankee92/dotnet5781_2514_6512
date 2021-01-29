@@ -22,7 +22,7 @@ namespace PL
     {
         BL.BLapi.IBL bl = BLapi.BLFactory.GetBL();
         MainWindow mainwindow1;
-        public Send_Bus()
+        public SendBus()
         {
             foreach (Window window in Application.Current.Windows)
             {

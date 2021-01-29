@@ -12,6 +12,7 @@ namespace BL
     {
 
         IDL dl = DLFactory.GetDL();
+        int TimeAcclerator = 1;
 
         #region Bus
         public void AddBus(BO.Bus bus)
@@ -318,25 +319,22 @@ namespace BL
             return dist;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public void Tick(int[] plate)
+        {
+            DLAPI.Bus bus = dl.GetBus(plate);
+            DLAPI.Moving_bus movingBus = dl.GetMoving_Bus(plate);
+            if (movingBus.time_out == TimeSpan.Zero)
+            {
+                stopTimer(movingBus.id);
+                bus.Status = "Ready";
+                return;
+            }
+            movingBus.time_out += TimeSpan.FromSeconds(-1 * TimeAcclerator);
+            bus.Status = "Not Avliable";
+            if (movingBus.time_out < TimeSpan.Zero)
+            {
+                movingBus.time_out = TimeSpan.Zero;
+            }
+        }
     }
 }

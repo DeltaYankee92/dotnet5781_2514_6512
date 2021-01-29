@@ -18,13 +18,10 @@ namespace BL.BO
         public List<LineStation> Stations = new List<LineStation>();
         BO.
         BusStop FirstStation, LastStation;
-        public int BusNumber;
-        string Area;
+        public int BusNumber { get; set; }
+        public string Area { get; set; }
 
-        public int busNumber
-        {
-            get => BusNumber;
-        }
+
 
         Random rand = new Random();
 

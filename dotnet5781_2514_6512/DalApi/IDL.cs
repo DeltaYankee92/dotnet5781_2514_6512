@@ -69,7 +69,7 @@ namespace DLAPI
         void addMoving_Bus(Moving_bus bus); //Crud
         IEnumerable<Moving_bus> Moving_Bus(); //cRud
         IEnumerable<Moving_bus> Moving_Bus_history(); //cRud
-        Moving_bus GetMoving_Bus(int counted); //cRud
+        Moving_bus GetMoving_Bus(int[] counted); //cRud
         void removeMoving_Bus(int counted); //crUd
         void Details_Moving_Bus(Moving_bus bus); //cruD
 

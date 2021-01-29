@@ -82,6 +82,17 @@ namespace BL.BLapi
 
         double DistanceTo(double lat1, double lon1, double lat2, double lon2, char unit = 'K');
 
+        #region Timer
+        void StartTimer(Bus bus, Moving_bus movingBus, TimeSpan time, string status, int timeAccleration=1, int distance = 0)
+        {
+            movingBus.time_out = time;
+            bus.Status = status;
+            bus.Current_Fuel -= distance;
+            bus.Milage += distance;
+            bus.MilageTotal += distance;
 
+        }
+        void Tick(int[] bus);
+        #endregion
     }
 }
