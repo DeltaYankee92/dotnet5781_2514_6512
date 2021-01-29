@@ -86,7 +86,7 @@ namespace DL
             }
             catch (Exception )
             {
-                throw new XelementCreationFailedException(filePath, $"fail to create xml file: {filePath}");
+                throw new XelementCreationFailedException(filePath, $"fail to create xml file: {filePath}, or the deserialize failed");
             }
         }
         #endregion
