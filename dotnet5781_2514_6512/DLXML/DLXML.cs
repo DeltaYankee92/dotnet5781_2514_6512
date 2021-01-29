@@ -20,7 +20,6 @@ namespace DL
 
         #region DS XML Files
 
-        private static string dir = @"xml\";// directive i assume. makes life easier. dan's technique
         private static string BusStopPath = @"BusStops.xml";
         private static string BusLinePath = @"BusLines.xml";
         private static string BusPath = @"Busses.xml";
